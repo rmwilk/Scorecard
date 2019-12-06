@@ -1,0 +1,18 @@
+/* set any default styles for all elements */
+* { font-family: Arial, Helvetica, sans-serif; } 
+
+header {
+	position: fixed;
+	max-height: 15%;
+	width: 100%;
+	text-align: center;
+}
+
+#titleH3 {
+	
+}
+
+#logo {
+	max-width: 50px;
+	max-height: 50px;
+}
