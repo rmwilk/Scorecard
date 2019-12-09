@@ -3,6 +3,7 @@
 
 header {
 	position: fixed;
+	display: inline-block;
 	max-height: 15%;
 	width: 100%;
 	text-align: center;
@@ -15,4 +16,13 @@ header {
 #logo {
 	max-width: 50px;
 	max-height: 50px;
+}
+
+#content {
+	position: fixed;
+	display: inline-block;
+	max-width: 100%;
+	max-height: 100%;	
+	margin: auto;
+	text-align: center;
 }
