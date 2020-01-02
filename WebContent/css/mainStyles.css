@@ -1,9 +1,10 @@
 /* set any default styles for all elements */
-* { font-family: Arial, Helvetica, sans-serif; } 
+* { 
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+ } 
 
 header {
-	position: fixed;
-	display: inline-block;
 	max-height: 15%;
 	width: 100%;
 	text-align: center;
@@ -18,11 +19,10 @@ header {
 	max-height: 50px;
 }
 
-#content {
-	position: fixed;
-	display: inline-block;
+.content {
 	max-width: 100%;
 	max-height: 100%;	
 	margin: auto;
 	text-align: center;
+	margin-top: 10px;
 }
