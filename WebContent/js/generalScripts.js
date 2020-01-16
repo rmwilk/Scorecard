@@ -7,3 +7,7 @@ function getID(id) {
 function testOpenAccountHomePage() {
 	window.location = "./accountHome.html";
 }
+
+function testOpenIndexPage() {
+	window.location = "./index.html";
+}
