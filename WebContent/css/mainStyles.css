@@ -1,17 +1,89 @@
 /* set any default styles for all elements */
-* { 
+* {
 	font-family: Arial, Helvetica, sans-serif;
 	box-sizing: border-box;
- } 
+}
+
+body, html {
+	height: 100%;
+}
+
+a img {
+	border: 0 none;
+}
+
+img {
+	border: 0 none;
+}
+
+a, a:visited, a:active, a:link {
+	text-decoration: underline;
+	color: #086e74;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+h1 {
+	font-family: Open Sans;
+	font-weight: 700;
+	font-size: 30px;
+	color: #236eaa;
+}
+
+h2 {
+	font-family: Open Sans;
+	font-weight: 700;
+	font-size: 24px;
+	color: #e23b30;
+	line-height: 32px;
+}
+
+h3 {
+	font-family: Open Sans;
+	font-weight: 700;
+	font-size: 18px;
+	color: #236eaa;
+	line-height: 28px;
+}
+
+h4 {
+	font-family: Open Sans;
+	font-weight: 700;
+	font-size: 16px;
+	color: #e23b30;
+	line-height: 25px;
+}
+
+h4 a {
+	color: #e23b30;
+}
+
+h5 {
+	font-family: Open Sans;
+	font-weight: 700;
+	font-size: 16px;
+	color: #236eaa;
+	line-height: 25px;
+}
+
+body {
+	margin: 0 auto;
+	background-size: cover;
+	background-color:#6aabee;
+}
+
+#wrapper {
+	width: 1000px;
+	margin: 0 auto;
+}
 
 header {
 	max-height: 15%;
 	width: 100%;
 	text-align: center;
-}
-
-#titleH3 {
-	
 }
 
 #logo {
@@ -21,8 +93,13 @@ header {
 
 .content {
 	max-width: 100%;
-	max-height: 100%;	
+	max-height: 100%;
 	margin: auto;
 	text-align: center;
 	margin-top: 10px;
 }
+
+.btn-border-bottom {
+	border-bottom: 2px solid white;
+}
+
