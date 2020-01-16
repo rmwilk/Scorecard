@@ -103,3 +103,8 @@ header {
 	border-bottom: 2px solid white;
 }
 
+.golfball-bullets {
+	list-style-image: url('../images/golfballBullets.jpg');
+	max-width: 3px;
+	max-height: auto;
+}

@@ -11,3 +11,11 @@ function testOpenAccountHomePage() {
 function testOpenIndexPage() {
 	window.location = "./index.html";
 }
+
+function testOpenStatsPage() {
+	window.location = "./stats.html";
+}
+
+function testOpenGamePage() {
+	window.location = "./game.html";
+}
