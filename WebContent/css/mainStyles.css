@@ -108,3 +108,11 @@ header {
 	max-width: 3px;
 	max-height: auto;
 }
+
+p.fancy-centered {
+	font-family: cursive;
+	text-align: center;
+}
+strong {
+	color: red;
+}
