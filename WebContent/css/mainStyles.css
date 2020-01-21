@@ -112,6 +112,7 @@ header {
 p.fancy-centered {
 	font-family: cursive;
 	text-align: center;
+	font-size: 15px;
 }
 strong {
 	color: red;
