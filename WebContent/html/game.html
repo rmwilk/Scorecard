@@ -5,8 +5,7 @@
 <title>Midway Scorecard</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" type="text/css"
-	href="../boot-css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../boot-css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/mainStyles.css" />
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
 <link rel="shortcut icon" type="image/jpg"
@@ -25,10 +24,11 @@
 				<h2>My Current Game</h2>
 <!-- TODO -->
 				<button class="btn btn-danger" onclick="testOpenIndexPage();">Under Construction:<br>Return to Home Page</button>
+				<br>
 				<div class="table-responsive">
 					<table id="game-table" class="table table-condensed">
 						<tr>
-							<th id="hole#">Hole #</th>
+							<th id="hole#">#</th>
 							<th id="par">Par</th>
 							<th id="player1">P1</th>
 							<th id="player2">P2</th>
@@ -36,9 +36,54 @@
 							<th id="player4">P4</th>
 							<th>Hint</th>
 						</tr>
-						
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>
+								<select class="mdb-select md-form">
+									<option value="0" selected disabled hidden></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								<select class="mdb-select md-form">
+									<option value="0" selected disabled hidden></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								<select class="mdb-select md-form">
+									<option value="0" selected disabled hidden></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								<select class="mdb-select md-form">
+									<option value="0" selected disabled hidden></option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								<!-- <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign">?</span></button> -->
+								<img class="hint-img" src="../images/hint-img.png">
+							</td>
+						</tr>
 					</table>
 				</div>
+			<br>
+			<button type="button" class="btn btn-danger">End Game</button>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
@@ -50,8 +95,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
 		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
 		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
 		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
