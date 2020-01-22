@@ -87,8 +87,8 @@ header {
 }
 
 #logo {
-	max-width: 50px;
-	max-height: 50px;
+	max-width: 75px;
+	max-height: 75px;
 }
 
 .content {
@@ -103,6 +103,13 @@ header {
 	border-bottom: 2px solid white;
 }
 
+.stats-btn {
+	display: inline-block;
+	max-height: 100px;
+	min-height: 50px;
+	
+}
+
 .golfball-bullets {
 	list-style-image: url('../images/golfballBullets.jpg');
 	max-width: 3px;
@@ -112,7 +119,7 @@ header {
 p.fancy-centered {
 	font-family: cursive;
 	text-align: center;
-	font-size: 15px;
+	font-size: 20px;
 }
 strong {
 	color: red;
