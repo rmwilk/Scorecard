@@ -105,8 +105,8 @@ header {
 
 .stats-btn {
 	display: inline-block;
-	max-height: 100px;
-	min-height: 50px;
+	height: 100px;
+	/* min-height: 50px; */
 	
 }
 
