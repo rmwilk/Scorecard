@@ -9,8 +9,11 @@
 <link rel="stylesheet" type="text/css" href="../css/mainStyles.css" />
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
 <link rel="shortcut icon" type="image/jpg" href="../images/midwayLogo.png" />
+<style>
+	
+</style>
 </head>
-<body onload="testPopulate()">
+<body onload="testPopulateWithModals()">
 	<header class="header">
 		<h1>Midway Scorecard</h1>
 		<img id="logo" src="../images/midwayLogo.png">
@@ -33,20 +36,39 @@
 				data-toggle="modal"	data-target="#aboutMidwayModal">
 					About Midway
 				</button>
+				<button type="button" class="btn btn-primary"
+				data-toggle="modal"	data-target="#helpModal">
+					Help
+				</button>
 				<div class="table-responsive">
 					<table id="game-table" class="table table-condensed">
-						<!-- produced through javascript -->
+						<!-- <tr>
+							<th id="hole#">#</th>
+							<th id="par">Par</th>
+							<th id="player1">P1</th>
+							<th id="player2">P2</th>
+							<th id="player3">P3</th>
+							<th id="player4">P4</th>
+							<th>Hint</th>
+						</tr>
+						<tr>
+							<td><button class="btn"></button></td>
+						</tr> -->
+<!-- produced through javascript -->
 					</table>
 				</div>
-			<br>
 			<button type="button" class="btn btn-success" onclick="calculateScores();">End Game</button>
-			<button type="button" class="btn btn-danger" onclick="clearTableData();">Clear Entries</button>
+			<button type="button" class="btn btn-primary" data-toggle="modal"	data-target="#clearModal">
+				Clear Entries
+			</button>
 			<br>
+	<div style="height: 5px;">&nbsp;</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
 	</div>
-	<!-- Course Rules Modal -->
+	<br>
+<!-- Course Rules Modal -->
 	<div class="modal fade" id="courseRulesModal" tabindex="-1"
 		role="dialog" aria-labelledby="courseRulesModalTitle"
 		aria-hidden="true">
@@ -145,8 +167,98 @@
 			</div>
 		</div>
 	</div>
-	<!-- End About Modal -->
-	<!-- Scripts -->
+<!-- End About Modal -->
+<!-- Hole Modal -->
+	<div class="modal fade" id="holeModal" tabindex="-1"
+		role="dialog" aria-labelledby="holeModalTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div id="hole-modal-header" class="modal-header">
+					<h2 class="modal-title" id="holeModalTitle">
+						Hole
+					</h2>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container" style="text-align: center">
+<!-- TODO -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Hole Modal -->
+<!-- Help Modal -->
+	<div class="modal fade" id="helpModal" tabindex="-1"
+		role="dialog" aria-labelledby="helpModalTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="helpModalTitle">
+						Scorecard Help
+					</h2>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container" style="text-align: center">
+						<p>
+							Figure it out yourself.<br>((<strong>Pop up under construction</strong>))
+						</p>
+<!-- TODO -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Help Modal -->
+<!-- Clear Modal -->
+	<div class="modal fade" id="clearModal" tabindex="-1"
+		role="dialog" aria-labelledby="clearModalTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="container" style="text-align: center">
+						<p>
+							<strong>Are you sure you want to clear your card?</strong>
+						</p>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"
+						aria-label="Close">
+							No
+						</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+						onclick="clearTableData();">
+							Yes
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Clear Modal -->
+<!-- Hole Hint -->
+<div id="holeHintModalSpace"></div>
+<!-- End Hole Hint -->
+<!-- Hole Score Modal -->
+<div id="holeScoreModalSpace"></div>
+<!-- End Score Modal -->
+<!-- Scripts -->
 	<script type="text/javascript" src="../js/generalScripts.js"></script>
 	<script type="text/javascript" src="../js/populateGame.js"></script>
 	<script type="text/javascript" src="../boot-js/bootstrap.min.js" /></script>
