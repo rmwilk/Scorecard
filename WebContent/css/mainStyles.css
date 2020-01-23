@@ -99,6 +99,9 @@ header {
 	margin-top: 10px;
 }
 
+th, td {
+	padding: .5rem;
+}
 .btn-border-bottom {
 	border-bottom: 2px solid white;
 }
