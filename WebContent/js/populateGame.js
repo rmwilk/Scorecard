@@ -1,7 +1,7 @@
 "use strict";
 
 var coursePop;
-var guestsPop;
+var playersPop;
 
 function element(id) {
 	return document.getElementById(id);
@@ -12,69 +12,39 @@ function receiveCourseOptions() {
 	query = query.substring(3);
 	var queries = query.split("&");
 	coursePop = queries[0];
-	guestsPop =queries[1].substring(2);
+	playersPop =queries[1].substring(2);
 	var s = "";
-	if(guestsPop != 1){
+	if(playersPop != 1){
 		s = "s"
 	}
-	var guests = " with You and "+ guestsPop + " Guest" + s;
-	if(guestsPop == 0){
-		guests = "";
-	}
-	element("currentGame").innerHTML = "Course " + coursePop + guests;
+	
+	element("currentGame").innerHTML = playersPop + " Player" + s + " on Course " + coursePop;
 }
 
-/*function buildCourseOptionsModal() {
-	element("courseOptionsModelSpace").innerHTML = `
-		<div class="modal fade" id="courseOptionModal" tabindex="-1"
-		role="dialog" aria-labelledby="courseOptionModalTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="courseOptionModalTitle">
-					Course	Options</h2>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="container" style="text-align: center">
-						<h3>Select Course</h3>
-						<form>
-							<label class="radio-inline"> 
-								<input type="radio" name="courses" value="A" checked>
-								Course A
-							</label>
-							&nbsp; 
-							<label class="radio-inline"> 
-							<input type="radio" name="courses" value="B">
-								Course B
-							</label>
-						</form>
-						<h3>Any Guests?</h3>
-						<select id="guestsOption" class="mdb-select md-form">
-							<option value="0" selected>0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-						</select> 
-						<br>
-					
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary"
-							onclick="submitCourseOptions();">Start Game</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-		`;
-}*/
+/*
+ * function buildCourseOptionsModal() {
+ * element("courseOptionsModelSpace").innerHTML = ` <div class="modal fade"
+ * id="courseOptionModal" tabindex="-1" role="dialog"
+ * aria-labelledby="courseOptionModalTitle" aria-hidden="true"> <div
+ * class="modal-dialog modal-dialog-centered" role="document"> <div
+ * class="modal-content"> <div class="modal-header">
+ * <h2 class="modal-title" id="courseOptionModalTitle"> Course Options</h2>
+ * <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+ * <span aria-hidden="true">&times;</span> </button> </div> <div
+ * class="modal-body"> <div class="container" style="text-align: center"> <h3>Select
+ * Course</h3> <form> <label class="radio-inline"> <input type="radio"
+ * name="courses" value="A" checked> Course A </label> &nbsp; <label
+ * class="radio-inline"> <input type="radio" name="courses" value="B"> Course B
+ * </label> </form> <h3>Any Guests?</h3> <select id="guestsOption"
+ * class="mdb-select md-form"> <option value="0" selected>0</option> <option
+ * value="1">1</option> <option value="2">2</option> <option value="3">3</option>
+ * </select> <br>
+ * 
+ * </div> <div class="modal-footer"> <button type="button" class="btn
+ * btn-secondary" data-dismiss="modal">Close</button> <button type="button"
+ * class="btn btn-primary" onclick="submitCourseOptions();">Start Game</button>
+ * </div> </div> </div> </div> </div> `; }
+ */
 
 function clearTableData() {
 	element("game-table").innerHTML = "";
@@ -97,13 +67,13 @@ function printPlayersToTHead() {
 		<th id="par">Par</th>
 		<th id="p1name">P1</th>
 	`;
-	if(guestsPop > 0){
+	if(playersPop > 1){
 		string += `<th id="p2name">P2</th>`;
 	}
-	if(guestsPop > 1){
+	if(playersPop > 2){
 		string += `<th id="p3name">P3</th>`;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		string += `<th id="p4name">P4</th>`;
 	}
 	string += `<th>Hint</th>`;
@@ -117,7 +87,7 @@ function printPlayersToTBody() {
 		string += `
 			<tr>
 				<td style="padding-left:2px; padding-right: 2px;">
-					<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`);"
+					<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`); fillScores(`+i+`);"
 					data-toggle="modal"	data-target="#holeScoreModal" style="max-width:100%">
 						Enter Hole ` + space + i + `
 					</button>
@@ -127,13 +97,13 @@ function printPlayersToTBody() {
 		`;
 
 		element("game-table").innerHTML += printPlayersToTBody;
-		if(guestsPop > 0){
+		if(playersPop > 1){
 			string += `<td id="p2hole` + i + `" class="stronger">-</td>`;
 		}
-		if(guestsPop > 1){
+		if(playersPop > 2){
 			string += `<td id="p3hole` + i + `" class="stronger">-</td>`;
 		}
-		if(guestsPop > 2){
+		if(playersPop > 3){
 			string += `<td  id="p4hole` + i + `" class="stronger">-	</td>`;
 		}
 	string += `
@@ -266,13 +236,13 @@ function buildHoleScoreModal(hole) {
 								<tr>
 									<th id="p1nameLB">P1</th>
 	`;
-	if(guestsPop > 0){
+	if(playersPop > 1){
 		string += `<th id="p2nameLB">P2</th>`;
 	}
-	if(guestsPop >1){
+	if(playersPop > 2){
 		string += `<th id="p3nameLB">P3</th>`;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		string += `<th id="p4nameLB">P4</th>`;
 	}
 	string += `													
@@ -289,8 +259,8 @@ function buildHoleScoreModal(hole) {
 											<option value="4">4</option>
 										</select>
 									</td>
-			`;
-	if(guestsPop > 0){
+		`;
+	if(playersPop > 1){
 		string += `
 									<td>
 										<select  id="p2h`+hole+`" class="mdb-select md-form">
@@ -303,7 +273,7 @@ function buildHoleScoreModal(hole) {
 									</td>
 		`;
 	}
-	if(guestsPop > 1){
+	if(playersPop > 2){
 		string += `
 									<td>
 										<select  id="p3h`+hole+`" class="mdb-select md-form">
@@ -316,7 +286,7 @@ function buildHoleScoreModal(hole) {
 									</td>
 		`;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		string += `
 									<td>
 										<select  id="p4h`+hole+`" class="mdb-select md-form">
@@ -351,16 +321,36 @@ function buildHoleScoreModal(hole) {
 	element("holeScoreModalSpace").innerHTML = string;
 }
 
+function fillScores(hole) {
+	if(isNumber(element("p1hole"+hole).innerHTML)) {
+		element("p1h"+hole).selectedIndex = element("p1hole"+hole).innerHTML;
+	}
+	if(playersPop > 1){
+		if(isNumber(element("p2hole"+hole).innerHTML)) {
+			element("p2h"+hole).selectedIndex = element("p2hole"+hole).innerHTML;
+		}
+	}
+	if(playersPop > 2){
+		if(isNumber(element("p3hole"+hole).innerHTML)) {
+			element("p3h"+hole).selectedIndex = element("p3hole"+hole).innerHTML;
+		}
+	}
+	if(playersPop > 3){
+		if(isNumber(element("p4hole"+hole).innerHTML)) {
+			element("p4h"+hole).selectedIndex = element("p4hole"+hole).innerHTML;
+		}
+	}
+}
+
 function enterScores(hole){
-	console.log(element("p1h"+hole).value);
 	element("p1hole"+hole).innerHTML = element("p1h"+hole).value;
-	if(guestsPop > 0){
+	if(playersPop > 1){
 		element("p2hole"+hole).innerHTML = element("p2h"+hole).value;
 	}
-	if(guestsPop > 1){
+	if(playersPop > 2){
 		element("p3hole"+hole).innerHTML = element("p3h"+hole).value;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		element("p4hole"+hole).innerHTML = element("p4h"+hole).value;
 	}
 }
@@ -386,15 +376,15 @@ function calculateScores() {
 	var p2name;
 	var p3name;
 	var p4name;
-	if(guestsPop > 0){
+	if(playersPop > 1){
 		p2scores = 0;
 		p2name = element("p2name").innerHTML;
 	}
-	if(guestsPop > 1){
+	if(playersPop > 2){
 		p3scores = 0;
 		p3name = element("p3name").innerHTML;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		p4scores = 0;
 		p4name = element("p4name").innerHTML;
 	}
@@ -403,17 +393,17 @@ function calculateScores() {
 		if(isNumber(parseInt(element("p1hole" + i).innerHTML)) ) {
 			p1scores +=	parseInt(element("p1hole" + i).innerHTML);			
 		}
-		if(guestsPop > 0){ // 1
+		if(playersPop > 1){
 			if(isNumber(parseInt(element("p2hole" + i).innerHTML)) ) {
 				p2scores +=	parseInt(element("p2hole" + i).innerHTML);			
 			}
 		}
-		if(guestsPop > 1){ // 2 or 3
+		if(playersPop > 2){ 
 			if(isNumber(parseInt(element("p3hole" + i).innerHTML)) ){
 				p3scores +=	parseInt(element("p3hole" + i).innerHTML);			
 			}
 		}
-		if(guestsPop > 2){ // 3
+		if(playersPop > 3){
 			if(isNumber(parseInt(element("p4hole" + i).innerHTML)) ){
 				p4scores +=	parseInt(element("p4hole" + i).innerHTML);			
 			}
@@ -447,13 +437,13 @@ function calculateScores() {
 										<th>Par</th>
 										<th>`+p1name+`</th>
 	`;
-	if(guestsPop > 0){
+	if(playersPop > 1){
 		string += `<th>`+p2name+`</th>`;
 	}
-	if(guestsPop >1){
+	if(playersPop >2){
 		string += `<th>`+p3name+`</th>`;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		string += `<th>`+p4name+`</th>`;
 	}
 	string += `						
@@ -463,13 +453,13 @@ function calculateScores() {
 											<td>`+par+`</td>
 											<td>`+p1scores+`</td>
 	`;
-	if(guestsPop > 0){
+	if(playersPop > 1){
 		string += `<td>`+p2scores+`</td>`;
 	}
-	if(guestsPop >1){
+	if(playersPop > 2){
 		string += `<td>`+p3scores+`</td>`;
 	}
-	if(guestsPop > 2){
+	if(playersPop > 3){
 		string += `<td>`+p4scores+`</td>`;
 	}
 	string += `											

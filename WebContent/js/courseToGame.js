@@ -1,7 +1,7 @@
 "use strict";
 
 var courseC2G;
-var guestsC2G;
+var playersC2G;
 
 function element(id) {
 	return document.getElementById(id);
@@ -20,8 +20,8 @@ function getRadioValue(name) {
 function submitCourseOptions() {
 	courseC2G = getRadioValue("courses");
 	var select = element("guestsOption");
-	guestsC2G = select.options[select.selectedIndex].value;
-	var query = "?c=" + courseC2G + "&g=" + guestsC2G;
+	playersC2G = select.options[select.selectedIndex].value;
+	var query = "?c=" + courseC2G + "&p=" + playersC2G;
 	window.location.href = "./game.html" + query;
 }
 
@@ -55,12 +55,12 @@ function buildCourseOptionsModal2() {
 								Course B
 							</label>
 						</form>
-						<h3>Any Guests?</h3>
+						<h3>How many players?</h3>
 						<select id="guestsOption" class="mdb-select md-form">
-							<option value="0" selected>0</option>
-							<option value="1">1</option>
+							<option value="1" selected>1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
+							<option value="4">4</option>
 						</select> 
 						<br>
 					

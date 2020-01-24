@@ -8,11 +8,12 @@
 <link rel="stylesheet" type="text/css"
 	href="../boot-css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/mainStyles.css" />
+<link rel="stylesheet" type="text/css" href="../css/statsStyles.css" />
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
 <link rel="shortcut icon" type="image/jpg"
 	href="../images/midwayLogo.png" />
 </head>
-<body>
+<body onload="openCourseStats(event, 'courseA');">
 	<header class="header">
 		<h1>Midway Scorecard</h1>
 		<img id="logo" src="../images/midwayLogo.png">
@@ -23,20 +24,101 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<h2>My Stats</h2>
-				<!-- TODO -->
 				<button class="btn btn-danger" onclick="testOpenIndexPage();">Testing: Return to Index</button>
 				<p><strong>!!!! Page Under Construction !!!!</strong>
+				<!-- TODO -->
+				<h3>General Stats</h3>
+					<table id="generalStats" class="table stats-table table-sm">
+						<tbody>
+							<tr>
+								<td>Total Games:</td>
+								<td id="totalGames">&nbsp;</td>
+							</tr>
+							<tr>
+								<td>Total Holes In One:</td>
+								<td id="totalHolesInOne">&nbsp;</td>
+							</tr>
+							<tr>
+								<td>First Game Played:</td>
+								<td id="firstGameDate">&nbsp;</td>
+							</tr>
+							<tr>
+								<td>Last Game Played:</td>
+								<td id="lastGameDate">&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="container">
+				<h3>Course Specific Stats</h3>
+					<div class="nav nav-tabs">
+						<ul>
+							<li class="active"><a data-toggle="tab" href="#courseA">Course A</a></li>
+    						<li><a data-toggle="tab" href="#courseB">Course B</a></li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div  id="courseA" class="tab-pane fade in active">
+							<table id="courseATable" class="table stats-table">
+								<tbody>
+									<tr>
+										<td>Course A Total Games:</td>
+										<td id="totalA">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Course A Best:</td>
+										<td id="bestA">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Course A Worst:</td>
+										<td id="worstA">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Course A Average:</td>
+										<td id="avgA">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="courseB" class="tab-pane fade">
+							<table id="courseBTable" class="table stats-table">
+								<tbody>
+									<tr>
+										<td>Course B Total Games:</td>
+										<td id="totalB">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Course B Best:</td>
+										<td id="bestB">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Course B Worst:</td>
+										<td id="worstB">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Course B Average:</td>
+										<td id="avgB">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					</div>
 				<br>
+				<button type="button" 
+							onclick="testOpenAccountHomePage();" class="btn btn-primary">
+						Back to Account Home
+				</button>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
 	</div>
 	
 	<script type="text/javascript" src="../js/generalScripts.js"></script>
+	<script type="text/javascript" src="../js/statsScripts.js"></script>
 	<script type="text/javascript" src="../boot-js/bootstrap.min.js" /></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/mdb.min.js"></script>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
