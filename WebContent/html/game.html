@@ -57,9 +57,12 @@
 <!-- produced through javascript -->
 					</table>
 				</div>
-			<button type="button" class="btn btn-success" onclick="calculateScores();">End Game</button>
 			<button type="button" class="btn btn-primary" data-toggle="modal"	data-target="#clearModal">
 				Clear Entries
+			</button>
+			<button type="button" class="btn btn-success" onclick="calculateScores();"
+			data-toggle="modal"	data-target="#leaderboardModal">
+				End Game
 			</button>
 			<br>
 	<div style="height: 5px;">&nbsp;</div>
@@ -169,7 +172,7 @@
 	</div>
 <!-- End About Modal -->
 <!-- Hole Modal -->
-	<div class="modal fade" id="holeModal" tabindex="-1"
+<!-- 	<div class="modal fade" id="holeModal" tabindex="-1"
 		role="dialog" aria-labelledby="holeModalTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -185,7 +188,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="container" style="text-align: center">
-<!-- TODO -->
+TODO
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -195,7 +198,7 @@
 			</div>
 		</div>
 	</div>
-<!-- End Hole Modal -->
+ --><!-- End Hole Modal -->
 <!-- Help Modal -->
 	<div class="modal fade" id="helpModal" tabindex="-1"
 		role="dialog" aria-labelledby="helpModalTitle"
@@ -212,10 +215,33 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="container" style="text-align: center">
-						<p>
-							Figure it out yourself.<br>((<strong>Pop up under construction</strong>))
-						</p>
+					<div class="container" style="text-align: left">
+							In the game of Mini Golf, you want to count the number of times you hit the ball 
+							before you sink it in each hole and the player with the lowest score wins.
+							<br>
+							 Use this Scorecard to keep track of your strokes without carrying around a pencil 
+							  and paper scorecard. Each row corresponds to each hole, numbered according to 
+							  the courses at Midway. 
+							  <br>
+						<ul>
+							  <li>
+							  	Press the button with the hole number to bring up the pop up to score that hole then 
+							  press '<strong>Enter</strong>' and your score will update on the Scorecard. 
+							  </li>
+							<li>
+							  	Every hole also has a '<strong>Hint</strong>' button to help you find the right path on each hole.
+							  </li>
+							  <li>
+								  When you complete the round or you want to check the leaderboard, press the 
+								  '<strong>End Game</strong>' button at the bottom. It'll bring up the scores for all the 
+								  holes added up for you to compare.
+								 </li> 
+								 <li>
+								 	Press '<strong>Return to Scorecard</strong>' 
+								  to go back or hit '<strong>Submit Scorecard</strong>' to finish your round.
+							  </li>
+						</ul>
+							  <p style="text-align: center;"><span class="stronger" style="color: black;">Good luck and have fun!</span></p>
 <!-- TODO -->
 					</div>
 				</div>
@@ -258,6 +284,9 @@
 <!-- Hole Score Modal -->
 <div id="holeScoreModalSpace"></div>
 <!-- End Score Modal -->
+<!-- Leaderboard Modal -->
+<div id="leaderboardModalSpace"></div>
+<!-- End Leaderboard Modal -->
 <!-- Scripts -->
 	<script type="text/javascript" src="../js/generalScripts.js"></script>
 	<script type="text/javascript" src="../js/populateGame.js"></script>

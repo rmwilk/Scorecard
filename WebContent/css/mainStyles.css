@@ -138,3 +138,14 @@ strong {
 	height:20px;
 	width:auto;
 }
+
+.bold {
+	font-weight: bold;
+}
+.stronger {
+	font-weight: 900;
+	color: white;
+}
+td {
+	vertical-align: middle;
+}
