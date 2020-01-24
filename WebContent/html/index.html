@@ -42,10 +42,11 @@
 						<br>
 						<br>
 						<p>
-							Not worried about saving your scores? <br>
+							Not worried about saving your scores? 
+							<br>
 							<!-- <a href="#">Continue as a Guest</a> -->
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#courseOptionModal">Continue as a Guest</button>
+							<button type="button" class="btn btn-primary" onclick="buildCourseOptionsModal2();" data-toggle="modal"
+								data-toggle="modal" data-target="#courseOptionsModal2">Continue as a Guest</button>
 						</p>
 						<p>
 							Keep your stats and save your past scores by signing up for free!
@@ -59,49 +60,10 @@
 		</div>
 	</div>
 	<!-- Course Options Modal -->
-	<div class="modal fade" id="courseOptionModal" tabindex="-1"
-		role="dialog" aria-labelledby="courseOptionModalTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="courseOptionModalTitle">Course
-						Options</h2>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="container" style="text-align: center">
-						<h3>Select Course</h3>
-						<form>
-							<label class="radio-inline"> <input type="radio"
-								name="course" checked>Course A
-							</label> &nbsp; <label class="radio-inline"> <input type="radio"
-								name="course">Course B
-							</label>
-						</form>
-						<h3>Any Guests?</h3>
-						<select class="mdb-select md-form">
-							<option value="0" selected>0</option>
-							<option value="0">1</option>
-							<option value="0">2</option>
-							<option value="0">3</option>
-						</select> <br>
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary"
-							onclick="testOpenGamePage();">Start Game</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div id="courseOptionsModalSpace2"></div>
+	<!-- End Course Options Modal -->
 	<script type="text/javascript" src="../js/generalScripts.js"></script>
+	<script type="text/javascript" src="../js/courseToGame.js"></script>	
 	<script type="text/javascript" src="../boot-js/bootstrap.min.js" /></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	<script

@@ -99,9 +99,9 @@ header {
 	margin-top: 10px;
 }
 
-.table th, .table td {
+/* .table th, .table td {
 	padding: .5rem;
-}
+} */
 .btn-border-bottom {
 	border-bottom: 2px solid white;
 }
@@ -109,8 +109,6 @@ header {
 .stats-btn {
 	display: inline-block;
 	height: 100px;
-	/* min-height: 50px; */
-	
 }
 
 .golfball-bullets {

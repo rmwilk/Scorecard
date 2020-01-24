@@ -1,6 +1,6 @@
 "use strict";
 
-function getID(id) {
+function element(id) {
 	return document.getElementById(id);
 }
 
