@@ -6,7 +6,7 @@ function element(id) {
 
 function clearTableData() {
 	element("game-table").innerHTML = "";
-	testPopulate();
+	testPopulateWithModals();
 }
 
 function putSpace(num) {
@@ -37,7 +37,7 @@ function testPopulateWithModals() {
 				<td>
 					<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`);"
 					data-toggle="modal"	data-target="#holeScoreModal">
-						Hole ` + space + i + `
+						Enter Hole ` + space + i + `
 					</button>
 				</td>
 				<td id="hole`+i+`par" class="bold">2</td>

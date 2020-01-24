@@ -99,7 +99,7 @@ header {
 	margin-top: 10px;
 }
 
-th, td {
+.table th, .table td {
 	padding: .5rem;
 }
 .btn-border-bottom {
