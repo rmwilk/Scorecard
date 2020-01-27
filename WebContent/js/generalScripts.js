@@ -19,3 +19,7 @@ function testOpenStatsPage() {
 function testOpenGamePage() {
 	window.location = "./game.html";
 }
+
+function testOpenInfoPage() {
+	window.location = "./info.html";
+}
