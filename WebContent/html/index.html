@@ -5,10 +5,10 @@
 <title>Midway Scorecard</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" type="text/css"
-	href="../boot-css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../boot-css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/mainStyles.css" />
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
+
 <link rel="shortcut icon" type="image/jpg"
 	href="../images/midwayLogo.png" />
 </head>
@@ -23,10 +23,12 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<form id="login" class="form-container">
-					<h2>Sign In</h2>
-					<div class="form-group">
+					<br>
+<!-- TODO carrosel -->
+					<!-- <h2>Sign In</h2> -->
+					<!-- <div class="form-group">
 						<div class="input-group">
-							<input type="email" id="emailTB" name="emailTB"
+							<input type="email" id="email" name="emailTB"
 								class="form-control" placeholder="Email"></input>
 						</div>
 					</div>
@@ -35,10 +37,15 @@
 							<input type="password" id="current-password" name="passwordTB"
 								class="form-control" placeholder="Password"></input>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
-						<input type="button" value="Login"
-							onclick="testOpenAccountHomePage();" class="btn btn-primary">
+						<input type="button" value="TESTING - GOTO Account"
+							onclick="testOpenAccountHomePage();" class="btn btn-secondary">
+						&nbsp;
+						<button type="button" class="btn btn-primary"
+						data-toggle="modal"	data-target="#loginModal">
+							Login
+						</button>
 						<br>
 						<br>
 						<p>
@@ -59,19 +66,70 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
 	</div>
+	
+	<!-- Login Modal -->
+	<div id="loginModalSpace">
+		<div class="modal fade" id="loginModal" tabindex="-1"
+		role="dialog" aria-labelledby="loginModalTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="loginModalTitle">
+						Login
+					</h2>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<form id="login" class="form-container">
+							<h3>Enter Your Account Information</h3>
+							<div class="form-group">
+								<div class="input-group">
+									<input type="email" id="email" name="emailTB"
+										class="form-control" placeholder="Email"></input>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<input type="password" id="current-password" name="passwordTB"
+										class="form-control" placeholder="Password"></input>
+								</div>
+							</div>
+						</form>
+						<div id="errorMessageSpace"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Go Back</button>
+						<button type="button" class="btn btn-primary" onclick="testOpenAccountHomePage();">
+							Login
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- End Login Modal -->
 	<!-- Course Options Modal -->
 	<div id="courseOptionsModalSpace2"></div>
 	<!-- End Course Options Modal -->
-	<script type="text/javascript" src="../js/generalScripts.js"></script>
-	<script type="text/javascript" src="../js/courseToGame.js"></script>	
-	<script type="text/javascript" src="../boot-js/bootstrap.min.js" /></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/mdb.min.js"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="particles.min.js"></script>
+	
+	<script type="text/javascript" src="../js/inputChecking.js"></script>
+	<script type="text/javascript" src="../js/generalScripts.js"></script>
+	<script type="text/javascript" src="../js/courseToGame.js"></script>	<!-- 
+	<script type="text/javascript" src="../boot-js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="../resources/jquery.min.js"></script>
+	<script type="text/javascript" src="../resources/tether.min.js"></script>
+	<script type="text/javascript" src="../resources/mdb.min.js"></script>
+	<script type="text/javascript" src="../resources/particles.min.js"></script> 
 </body>
 </html>
