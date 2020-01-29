@@ -34,9 +34,18 @@ public class ScorecardDriver {
 	public static void main(String[] args) {
 		ScorecardDriver sd = new ScorecardDriver();
 		sd.run();
+		sd.closeup();
 	}
 	
 	private void run() {
-		
+		// TODO do things
+	}
+	
+	private void closeup() {
+		accountsService.close();
+		holesService.close();
+		coursesService.close();
+		gamesService.close();
+		gameScoresService.close();
 	}
 }

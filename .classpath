@@ -21,7 +21,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/Generic JDBC Driver"/>
-	<classpathentry kind="lib" path="C:/Users/awilk/Downloads/jar_files (1)/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="lib" path="jars-and-such/mariadb-java-client-2.5.4.jar"/>
 	<classpathentry kind="lib" path="jars-and-such/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="build/classes"/>

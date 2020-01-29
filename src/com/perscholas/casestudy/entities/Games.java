@@ -8,15 +8,19 @@ import javax.persistence.*;
 /**
  * Entity implementation class for Entity: Games
  *
- */
-@Entity
+ */@NamedQueries({
+		@NamedQuery(query = "SELECT g FROM Games g", name= "GetAllGames"),
+		@NamedQuery(query = "SELECT g FROM Games g WHERE g.id = :gamesId", name = "GetTeacherByID")
+})
 
+@Entity
 public class Games implements Serializable {
 
 	   
 	@Id
 	private int id;
 	private int courseId;
+	
 	private Date startDate;
 	private Date endDate;
 	private static final long serialVersionUID = 1L;
@@ -40,31 +44,55 @@ public class Games implements Serializable {
 
 
 
+	/**
+	 * @return
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}   
+	/**
+	 * @return
+	 */
 	public int getCourseId() {
 		return this.courseId;
 	}
 
+	/**
+	 * @param courseId
+	 */
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
 	}   
+	/**
+	 * @return
+	 */
 	public Date getStartDate() {
 		return this.startDate;
 	}
 
+	/**
+	 * @param startDate
+	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}   
+	/**
+	 * @return
+	 */
 	public Date getEndDate() {
 		return this.endDate;
 	}
 
+	/**
+	 * @param endDate
+	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}

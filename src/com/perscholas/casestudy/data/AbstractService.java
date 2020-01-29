@@ -12,10 +12,18 @@ import javax.persistence.Persistence;
  *
  */
 public abstract class AbstractService {
-	protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("Scorecard");
-	protected EntityManager em = emf.createEntityManager();
+	protected EntityManagerFactory emf;
+	protected EntityManager em;
 	
-	protected void closeup() {
+	public AbstractService() {
+		emf = Persistence.createEntityManagerFactory("Scoreboard");
+		em = emf.createEntityManager();
+	}
+	public AbstractService(String PU) {
+		emf = Persistence.createEntityManagerFactory(PU);
+		em = emf.createEntityManager();
+	}
+	protected void cleanup() {
 		emf.close();
 		em.close();
 	}

@@ -8,14 +8,18 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Holes
  *
  */
+@NamedQueries({
+	@NamedQuery(query = "SELECT h FROM Holes h", name= "GetAllHoless"),
+	@NamedQuery(query = "SELECT h FROM Holes h WHERE h.id = :holeId", name = "GetHoleByID")
+})
 @Entity
-
 public class Holes implements Serializable {
 
 	   
 	@Id
 	private int id;
 	private int courseId;
+	
 	private int number;
 	private int par;
 	private String hint;
