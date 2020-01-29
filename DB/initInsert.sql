@@ -1,3 +1,8 @@
+INSERT INTO `courses` (`name`) 
+VALUES
+("A"),
+("B");
+
 INSERT INTO Holes (course_id, number, par, hint)
 VALUES 
 (1, 1, 2, "Don't hit this one too hard! Keep your ball to the left and it'll curve back to the hole."),
@@ -18,22 +23,22 @@ VALUES
 (1, 16, 2, "So there are some goofy little hills by the hole. Aim off the slanted wall in front of you and hope for a good bounce."),
 (1, 17, 3, "Play the hill on the right and the ball should curve towards the hole on the left."),
 (1, 18, 2, "Not too hard, not too soft. Good luck!"),
-(2, 1, 2, x),
-(2, 2, 2, x),
-(2, 3, 2, x),
-(2, 4, 2, x),
-(2, 5, 3, x),
-(2, 6, 2, x),
-(2, 7, 2, x),
-(2, 8, 2, x),
-(2, 9, 2, x),
-(2, 10, 2, x),
-(2, 11, 2, x),
-(2, 12, 2, x),
-(2, 13, 3, x),
-(2, 14, 2, x),
-(2, 15, 3, x),
-(2, 16, 2, x),
-(2, 17, 2, x),
+(2, 1, 2, "With medium speed, aim for the cement walkway so the ball rebounds towards the hole."),
+(2, 2, 2, "You can make it through the totem pole if you keep your shot as right as possible and definitely don't shoot hard."),
+(2, 3, 2, "Left is more fun, but if you are precise, the hole in one might be easier straight on."),
+(2, 4, 2, "Give it good power and bank it off the tall wall in front of you."),
+(2, 5, 3, "Doesn't matter which side you choose, a hole in one is all about luck here."),
+(2, 6, 2, "Tee up to the right and aim through the small opening with medium speed."),
+(2, 7, 2, "With medium speed, bank off the cement towards the hole. Not too fast though!"),
+(2, 8, 2, "I think you already know what to do here. Good luck!"),
+(2, 9, 2, "Watch out for the sloping green!"),
+(2, 10, 2, "This is the practice hole for #18. Your ball might get stuck unfortunately. Don't move the rock, please."),
+(2, 11, 2, "Try and hit the wall to the left so it hits the right wall next and rolls to the hole."),
+(2, 12, 2, "Stay to the right and bounce your shot off the left side of the far wall."),
+(2, 13, 3, "Strong shot up the hill. There are two holes so aim for either side."),
+(2, 14, 2, "Medium speed and aim left. The green slopes towards the water."),
+(2, 15, 3, "I always shoot under the bridge. Your call though."),
+(2, 16, 2, "There is a small chance of your ball getting stuck if you go under."),
+(2, 17, 2, "Jump it!! Lucky bounces are your bestfriend here."),
 (2, 18, 2, "Not too hard, not too soft. Good luck!");
 
