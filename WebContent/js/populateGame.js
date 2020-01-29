@@ -124,7 +124,7 @@ function testPopulateWithModals() {
 	element("game-table").innerHTML += printPlayersToTBody();
 }
 
-function testPopulate(){
+/*function testPopulate(){
 	element("game-table").innerHTML += `
 		<tr>
 			<th id="hole#">#</th>
@@ -178,7 +178,7 @@ function testPopulate(){
 			</td>
 		</tr>`;
 	}
-}
+}*/
 
 function buildHoleHintModal(hole){
 	element("holeHintModalSpace").innerHTML = 
@@ -252,11 +252,13 @@ function buildHoleScoreModal(hole) {
 								<tr>
 									<td>
 										<select  id="p1h`+hole+`" class="mdb-select md-form">
-											<option value="4" selected disabled hidden="true"></option>
+											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
 										</select>
 									</td>
 		`;
@@ -264,11 +266,13 @@ function buildHoleScoreModal(hole) {
 		string += `
 									<td>
 										<select  id="p2h`+hole+`" class="mdb-select md-form">
-											<option value="4" selected disabled hidden="true"></option>
+											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
 										</select>
 									</td>
 		`;
@@ -277,11 +281,13 @@ function buildHoleScoreModal(hole) {
 		string += `
 									<td>
 										<select  id="p3h`+hole+`" class="mdb-select md-form">
-											<option value="4" selected disabled hidden="true"></option>
+											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
 										</select>
 									</td>
 		`;
@@ -290,11 +296,13 @@ function buildHoleScoreModal(hole) {
 		string += `
 									<td>
 										<select  id="p4h`+hole+`" class="mdb-select md-form">
-											<option value="4" selected disabled hidden="true"></option>
+											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
 										</select>
 									</td>
 			`;
@@ -357,7 +365,7 @@ function enterScores(hole){
 
 function isNumber(num) {
 	switch (num) {
-	case 1:case 2: case 3: case 4: case 0: {
+	case 1:case 2: case 3: case 4: case 5: case 6: case 0: {
 		return true;		
 	}
 		default: {

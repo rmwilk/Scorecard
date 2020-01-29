@@ -8,10 +8,18 @@ body, html {
 	height: 100%;
 }
 
+body {
+	background: url("../images/background.jpg") top center no-repeat;
+	margin: 0 auto;
+	padding-top: 15px;
+	background-size: cover;
+	background-color:#6aabee;
+	
+}
+
 p, body {
-	font-family: Open Sans;
 	font-weight: 700;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 a img {
@@ -23,8 +31,13 @@ img {
 }
 
 img.carousel-imgs {
-	max-width: 528px;
-	height: auto;
+	width: 100%;
+	overflow: hidden;
+	margin:-21.875% 0;
+}
+
+.custom-caption {
+	top: 10px;
 }
 
 a, a:visited, a:active, a:link {
@@ -38,22 +51,19 @@ a:hover {
 }
 
 h1 {
-	font-family: Open Sans;
 	font-weight: 700;
-	font-size: 30px;
-	color: #236eaa;
+	font-size: 32px;
+	color: #e23b30;
 }
 
 h2 {
-	font-family: Open Sans;
 	font-weight: 700;
 	font-size: 24px;
-	color: #e23b30;
+	color: #236eaa;
 	line-height: 32px;
 }
 
 h3 {
-	font-family: Open Sans;
 	font-weight: 700;
 	font-size: 18px;
 	color: #236eaa;
@@ -61,7 +71,6 @@ h3 {
 }
 
 h4 {
-	font-family: Open Sans;
 	font-weight: 700;
 	font-size: 16px;
 	color: #e23b30;
@@ -73,17 +82,21 @@ h4 a {
 }
 
 h5 {
-	font-family: Open Sans;
 	font-weight: 700;
 	font-size: 16px;
 	color: #236eaa;
 	line-height: 25px;
 }
 
-body {
-	margin: 0 auto;
-	background-size: cover;
-	background-color:#6aabee;
+.red {
+	color: #e23b30;
+}
+
+.modal-title {
+	font-weight: 700;
+	font-size: 24px;
+	color: #e23b30;
+	line-height: 32px;
 }
 
 #wrapper {
@@ -134,13 +147,7 @@ p.fancy-centered {
 	font-size: 20px;
 }
 strong {
-	color: red;
-}
-
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+	color: #e23b30;
 }
 
 .hint-img {
@@ -155,6 +162,13 @@ strong {
 	font-weight: 900;
 	color: white;
 }
-td {
+
+th {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+th, td {
 	vertical-align: middle;
 }
