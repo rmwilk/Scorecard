@@ -9,10 +9,10 @@ body, html {
 }
 
 body {
-	background: url("../images/background.jpg") top center no-repeat;
+/* 	https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.needpix.com%2Fphoto%2F1351342%2Fsky-cloud-blue-background-heaven-heavenly-white-day-pure&psig=AOvVaw3qOsWs8CeunZbdGDlIeja0&ust=1580351494118000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDhsILjp-cCFQAAAAAdAAAAABAD
+ */	background: url("../images/blue-sky.jpg") top center no-repeat;
 	margin: 0 auto;
 	padding-top: 15px;
-	background-size: cover;
 	background-color:#6aabee;
 	
 }
