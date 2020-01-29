@@ -22,6 +22,11 @@ img {
 	border: 0 none;
 }
 
+img.carousel-imgs {
+	max-width: 528px;
+	height: auto;
+}
+
 a, a:visited, a:active, a:link {
 	text-decoration: underline;
 	color: #086e74;
