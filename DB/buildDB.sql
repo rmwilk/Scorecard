@@ -38,7 +38,7 @@ CREATE TABLE `games` (
 	`id` int NOT NULL PRIMARY KEY,
 	`course_id` int NOT NULL,
 	`start_date` DATE,
-	`start_last` DATE,
+	`end_date` DATE,
 	CONSTRAINT `g_courses_fk` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
 );
 

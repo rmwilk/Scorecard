@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="Scorecard">
+		<class>com.perscholas.casestudy.entities.Accounts</class>
+		<class>com.perscholas.casestudy.entities.Courses</class>
+		<class>com.perscholas.casestudy.entities.Holes</class>
+		<class>com.perscholas.casestudy.entities.Games</class>
+		<class>com.perscholas.casestudy.entities.GameScores</class>
+	<properties>
+		
+	</properties>
 	</persistence-unit>
 </persistence>
