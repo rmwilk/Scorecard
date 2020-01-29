@@ -48,10 +48,10 @@ public class GameScoresService extends AbstractService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<GameScores> getGameScoresByID(Integer id) {
+	public List<GameScores> getGameScoreByID(Integer id) {
 		List <GameScores> gameScores;
-		Query query = em.createNamedQuery("GetGameScoresByID");
-		query.setParameter("holeID", id);
+		Query query = em.createNamedQuery("GetGameScoreByID");
+		query.setParameter("gameScoreId", id);
 		gameScores = query.getResultList();
 		
 		return gameScores;

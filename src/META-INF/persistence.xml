@@ -7,7 +7,11 @@
 		<class>com.perscholas.casestudy.entities.Games</class>
 		<class>com.perscholas.casestudy.entities.GameScores</class>
 	<properties>
-		
-	</properties>
+		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/scorecarddb"></property>
+			<property name="javax.persistence.jdbc.user" value="root"></property>
+			<property name="javax.persistence.jdbc.password" value=""></property>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"></property>
+			<property name="eclipselink.logging.level" value="WARNING"></property>
+		</properties>
 	</persistence-unit>
 </persistence>

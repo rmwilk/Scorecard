@@ -8,16 +8,18 @@ import javax.persistence.*;
  *
  */
 @NamedQueries({ @NamedQuery(query = "SELECT gs FROM GameScores gs", name = "GetAllGameScores"),
-		@NamedQuery(query = "SELECT gs FROM GameScores gs WHERE gs.id = :gameScoreId", name = "GetGameScoresByID") })
-@IdClass(GameScoresPK.class) // for the composite key
+		@NamedQuery(query = "SELECT gs FROM GameScores gs WHERE gs.id = :gameScoreId", name = "GetGameScoreByID") })
+//@IdClass(GameScoresPK.class) // for the composite key
 @Entity
 public class GameScores implements Serializable {
 
 	@Id
 	private int id;
-	@Id
+	@Column(name = "game_id")
+	private int gameId;
+	@Column(name = "account_id")
 	private int accountId;
-	@Id
+	@Column(name = "course_id")
 	private int courseId;
 
 	private int score;
@@ -97,6 +99,43 @@ public class GameScores implements Serializable {
 	 */
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + accountId;
+		result = prime * result + courseId;
+		result = prime * result + id;
+		result = prime * result + score;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		GameScores other = (GameScores) obj;
+		if (accountId != other.accountId)
+			return false;
+		if (courseId != other.courseId)
+			return false;
+		if (id != other.id)
+			return false;
+		if (score != other.score)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "GameScores [id=" + id + ", accountId=" + accountId + ", courseId=" + courseId + ", score=" + score
+				+ "]";
 	}
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.*;
  *
  */@NamedQueries({
 		@NamedQuery(query = "SELECT g FROM Games g", name= "GetAllGames"),
-		@NamedQuery(query = "SELECT g FROM Games g WHERE g.id = :gamesId", name = "GetTeacherByID")
+		@NamedQuery(query = "SELECT g FROM Games g WHERE g.id = :gamesId", name = "GetGameByID")
 })
 
 @Entity
@@ -19,6 +19,7 @@ public class Games implements Serializable {
 	   
 	@Id
 	private int id;
+	@Column (name = "course_id")
 	private int courseId;
 	
 	private Date startDate;
@@ -95,6 +96,48 @@ public class Games implements Serializable {
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + courseId;
+		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Games other = (Games) obj;
+		if (courseId != other.courseId)
+			return false;
+		if (endDate == null) {
+			if (other.endDate != null)
+				return false;
+		} else if (!endDate.equals(other.endDate))
+			return false;
+		if (id != other.id)
+			return false;
+		if (startDate == null) {
+			if (other.startDate != null)
+				return false;
+		} else if (!startDate.equals(other.startDate))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Games [id=" + id + ", courseId=" + courseId + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
    
 }

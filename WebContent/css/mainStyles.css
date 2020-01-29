@@ -173,3 +173,10 @@ th {
 th, td {
 	vertical-align: middle;
 }
+
+/* @media (max-width: 767px) {
+  .btn {
+    height: 50px;
+    background-image: 100%;
+  } */
+}

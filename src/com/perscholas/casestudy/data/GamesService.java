@@ -35,9 +35,9 @@ public class GamesService extends AbstractService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Games> getAllGamess() {
+	public List<Games> getAllGames() {
 		
-		Query query = em.createNamedQuery("GetAllGamess");
+		Query query = em.createNamedQuery("GetAllGames");
 		List<Games> games = query.getResultList();
 		
 		return games;
@@ -50,7 +50,7 @@ public class GamesService extends AbstractService {
 	@SuppressWarnings("unchecked")
 	public List<Games> getGamesByID(Integer id) {
 		List <Games> games;
-		Query query = em.createNamedQuery("GetGamesByID");
+		Query query = em.createNamedQuery("GetGameByID");
 		query.setParameter("holeID", id);
 		games = query.getResultList();
 		

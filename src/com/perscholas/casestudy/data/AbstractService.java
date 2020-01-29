@@ -16,7 +16,7 @@ public abstract class AbstractService {
 	protected EntityManager em;
 	
 	public AbstractService() {
-		emf = Persistence.createEntityManagerFactory("Scoreboard");
+		emf = Persistence.createEntityManagerFactory("Scorecard");
 		em = emf.createEntityManager();
 	}
 	public AbstractService(String PU) {
@@ -24,7 +24,7 @@ public abstract class AbstractService {
 		em = emf.createEntityManager();
 	}
 	protected void cleanup() {
-		emf.close();
 		em.close();
+		emf.close();
 	}
 }

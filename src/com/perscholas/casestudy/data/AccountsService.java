@@ -46,6 +46,19 @@ public class AccountsService extends AbstractService {
 	}
 
 	/**
+	 * @param id
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Accounts> getAccountById(int id) {
+		List <Accounts> accounts;
+		Query query = em.createNamedQuery("GetAccountByID");
+		query.setParameter("accountId", id);
+		accounts = query.getResultList();
+		
+		return accounts;
+	}
+	/**
 	 * 
 	 */
 	public void close() {

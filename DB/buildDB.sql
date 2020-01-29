@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS `holes`;
 
 CREATE TABLE `holes` (
 	`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` varchar(255) NOT NULL,
 	`course_id` int NOT NULL,
 	`number` int 	NOT NULL,
 	`par` int NOT NULL,
@@ -45,11 +46,11 @@ CREATE TABLE `games` (
 DROP TABLE IF EXISTS `game_scores`;
 
 CREATE TABLE `game_scores` (
+	`id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	`game_id` int,
 	`account_id` int,
 	`hole_id` int,
 	`score` int,
-	PRIMARY KEY (`game_id`, `account_id`, `hole_id`), 
 	CONSTRAINT `gs_games_fk` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`),
 	CONSTRAINT `gs_accounts_fk` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`),
 	CONSTRAINT `gs_holes_fk` FOREIGN KEY (`hole_id`) REFERENCES `holes` (`id`)
