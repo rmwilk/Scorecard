@@ -56,7 +56,8 @@ function buildCourseOptionsModal2() {
 							</label>
 						</form>
 						<h3>How many players?</h3>
-						<select id="guestsOption" class="mdb-select md-form">
+						<select id="guestsOption" data-style="btn-primary" 
+						class="mdb-select md-form form-control my-form-control">
 							<option value="1" selected>1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>

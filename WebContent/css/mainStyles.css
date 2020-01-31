@@ -69,6 +69,7 @@ footer {
 
 div.square-radius {
 	border-radius: 10px;
+	bottom-margin: 30px;
 }
 
 div.mid-header {
@@ -177,9 +178,6 @@ h5 {
 	max-height: 75px;
 }
 
-/* .table th, .table td {
-	padding: .5rem;
-} */
 .btn-border-bottom {
 	border-bottom: 2px solid white;
 }
@@ -240,4 +238,10 @@ th, td {
 
 .btn-toolbar{
 	width:90%;
+}
+
+.my-form-control {
+	max-width:75px;
+	display: inline-block;
+	margin-bottom: 5px;
 }
