@@ -16,15 +16,27 @@
 </style>
 </head>
 <body onload="receiveCourseOptions(); testPopulateWithModals();">
-	<header class="header">
-		<h1>Midway Scorecard</h1>
-		<img id="logo" src="../images/midwayLogo.png">
-	</header>
-	<br>
-	<div class="container-fluid list content">
-		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
+	<article>
+		<header class="header">
+			<div class="container-fluid list content">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="border-container top-radius mid-header">
+							<h1>Midway Scorecard</h1>
+							<img id="logo" src="../images/midwayLogo.png">
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="container-fluid list content">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="border-container square-radius">
 				<h2 id="currentGame">My Current Game</h2>
 				<button type="button" class="btn btn-primary"
 				data-toggle="modal"	data-target="#courseRulesModal">
@@ -44,6 +56,19 @@
 <!-- produced through javascript -->
 					</table>
 				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12"></div>
+		</div>
+				</div>
+			</div>
+		</main>
+		<footer class="">
+			<div class="container-fluid list content">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="border-container mid-footer">
+							<button type="button" hidden="true" style="inline-block">&nbsp;</button>
 			<button type="button" class="btn btn-danger" onclick="testOpenIndexPage();">
 				Trash Scorecard
 			</button>
@@ -54,13 +79,13 @@
 			data-toggle="modal"	data-target="#leaderboardModal">
 				End Game
 			</button>
-			<br>
-	<div style="height: 15px;">&nbsp;</div>
+							<div class="footer-message">2020 - Designed by: Ryan Wilk</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-		</div>
 	</div>
-	<br>
+		</footer>
 <!-- Course Rules Modal -->
 	<div class="modal fade" id="courseRulesModal" tabindex="-1"
 		role="dialog" aria-labelledby="courseRulesModalTitle"
@@ -249,6 +274,7 @@
 <!-- Leaderboard Modal -->
 <div  id="leaderboardModalSpace"></div>
 <!-- End Leaderboard Modal -->
+</article>
 <!-- Scripts -->
 	<script type="text/javascript" src="../js/generalScripts.js"></script>
 	<script type="text/javascript" src="../js/populateGame.js"></script>

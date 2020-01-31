@@ -10,123 +10,155 @@
 <link rel="stylesheet" type="text/css" href="../css/mainStyles.css" />
 <link rel="stylesheet" type="text/css" href="../css/statsStyles.css" />
 <link rel="stylesheet" type="text/css" href="../css/css.css" />
-<link rel="shortcut icon" type="image/jpg" href="../images/midwayLogo.png" />
-	<style>
-		.pt-5, .py-5 {
-	    	padding-top: 0!important; 
-		}
-	</style>
+<link rel="shortcut icon" type="image/jpg"
+	href="../images/midwayLogo.png" />
+<style>
+.pt-5, .py-5 {
+	padding-top: 0 !important;
+}
+</style>
 </head>
 <body onload="openCourseStats(event, 'courseA');">
-	<header class="header">
-		<h1>Midway Scorecard</h1>
-		<img id="logo" src="../images/midwayLogo.png">
-	</header>
-	<br>
-	<div class="container-fluid list content">
-		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<h2>My Stats</h2>
-				<p><strong>!!!! Page Under Construction !!!!</strong>
-				<!-- TODO -->
-				<div class="card">
-				<div class="card-body">
-				<h3 class="red">General Stats</h3>
-					<table id="generalStats" class="table stats-table table-sm">
-						<tbody>
-							<tr>
-								<td>Total Games:</td>
-								<td id="totalGames">&nbsp;</td>
-							</tr>
-							<tr>
-								<td>Total Holes In One:</td>
-								<td id="totalHolesInOne">&nbsp;</td>
-							</tr>
-							<tr>
-								<td>First Game Played:</td>
-								<td id="firstGameDate">&nbsp;</td>
-							</tr>
-							<tr>
-								<td>Last Game Played:</td>
-								<td id="lastGameDate">&nbsp;</td>
-							</tr>
-						</tbody>
-					</table>
-
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="a-tab-just" data-toggle="tab" href="#a-just" role="tab" aria-controls="a-just"
-      aria-selected="true">Course A</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="b-tab-just" data-toggle="tab" href="#b-just" role="tab" aria-controls="b-just"
-      aria-selected="false">Course B</a>
-  </li>
-</ul>
-<div class="tab-content card pt-5" id="courseA">
-  <div class="tab-pane fade show active" id="a-just" role="tabpanel" aria-labelledby="a-tab-just">
-    <table id="courseATable" class="table stats-table">
-									<tr>
-										<td>Total Games:</td>
-										<td id="totalA">&nbsp;</td>
-									</tr>
-									<tr>
-										<td>Best Score:</td>
-										<td id="bestA">&nbsp;</td>
-									</tr>
-									<tr>
-										<td>Worst Score:</td>
-										<td id="worstA">&nbsp;</td>
-									</tr>
-									<tr>
-										<td>Average Score:</td>
-										<td id="avgA">&nbsp;</td>
-									</tr>
-							</table>
-  </div>
-  <div class="tab-pane fade" id="b-just" role="tabpanel" aria-labelledby="b-tab-just">
-    <table id="courseBTable" class="table stats-table">
+	<article>
+		<header class="header">
+			<div class="container-fluid list content">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="border-container mid-header">
+							<h1>Midway Scorecard</h1>
+							<img id="logo" src="../images/midwayLogo.png">
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="container-fluid list content">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="border-container square-radius">
+							<h2>My Stats</h2>
+							<p>
+								<strong>!!!! Page Under Construction !!!!</strong>
+								<!-- TODO -->
+							<h3 class="red">General Stats</h3>
+							<table id="generalStats" class="table stats-table table-sm">
 								<tbody>
 									<tr>
 										<td>Total Games:</td>
-										<td id="totalB">&nbsp;</td>
+										<td id="totalGames">&nbsp;</td>
 									</tr>
 									<tr>
-										<td>Best Score:</td>
-										<td id="bestB">&nbsp;</td>
+										<td>Total Holes In One:</td>
+										<td id="totalHolesInOne">&nbsp;</td>
 									</tr>
 									<tr>
-										<td>Worst Score:</td>
-										<td id="worstB">&nbsp;</td>
+										<td>First Game Played:</td>
+										<td id="firstGameDate">&nbsp;</td>
 									</tr>
 									<tr>
-										<td>Average Score:</td>
-										<td id="avgB">&nbsp;</td>
+										<td>Last Game Played:</td>
+										<td id="lastGameDate">&nbsp;</td>
 									</tr>
 								</tbody>
 							</table>
-  </div>
-</div>
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<br>
-				<button type="button" 
-							onclick="testOpenAccountHomePage();" class="btn btn-primary">
-						Back to Account Home
-				</button>
+
+							<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+							
+							<h3 class="red">Course Stats</h3>
+							<ul class="nav nav-tabs nav-justified md-tabs indigo"
+								id="myTabJust" role="tablist">
+								<li class="nav-item"><a class="nav-link active"
+									id="a-tab-just" data-toggle="tab" href="#a-just" role="tab"
+									aria-controls="a-just" aria-selected="true">Course A</a></li>
+								<li class="nav-item"><a class="nav-link" id="b-tab-just"
+									data-toggle="tab" href="#b-just" role="tab"
+									aria-controls="b-just" aria-selected="false">Course B</a></li>
+							</ul>
+							<div class="tab-content card pt-5" id="courseA">
+								<div class="tab-pane fade show active" id="a-just"
+									role="tabpanel" aria-labelledby="a-tab-just">
+									<table id="courseATable" class="table stats-table">
+										<tr>
+											<td>Total Games:</td>
+											<td id="totalA">&nbsp;</td>
+										</tr>
+										<tr>
+											<td>Best Score:</td>
+											<td id="bestA">&nbsp;</td>
+										</tr>
+										<tr>
+											<td>Worst Score:</td>
+											<td id="worstA">&nbsp;</td>
+										</tr>
+										<tr>
+											<td>Average Score:</td>
+											<td id="avgA">&nbsp;</td>
+										</tr>
+									</table>
+								</div>
+								<div class="tab-pane fade" id="b-just" role="tabpanel"
+									aria-labelledby="b-tab-just">
+									<table id="courseBTable" class="table stats-table">
+										<tbody>
+											<tr>
+												<td>Total Games:</td>
+												<td id="totalB">&nbsp;</td>
+											</tr>
+											<tr>
+												<td>Best Score:</td>
+												<td id="bestB">&nbsp;</td>
+											</tr>
+											<tr>
+												<td>Worst Score:</td>
+												<td id="worstB">&nbsp;</td>
+											</tr>
+											<tr>
+												<td>Average Score:</td>
+												<td id="avgB">&nbsp;</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+							<br>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-		</div>
-	</div>
-	</div></div>
-	<script type="text/javascript" src="../js/generalScripts.js"></script>
-	<script type="text/javascript" src="../js/statsScripts.js"></script>
-	<script type="text/javascript" src="../boot-js/bootstrap.min.js" /></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/mdb.min.js"></script>
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		</main>
+		<footer>
+			<div class="container-fluid list content">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="border-container mid-footer">
+							<button type="button" hidden="true" style="">&nbsp;</button>
+							<button type="button" onclick="testOpenAccountHomePage();"
+								class="btn btn-primary">Back to Account Home</button>
+							<div class="footer-message">2020 - Designed by: Ryan Wilk</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12"></div>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript" src="../js/generalScripts.js"></script>
+		<script type="text/javascript" src="../js/statsScripts.js"></script>
+		<script type="text/javascript" src="../boot-js/bootstrap.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/mdb.min.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>
