@@ -107,11 +107,11 @@ function printPlayersToTBody() {
 			<td>
 				<button type="button" class="btn btn-secondary btn-sm"
 				data-toggle="modal"  data-target="#hintModal" onclick="buildHoleHintModal(`+i+`)">
-					Hint
+					<span class="glyphicon glyphicon-question-sign"></span>
 				</button>
 				<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`); fillScores(`+i+`);"
 					data-toggle="modal"	data-target="#holeScoreModal" style="max-width:100%">
-						&#xe254;
+						<span class="glyphicon glyphicon-edit"></span>
 					</button>
 			</td>
 		 </tr>
