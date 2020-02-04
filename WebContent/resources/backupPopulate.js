@@ -87,7 +87,10 @@ function printPlayersToTBody() {
 		string += `
 			<tr>
 				<td style="padding-left:2px; padding-right: 2px;">
-					Hole ` + space + i + `
+					<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`); fillScores(`+i+`);"
+					data-toggle="modal"	data-target="#holeScoreModal" style="max-width:100%">
+						Enter Hole ` + space + i + `
+					</button>
 				</td>
 				<td id="hole`+i+`par" class="bold">2</td>
 				<td id="p1hole` + i + `" class="stronger">-</td>
@@ -101,7 +104,7 @@ function printPlayersToTBody() {
 			string += `<td id="p3hole` + i + `" class="stronger">-</td>`;
 		}
 		if(playersPop > 3){
-			string += `<td id="p4hole` + i + `" class="stronger">-	</td>`;
+			string += `<td  id="p4hole` + i + `" class="stronger">-	</td>`;
 		}
 	string += `
 			<td>
@@ -109,10 +112,6 @@ function printPlayersToTBody() {
 				data-toggle="modal"  data-target="#hintModal" onclick="buildHoleHintModal(`+i+`)">
 					Hint
 				</button>
-				<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`); fillScores(`+i+`);"
-					data-toggle="modal"	data-target="#holeScoreModal" style="max-width:100%">
-						&#xe254;
-					</button>
 			</td>
 		 </tr>
 		 `;
