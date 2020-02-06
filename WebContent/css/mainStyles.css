@@ -14,6 +14,7 @@ body {
 	background: url("../images/blue-sky.jpg") top center no-repeat fixed;
 	margin: 0 auto;
 	background-color: #6aabee;
+	overscroll-behavior: none;
 }
 
 p, body {
@@ -49,13 +50,14 @@ header {
 	width: 100%;
 	text-align: center;
 	top: 0;
-	z-index: 1;
+	z-index: 999;
 	position: sticky;
 }
 
 footer {
 	position: sticky;
 	bottom: 0;
+	z-index: 999;
 }
 
 .border-container {
