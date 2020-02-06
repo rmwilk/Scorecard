@@ -76,7 +76,7 @@ function printPlayersToTHead() {
 	if(playersPop > 3){
 		string += `<th id="p4name">P4</th>`;
 	}
-	string += `<th>Hint</th>`;
+	string += `<th>&nbsp;</th>`;
 	return string;
 }
 
@@ -107,11 +107,11 @@ function printPlayersToTBody() {
 			<td>
 				<button type="button" class="btn btn-secondary btn-sm"
 				data-toggle="modal"  data-target="#hintModal" onclick="buildHoleHintModal(`+i+`)">
-					<span class="glyphicon glyphicon-question-sign"></span>
+					<i class="fas fa-question-circle"></i>
 				</button>
-				<button type="button" class="btn btn-primary" onclick="buildHoleScoreModal(`+i+`); fillScores(`+i+`);"
+				<button type="button" class="btn btn-primary btn-sm" onclick="buildHoleScoreModal(`+i+`); fillScores(`+i+`);"
 					data-toggle="modal"	data-target="#holeScoreModal" style="max-width:100%">
-						<span class="glyphicon glyphicon-edit"></span>
+						<i class="fas fa-edit"></i>
 					</button>
 			</td>
 		 </tr>
@@ -253,7 +253,6 @@ function buildHoleScoreModal(hole) {
 								<tr>
 									<td>
 										<select  id="p1h`+hole+`" class="mdb-select md-form">
-											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -267,7 +266,6 @@ function buildHoleScoreModal(hole) {
 		string += `
 									<td>
 										<select  id="p2h`+hole+`" class="mdb-select md-form">
-											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -282,7 +280,6 @@ function buildHoleScoreModal(hole) {
 		string += `
 									<td>
 										<select  id="p3h`+hole+`" class="mdb-select md-form">
-											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -297,7 +294,6 @@ function buildHoleScoreModal(hole) {
 		string += `
 									<td>
 										<select  id="p4h`+hole+`" class="mdb-select md-form">
-											<option value="6" selected disabled hidden="true"></option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
