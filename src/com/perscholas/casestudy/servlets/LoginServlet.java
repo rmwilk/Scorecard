@@ -25,7 +25,13 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/MyFirstModelServlet");
         rd.include(request, response);
 		
-        
+        if ((boolean) request.getAttribute("loggedIn")) {
+			rd = getServletContext().getRequestDispatcher("/accountHome.jsp");
+			rd.forward(request, response);
+		} else {
+			rd = getServletContext().getRequestDispatcher("/index.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	/**

@@ -4,74 +4,41 @@
 <html lang="en">
 <head>
 <%@ include file="../html/head.html"%>
-<style>
-<!--
-Any
-
- 
-
-Inline
-
- 
-
-Styles
-
- 
-
--->
-</style>
 </head>
 <body>
 	<article>
 		<%@ include file="../html/header.html"%>
 		<main>
-			<div class="container-fluid list content">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="border-container square-radius">
-							<%@ include file="../html/carousel.html"%>
-							<br>
-							<form class="form-container">
-								<div class="form-group">
-									<p>
-										Not worried about saving your scores? <br>
-										<button type="button" class="btn btn-primary"
-											onclick="buildCourseOptionsModal2();" data-toggle="modal"
-											data-toggle="modal" data-target="#courseOptionsModal2">
-											Continue as a Guest <i class="fas fa-user"></i>
-										</button>
-									</p>
-									<p>
-										Keep your stats and save your past scores by signing up for
-										free! <br> <a href="./signup.html">Click here to sign
-											up </a> <i class="fas fa-user-plus"></i>
-									</p>
-								</div>
-							</form>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-12"></div>
-					</div>
+			<%@ include file="../html/topMain.html"%>
+			<%@ include file="../html/carousel.html"%>
+			<br>
+			<form class="form-container">
+				<div class="form-group">
+					<p>
+						Not worried about saving your scores? <br>
+						<button type="button" class="btn btn-primary"
+							onclick="buildCourseOptionsModal2();" data-toggle="modal"
+							data-toggle="modal" data-target="#courseOptionsModal2">
+							Continue as a Guest <i class="fas fa-user"></i>
+						</button>
+					</p>
+					<p>
+						Keep your stats and save your past scores by signing up for free!
+						<br> 
+						<a href="./signup.html">
+						Click here to sign up </a><i	class="fas fa-user-plus"></i>
+					</p>
 				</div>
-			</div>
+			</form>
+			<%@ include file="../html/bottomMain.html"%>
 		</main>
 		<footer>
-			<div class="container-fluid list content">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="border-container mid-footer">
-							<button type="button" hidden="true" style="">&nbsp;</button>
-							<button type="button" class="btn btn-danger" data-toggle="modal"
-								data-target="#loginModal">
-								Login <i class="fas fa-sign-in-alt"></i>
-							</button>
-							<div class="footer-message">2020 - Designed by: Ryan Wilk</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-				</div>
-			</div>
+			<%@ include file="../html/topFooter.html"%>
+			<button type="button" class="btn btn-danger" data-toggle="modal"
+				data-target="#loginModal">
+				Login <i class="fas fa-sign-in-alt"></i>
+			</button>
+			<%@ include file="../html/bottomFooter.html"%>
 		</footer>
 		<!-- Code for Modals -->
 		<!-- Login Modal -->
@@ -89,7 +56,7 @@ Styles
 						</div>
 						<div class="modal-body">
 							<div class="container">
-								<form id="login" class="form-container" action="LoginServlet"
+								<form id="login" class="form-container" action="../LoginServlet"
 									method="post">
 									<h3>Enter Your Account Information</h3>
 									<div class="form-group">
