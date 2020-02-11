@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @NamedQueries({
 	@NamedQuery(query = "SELECT a FROM Accounts a", name= "GetAllAccounts"),
-	@NamedQuery(query = "SELECT a FROM Accounts a WHERE a.id = :accountId", name = "GetAccountByID")
+	@NamedQuery(query = "SELECT a FROM Accounts a WHERE a.email = :accountEmail", name = "GetAccountByEmail")
 })
 @Entity
 public class Accounts implements Serializable {

@@ -3,21 +3,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="html/head.html"%>
+<%@ include file="../html/head.html"%>
 <style>
-<!-- Any Inline Styles -->
+<!--
+Any
+
+ 
+
+Inline
+
+ 
+
+Styles
+
+ 
+
+-->
 </style>
 </head>
 <body>
 	<article>
-		<%@ include file="html/header.html"%>
+		<%@ include file="../html/header.html"%>
 		<main>
 			<div class="container-fluid list content">
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-xs-12"></div>
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="border-container square-radius">
-							<%@ include file="html/carousel.html"%>
+							<%@ include file="../html/carousel.html"%>
 							<br>
 							<form class="form-container">
 								<div class="form-group">
@@ -76,7 +89,8 @@
 						</div>
 						<div class="modal-body">
 							<div class="container">
-								<form id="login" class="form-container" action="LoginServlet" method="post">
+								<form id="login" class="form-container" action="LoginServlet"
+									method="post">
 									<h3>Enter Your Account Information</h3>
 									<div class="form-group">
 										<div class="input-group">
@@ -91,14 +105,14 @@
 												placeholder="Password"></input>
 										</div>
 									</div>
-								<div id="errorMessageSpace"></div>
+									<div id="errorMessageSpace"></div>
+								</form>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Go Back</button>
-								<button type="submit" class="btn btn-primary"
-									<!-- onclick="testOpenAccountHomePage();" --> >Login</button>
-								</form>
+								<button type="submit" form="login" class="btn btn-primary">
+									Login</button>
 							</div>
 						</div>
 					</div>
@@ -111,6 +125,6 @@
 		<!-- End Course Options Modal -->
 
 	</article>
-	<%@ include file="html/scripts.html"%>
+	<%@ include file="../html/scripts.html"%>
 </body>
 </html>

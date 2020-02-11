@@ -50,10 +50,10 @@ public class AccountsService extends AbstractService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Accounts> getAccountById(int id) {
+	public List<Accounts> getAccountByEmail(String email) {
 		List <Accounts> accounts;
-		Query query = em.createNamedQuery("GetAccountByID");
-		query.setParameter("accountId", id);
+		Query query = em.createNamedQuery("GetAccountByEmail");
+		query.setParameter("accountEmail", email);
 		accounts = query.getResultList();
 		
 		return accounts;
