@@ -15,7 +15,7 @@ import com.perscholas.casestudy.entities.Accounts;
 /**
  * Servlet implementation class ModelServlet
  */
-@WebServlet("/ModelServlet")
+@WebServlet("/doLogin")
 public class LoginModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,17 +28,25 @@ public class LoginModelServlet extends HttpServlet {
 
 		String email = request.getParameter("emailTB");
 		String pass = request.getParameter("passwordTB");
-
+		
+		System.out.println(email);
+		
 		request.setAttribute("email", email);
 		request.setAttribute("loggedIn", false);
 
 		AccountsService as = new AccountsService();
-		List<Accounts> accounts = as.getAccountByEmail(email);
-		if (accounts.get(0).getEmail().equals(email) && accounts.get(0).getPassword().equals(pass)) {
-			request.setAttribute("loggedIn", true);
+		List<Accounts> accounts = as.getAccountByEmail(email.toLowerCase());
+		Accounts goodAccount = null;
+		for (Accounts ac : accounts) {
+			System.out.println(ac);
+			if (ac.getPassword().equals(pass)) {
+				goodAccount = ac;
+				request.setAttribute("loggedIn", true);
+				break;
+			}
 		}
 
-		request.setAttribute("account", accounts.get(0));
+		request.setAttribute("account", goodAccount);
 		as.close();
 	}
 

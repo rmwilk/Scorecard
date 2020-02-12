@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="../html/head.html"%>
+<%@ include file="/html/head.html"%>
 </head>
 <body>
 	<article>
-		<%@ include file="../html/header.html"%>
+		<%@ include file="/html/header.html"%>
 		<main>
-			<%@ include file="../html/topMain.html"%>
-			<%@ include file="../html/carousel.html"%>
+			<%@ include file="/html/topMain.html"%>
+			<%@ include file="/html/carousel.html"%>
 			<br>
 			<form class="form-container">
 				<div class="form-group">
@@ -30,15 +30,15 @@
 					</p>
 				</div>
 			</form>
-			<%@ include file="../html/bottomMain.html"%>
+			<%@ include file="/html/bottomMain.html"%>
 		</main>
 		<footer>
-			<%@ include file="../html/topFooter.html"%>
+			<%@ include file="/html/topFooter.html"%>
 			<button type="button" class="btn btn-danger" data-toggle="modal"
 				data-target="#loginModal">
 				Login <i class="fas fa-sign-in-alt"></i>
 			</button>
-			<%@ include file="../html/bottomFooter.html"%>
+			<%@ include file="/html/bottomFooter.html"%>
 		</footer>
 		<!-- Code for Modals -->
 		<!-- Login Modal -->
@@ -56,7 +56,7 @@
 						</div>
 						<div class="modal-body">
 							<div class="container">
-								<form id="login" class="form-container" action="../LoginServlet"
+								<form id="login" class="form-container" action="/login"
 									method="post">
 									<h3>Enter Your Account Information</h3>
 									<div class="form-group">
@@ -92,6 +92,6 @@
 		<!-- End Course Options Modal -->
 
 	</article>
-	<%@ include file="../html/scripts.html"%>
+	<%@ include file="/html/scripts.html"%>
 </body>
 </html>

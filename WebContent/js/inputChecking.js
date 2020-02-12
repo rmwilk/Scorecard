@@ -81,7 +81,7 @@ function register() {
 
 	if (validEmail && validPass && validPassMatch) {
 		buildMessageModal("Login Sucess","Welcome " + address + "!");
-		window.location("./accountHome.html");
+		element("signup-form").submit;
 	} else {
 		buildMessageModal("Login Failed", message);
 		element("email").value = "";

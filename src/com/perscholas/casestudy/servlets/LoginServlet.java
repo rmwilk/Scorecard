@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,14 +22,14 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/MyFirstModelServlet");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/doLogin");
         rd.include(request, response);
 		
         if ((boolean) request.getAttribute("loggedIn")) {
-			rd = getServletContext().getRequestDispatcher("/accountHome.jsp");
+			rd = getServletContext().getRequestDispatcher("/jsp/accountHome.jsp");
 			rd.forward(request, response);
 		} else {
-			rd = getServletContext().getRequestDispatcher("/index.jsp");
+			rd = getServletContext().getRequestDispatcher("/jsp/index.jsp");
 			rd.forward(request, response);
 		}
 	}

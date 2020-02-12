@@ -1,97 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Midway Scorecard</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" type="text/css"
-	href="../boot-css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" type="text/css" href="../css/mainStyles.css" />
-<link rel="stylesheet" type="text/css" href="../css/css.css" />
-<link rel="shortcut icon" type="image/jpg"
-	href="../images/midwayLogo.png" />
+<%@ include file="../html/head.html"%>
 </head>
 <body>
 	<article>
-		<header class="header">
-			<div class="container-fluid list content">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="border-container mid-header">
-							<h1>Midway Scorecard</h1>
-							<img id="logo" src="../images/midwayLogo.png">
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-				</div>
-			</div>
-		</header>
+		<%@ include file="../html/header.html"%>
 		<main>
-			<div class="container-fluid list content">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="border-container square-radius">
-
-							<h2 id="greeting">Hello Ryan!</h2>
-							<div class="container">
-								<div class="btn-group-vertical d-flex btn-group-lg ">
-									<button type="button" onclick="buildCourseOptionsModal2();"
-										class="btn btn-primary btn-border-bottom stats-btn"
-										data-toggle="modal" data-target="#courseOptionsModal2">
-										<i class="fas fa-golf-ball" aria-hidden="true"></i> Play
-										<!-- / Continue -->
-										A Round <i class="fas fa-golf-ball" aria-hidden="true"></i>
-									</button>
-									<button type="button"
-										class="btn btn-primary btn-border-bottom stats-btn"
-										onclick="testOpenStatsPage();">
-										Check My Stats 
-										<i class="fas fa-chart-line" aria-hidden="true"></i> 
-										<br>
-										<strong>((Under Construction))</strong>
-									</button>
-									<button type="button"
-										class="btn btn-primary btn-border-bottom stats-btn"
-										data-toggle="modal" data-target="#courseRulesModal">
-										Course Rules
-										<i class="fa fa-gavel" aria-hidden="true"></i>
-									</button>
-									<button type="button" class="btn btn-primary stats-btn"
-										onclick="testOpenInfoPage();">
-										Park Info 
-										<i class="fas fa-info-circle" aria-hidden="true"></i>
-									</button>
-								</div>
-							</div>
-						</div>
+			<%@ include file="../html/topMain.html"%>
+			<br>
+				<h2 id="greeting">Hello Ryan!</h2>
+				<div class="container">
+					<div class="btn-group-vertical d-flex btn-group-lg ">
+						<button type="button" onclick="buildCourseOptionsModal2();"
+							class="btn btn-primary btn-border-bottom stats-btn"
+							data-toggle="modal" data-target="#courseOptionsModal2">
+							<i class="fas fa-golf-ball" aria-hidden="true"></i> Play
+							<!-- / Continue -->
+							A Round <i class="fas fa-golf-ball" aria-hidden="true"></i>
+						</button>
+						<button type="button"
+							class="btn btn-primary btn-border-bottom stats-btn"
+							onclick="testOpenStatsPage();">
+							Check My Stats <i class="fas fa-chart-line" aria-hidden="true"></i>
+							<br> <strong>((Under Construction))</strong>
+						</button>
+						<button type="button"
+							class="btn btn-primary btn-border-bottom stats-btn"
+							data-toggle="modal" data-target="#courseRulesModal">
+							Course Rules <i class="fa fa-gavel" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-primary stats-btn"
+							onclick="testOpenInfoPage();">
+							Park Info <i class="fas fa-info-circle" aria-hidden="true"></i>
+						</button>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
 				</div>
 			</div>
+			<%@ include file="../html/bottomMain.html"%>
 		</main>
 		<footer>
-			<div class="container-fluid list content">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="border-container mid-footer">
-							<button type="button" hidden="true" style="">&nbsp;</button>
-							<button type="button" class="btn btn-danger"
-								onclick="testOpenIndexPage();">
-								Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-							</button>
-							<div class="footer-message">2020 - Designed by: Ryan Wilk</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12"></div>
-				</div>
-			</div>
+			<%@ include file="../html/topFooter.html"%>
+			<button type="button" hidden="true" style="">&nbsp;</button>
+			<button type="button" class="btn btn-danger"
+				onclick="testOpenIndexPage();">
+				Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+			</button>
+			<%@ include file="../html/bottomFooter.html"%>
 		</footer>
 		<!-- Course Options Modal -->
 		<div id="courseOptionsModalSpace2"></div>
