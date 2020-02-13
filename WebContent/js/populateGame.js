@@ -95,13 +95,13 @@ function printPlayersToTBody() {
 
 		element("game-table").innerHTML += printPlayersToTBody;
 		if(playersPop > 1){
-			string += `<td id="p2hole` + i + `" class="stronger">-</td>`;
+			string += `<td id="p2hole` + i + `" name="p2hole` + i + `" class="stronger">-</td>`;
 		}
 		if(playersPop > 2){
-			string += `<td id="p3hole` + i + `" class="stronger">-</td>`;
+			string += `<td id="p3hole` + i + `" name="p3hole` + i + `"class="stronger">-</td>`;
 		}
 		if(playersPop > 3){
-			string += `<td id="p4hole` + i + `" class="stronger">-	</td>`;
+			string += `<td id="p4hole` + i + `" name="p4hole` + i + `"class="stronger">-	</td>`;
 		}
 	string += `
 			<td>

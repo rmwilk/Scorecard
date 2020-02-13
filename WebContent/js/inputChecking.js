@@ -55,13 +55,13 @@ function register() {
 	/* Regular expression to verify email syntax */
 	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 	
-	if (element("email").value != null){
+	if (element("email").value != null && element("email").value != ""){
 		address = element("email").value;
 	}
-	if (element("password").value != null){
+	if (element("password").value != null && element("password").value != ""){
 		password = element("password").value;
 	}
-	if (element("passwordConfirm").value != null){
+	if (element("passwordConfirm").value != null && element("passwordConfirm").value != ""){
 		passwordConfirm = element("passwordConfirm").value;
 	}
 	
@@ -69,7 +69,7 @@ function register() {
 		validEmail = false;
 		message += "Invalid Email Address<br>";
 	}
-	if (regex.test(input) == false) {
+	if (regex.test(password) == false) {
 		validPass = false;
 		message += "Invalid password.<br>";
 	}

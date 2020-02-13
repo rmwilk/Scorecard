@@ -10,10 +10,7 @@ import javax.persistence.*;
 
 @NamedQueries({
 	@NamedQuery(query = "SELECT a FROM Accounts a", name= "GetAllAccounts"),
-	@NamedQuery(query = "SELECT a FROM Accounts a WHERE a.email = :accountEmail", name = "GetAccountByEmail"),
-	@NamedQuery(query = "INSERT INTO Accounts a VALUES (a.email = :accountEmail, "
-			+ "a.nickname = :accountName, a.password = :accountPassword", name = "CreateAccount")
-	
+	@NamedQuery(query = "SELECT a FROM Accounts a WHERE a.email = :accountEmail", name = "GetAccountByEmail")	
 })
 @Entity
 public class Accounts implements Serializable {
@@ -23,6 +20,7 @@ public class Accounts implements Serializable {
 	 * 
 	 */
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	private String email;
@@ -45,8 +43,8 @@ public class Accounts implements Serializable {
 	 * @param password
 	 * @param nickname
 	 */
-	public Accounts(int id, String email, String password, String nickname) {
-		this.setId(id);
+	public Accounts( String email, String password, String nickname) {
+		//this.setId(id);
 		this.setEmail(email);
 		this.setPassword(password);
 		this.setNickname(nickname);

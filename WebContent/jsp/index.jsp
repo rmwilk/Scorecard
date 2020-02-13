@@ -12,24 +12,27 @@
 			<%@ include file="/html/topMain.html"%>
 			<%@ include file="/html/carousel.html"%>
 			<br>
-			<form class="form-container">
+			<div class="form-container">
 				<div class="form-group">
+			<form id="guest-game" action="/GuestGame" method="post">
 					<p>
 						Not worried about saving your scores? <br>
-						<button type="button" class="btn btn-primary"
+						<button type="submit" class="btn btn-primary"
 							onclick="buildCourseOptionsModal2();" data-toggle="modal"
 							data-toggle="modal" data-target="#courseOptionsModal2">
 							Continue as a Guest <i class="fas fa-user"></i>
 						</button>
 					</p>
+					</form>
+					<form id="create-account" action="/CreateAccount" method="post">
 					<p>
 						Keep your stats and save your past scores by signing up for free!
-						<br> 
-						<a href="./signup.html">
-						Click here to sign up </a><i	class="fas fa-user-plus"></i>
+						<br>
+						<button type="submit" class="btn btn-secondary"> Click here to sign up <i class="fas fa-user-plus"></i></button>
 					</p>
+					</form>
 				</div>
-			</form>
+			</div>
 			<%@ include file="/html/bottomMain.html"%>
 		</main>
 		<footer>

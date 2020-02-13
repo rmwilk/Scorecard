@@ -23,3 +23,7 @@ function testOpenGamePage() {
 function testOpenInfoPage() {
 	window.location = "./info.html";
 }
+
+function createAccountSubmitLink() {
+	element("create-account").submit();
+}

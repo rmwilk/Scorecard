@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../html/head.html"%>
+<%@ include file="/html/head.html"%>
 <style>
 .table td {
 	vertical-align: middle;
@@ -12,9 +12,9 @@
 </head>
 <body onload="receiveCourseOptions(); testPopulateWithModals();">
 	<article>
-		<%@ include file="../html/header.html"%>
+		<%@ include file="/html/header.html"%>
 		<main>
-			<%@ include file="../html/topMain.html"%>
+			<%@ include file="/html/topMain.html"%>
 			<h2 id="currentGame">My Current Game</h2>
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#courseRulesModal">Course Rules</button>
@@ -28,10 +28,10 @@
 					<!-- produced through javascript -->
 				</table>
 			</div>
-			<%@ include file="../html/bottomMain.html"%>
+			<%@ include file="/html/bottomMain.html"%>
 		</main>
 		<footer class="">
-			<%@ include file="../html/topFooter.html"%>
+			<%@ include file="/html/topFooter.html"%>
 			<button type="button" hidden="true" style="">&nbsp;</button>
 			<button type="button" class="btn btn-danger"
 				onclick="testOpenIndexPage();">Trash Scorecard</button>
@@ -40,7 +40,7 @@
 			<button type="button" class="btn btn-success"
 				onclick="calculateScores();" data-toggle="modal"
 				data-target="#leaderboardModal">End Game</button>
-			<%@ include file="../html/bottomFooter.html"%>
+			<%@ include file="/html/bottomFooter.html"%>
 		</footer>
 		<!-- Course Rules Modal -->
 		<div class="modal fade" id="courseRulesModal" tabindex="-1"
