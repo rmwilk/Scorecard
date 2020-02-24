@@ -10,8 +10,8 @@ import javax.persistence.*;
  */
 @NamedQueries({ @NamedQuery(query = "SELECT h FROM Holes h", name = "GetAllHoles"),
 		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.id = :holeId", name = "GetHoleByID"),
-		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :courseId AND h.number = :holeNum", name = "GetHoleByCourseAndNumber")
-})
+		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :courseId AND h.number = :holeNum", name = "GetHoleByCourseAndNumber"),
+		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :courseId", name = "GetAllHolesByCourse") })
 @Entity
 public class Holes implements Serializable {
 
@@ -84,7 +84,7 @@ public class Holes implements Serializable {
 
 	public void setHint(String hint) {
 		this.hint = hint;
-	}	
+	}
 
 	/**
 	 * @return the name

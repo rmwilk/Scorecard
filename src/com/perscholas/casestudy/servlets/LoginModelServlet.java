@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.perscholas.casestudy.data.AccountsService;
 import com.perscholas.casestudy.entities.Accounts;
@@ -38,8 +39,9 @@ public class LoginModelServlet extends HttpServlet {
 		
 		System.out.println(email);
 		
+		HttpSession session = request.getSession(true);
 		request.setAttribute("email", email);
-		request.setAttribute("loggedIn", false);
+		session.setAttribute("loggedIn", false);
 
 		AccountsService as = new AccountsService();
 		List<Accounts> accounts = as.getAccountByEmail(email.toLowerCase());
@@ -48,12 +50,12 @@ public class LoginModelServlet extends HttpServlet {
 			System.out.println(ac);
 			if (ac.getPassword().equals(pass)) {
 				goodAccount = ac;
-				request.setAttribute("loggedIn", true);
+				session.setAttribute("loggedIn", true);
 				break;
 			}
 		}
 
-		request.setAttribute("account", goodAccount);
+		session.setAttribute("account", goodAccount);
 		as.close();
 	}
 

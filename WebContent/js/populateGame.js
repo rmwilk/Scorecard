@@ -21,6 +21,16 @@ function receiveCourseOptions() {
 	element("currentGame").innerHTML = playersPop + " Player" + s + " on Course " + coursePop;
 }
 
+function receiveFromServlet(guests, course){
+	playersPop = guests;
+	coursePop = course;
+	var s = "";
+	if(playersPop != 1){
+		s = "s"
+	}
+	element("currentGame").innerHTML = playersPop + " Player" + s + " on Course " + coursePop;
+}
+
 /*
  * function buildCourseOptionsModal() {
  * element("courseOptionsModelSpace").innerHTML = ` <div class="modal fade"
@@ -65,16 +75,16 @@ function printPlayersToTHead() {
 		<tr>
 		<th id="hole#">#</th>
 		<th id="par">Par</th>
-		<th id="p1name">P1</th>
+		<th id="p1name" name="p1name">P1</th>
 	`;
 	if(playersPop > 1){
-		string += `<th id="p2name">P2</th>`;
+		string += `<th id="p2name" name="p2name">P2</th>`;
 	}
 	if(playersPop > 2){
-		string += `<th id="p3name">P3</th>`;
+		string += `<th id="p3name" name="p3name">P3</th>`;
 	}
 	if(playersPop > 3){
-		string += `<th id="p4name">P4</th>`;
+		string += `<th id="p4name" name="p4name">P4</th>`;
 	}
 	string += `<th>&nbsp;</th>`;
 	return string;
@@ -89,8 +99,8 @@ function printPlayersToTBody() {
 				<td style="padding-left:2px; padding-right: 2px;">
 					Hole ` + space + i + `
 				</td>
-				<td id="hole`+i+`par" class="bold">2</td>
-				<td id="p1hole` + i + `" class="stronger">-</td>
+				<td id="hole`+ i +`par" name="hole`+ i +`par"class="bold">2</td>
+				<td id="p1hole` + i + `" name="p1hole` + i + `"class="stronger">-</td>
 		`;
 
 		element("game-table").innerHTML += printPlayersToTBody;
@@ -101,7 +111,7 @@ function printPlayersToTBody() {
 			string += `<td id="p3hole` + i + `" name="p3hole` + i + `"class="stronger">-</td>`;
 		}
 		if(playersPop > 3){
-			string += `<td id="p4hole` + i + `" name="p4hole` + i + `"class="stronger">-	</td>`;
+			string += `<td id="p4hole` + i + `" name="p4hole` + i + `"class="stronger">-</td>`;
 		}
 	string += `
 			<td>
@@ -199,8 +209,7 @@ function buildHoleHintModal(hole){
 					</div>
 					<div class="modal-body">
 						<div class="container" style="text-align: center">
-							<!-- TODO -->
-							<p>This is where the hint goes!</p>
+							<% hole = holesService.getHoleByCourseAndNumber(course, number); %>
 						</div>
 					</div>
 					<div class="modal-footer">

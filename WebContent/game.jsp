@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
+<%@ page import="com.perscholas.casestudy.data.HolesService" %>
+<%@ page import="com.perscholas.casestudy.entities.Holes" %>
+<%@ page import="com.perscholas.casestudy.data.AccountsService" %>
+<%@ page import="com.perscholas.casestudy.data.CoursesService" %>
+<%@ page import="com.perscholas.casestudy.data.GameScoresService" %>
+<%@ page import="com.perscholas.casestudy.data.GamesService" %>
+<%@ page import="com.perscholas.casestudy.data.HolesService" %>
+<%@ page import="com.perscholas.casestudy.entities.Accounts" %>
+<%@ page import="com.perscholas.casestudy.entities.Holes" %>
+<%@ page import="com.perscholas.casestudy.entities.Courses" %>
+<%@ page import="com.perscholas.casestudy.entities.Games" %>
+<%@ page import="com.perscholas.casestudy.entities.GameScores" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,23 +25,48 @@
 }
 </style>
 </head>
-<body onload="receiveCourseOptions(); testPopulateWithModals();">
+<%
+	String guests = (String) session.getAttribute("guests");
+	String course = (String) session.getAttribute("course");
+	List<Holes> hole; // temp variable
+	boolean loggedIn = (boolean) session.getAttribute("loggedIn");
+	AccountsService accountsService;
+	HolesService holesService;
+	CoursesService coursesService;
+	GamesService gamesService;
+	GameScoresService gameScoresService;
+	
+		accountsService = new AccountsService();
+		holesService = new HolesService();
+		coursesService = new CoursesService();
+		gamesService = new GamesService();
+		gameScoresService = new GameScoresService();
+%>
+<body
+	onload="receiveFromServlet('<%out.print(guests);%>', '<%out.print(course);%>'); testPopulateWithModals();">
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
 		<!-- Page Specific Buttons Go Here -->
 		<button type="button" hidden="true" style="">&nbsp;</button>
-			<button type="submit" class="btn btn-danger"
-				form="backToHome">Trash Scorecard</button>
-			<button type="button" class="btn btn-secondary" data-toggle="modal"
-				data-target="#clearModal">Clear Entries</button>
-			<button type="button" class="btn btn-success"
-				onclick="calculateScores();" data-toggle="modal"
-				data-target="#leaderboardModal">End Game</button>
+		<button type="submit" class="btn btn-danger" form="backToHome">Trash
+			Scorecard</button>
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#clearModal">Clear Entries</button>
+		<button type="button" class="btn btn-success"
+			onclick="calculateScores();" data-toggle="modal"
+			data-target="#leaderboardModal">End Game</button>
+		<%
+			if (loggedIn) {
+		%>
 		<button type="submit" class="btn btn-danger" form="logout">
 			Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
 		</button>
+		<%
+			}
+		%>
 		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
+			<!-- --------------------------------------------------------------------------------------------- -->
 			<%@ include file="inserts/topMain.html"%>
 			<h2 id="currentGame">My Current Game</h2>
 			<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -37,9 +77,12 @@
 				data-target="#helpModal">Help</button>
 			<div style="height: 5px"></div>
 			<div class="table-responsive">
-				<table id="game-table" class="table table-sm">
-					<!-- produced through javascript -->
-				</table>
+				<form id="game" name="gameForm" action="score" method="post">
+					<table id="game-table" class="table table-sm">
+						<!-- produced through javascript -->
+					</table>
+				</form>
+				<!-- --------------------------------------------------------------------------------------------- -->
 			</div>
 			<form id="logout" action="logout" method="post"></form>
 			<form id="backToHome" action="home" method="post"></form>
@@ -110,7 +153,7 @@
 								<li>Move ball 6 inches from obstacle or rail (no penalty)</li>
 								<li>Ball hit by another ball - return to original spot (no
 									penalty)</li>
-								<li><strong>MAXIMUM OF 4 STROKES PER HOLE - MOVE
+								<li><strong>MAXIMUM OF 6 STROKES PER HOLE - MOVE
 										TO NEXT TEE</strong></li>
 								<li>Replaying of any hole is not permitted - stay on course</li>
 								<li>Player with the lowest score on hole tees first on next

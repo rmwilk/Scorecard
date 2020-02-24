@@ -42,6 +42,18 @@ public class HolesService extends AbstractService {
 
 		return holes;
 	}
+	/**
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Holes> getAllHolesByCourse(Integer id) {
+		List<Holes> holes;
+		Query query = em.createNamedQuery("GetAllHoles");
+		query.setParameter("courseId", id);
+		holes = query.getResultList();
+		
+		return holes;
+	}
 
 	/**
 	 * @param id
@@ -71,6 +83,12 @@ public class HolesService extends AbstractService {
 
 		return holes;
 	}
+	
+	// given `results` is a List of size 1
+	public String showHint(List<Holes> results) {
+		return results.get(0).getHint();
+	}
+	
 	/**
 	 * 
 	 */

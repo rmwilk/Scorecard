@@ -18,7 +18,7 @@
 		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
 			<%@ include file="inserts/topMain.html"%>
-			<h2 id="greeting">Logged In As: ${ account.email }</h2>
+			<h2 id="greeting">Logged In As: ${ sessionScope.account.email }</h2>
 			<div class="container">
 				<div class="btn-group-vertical d-flex btn-group-lg ">
 					<button type="button" onclick="buildCourseOptionsModal2();"

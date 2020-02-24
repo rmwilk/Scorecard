@@ -17,6 +17,13 @@
 			<br>
 			<div class="form-container">
 				<div class="form-group">
+					<p>
+						Login with your account here <br>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#loginModal">
+							Login <i class="fas fa-sign-in-alt"></i>
+						</button>
+					</p>
 					<form id="guest-game" action="guest" method="post">
 						<p>
 							Not worried about saving your scores? <br>
@@ -36,13 +43,6 @@
 							</button>
 						</p>
 					</form>
-					<p>
-						Login with your account here <br>
-						<button type="button" class="btn btn-danger" data-toggle="modal"
-							data-target="#loginModal">
-							Login <i class="fas fa-sign-in-alt"></i>
-						</button>
-					</p>
 				</div>
 			</div>
 			<%@ include file="inserts/bottomMain.html"%>

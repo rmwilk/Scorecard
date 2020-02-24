@@ -32,8 +32,8 @@ public class Logout extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
+			session.setAttribute("loggedIn", false); // not needed?
 		    session.invalidate();
-		    request.setAttribute("loggedIn", false);
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index");
 		rd.forward(request,response);

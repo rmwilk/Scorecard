@@ -19,7 +19,7 @@ function getRadioValue(name) {
 
 function submitCourseOptions() {
 	courseC2G = getRadioValue("courses");
-	var select = element("guestsOption");
+	var select = element("guestsSelect");
 	playersC2G = select.options[select.selectedIndex].value;
 	var query = "?c=" + courseC2G + "&p=" + playersC2G;
 	window.location.href = "./game.html" + query;
@@ -54,15 +54,15 @@ function buildCourseOptionsModal2() {
 							<input type="radio" name="courses" value="B">
 								Course B
 							</label>
+							<h3>How many players?</h3>
+							<select id="guestsSelect" name="guests" data-style="btn-primary" 
+							class="mdb-select md-form form-control my-form-control">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select> 
 						</form>
-						<h3>How many players?</h3>
-						<select id="guestsOption" name="guests" data-style="btn-primary" 
-						class="mdb-select md-form form-control my-form-control">
-							<option value="1" selected>1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select> 
 						<br>
 					
 					</div>

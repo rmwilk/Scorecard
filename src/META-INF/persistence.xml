@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="Scorecard">
 		<class>com.perscholas.casestudy.entities.Accounts</class>
 		<class>com.perscholas.casestudy.entities.Courses</class>
 		<class>com.perscholas.casestudy.entities.Holes</class>
 		<class>com.perscholas.casestudy.entities.Games</class>
 		<class>com.perscholas.casestudy.entities.GameScores</class>
-	<properties>
-		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/scorecarddb"></property>
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3307/scorecarddb"></property>
 			<property name="javax.persistence.jdbc.user" value="root"></property>
-			<property name="javax.persistence.jdbc.password" value="madibaker3"></property>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"></property>
+			<property name="javax.persistence.jdbc.password"
+				value="pass"></property>
+			<!-- use this at PerScholas -->
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.cj.jdbc.Driver"></property>
+			<!-- use this at home -->
+			<!-- <property name="javax.persistence.jdbc.password" value="madibaker3"></property> -->
 			<property name="eclipselink.logging.level" value="WARNING"></property>
 		</properties>
 	</persistence-unit>
