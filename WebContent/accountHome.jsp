@@ -1,55 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../html/head.html"%>
+<%@ include file="inserts/head.html"%>
 </head>
 <body>
 	<article>
-		<%@ include file="../html/header.html"%>
+		<%@ include file="inserts/topHeader.html"%>
+		<!-- Page Specific Buttons Go Here -->
+		<form id="logout" action="logout" method="post"></form>
+		<button type="submit" class="btn btn-danger" form="logout">
+			Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+		</button>
+		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
-			<%@ include file="../html/topMain.html"%>
-			<br>
-				<h2 id="greeting">Hello Ryan!</h2>
-				<div class="container">
-					<div class="btn-group-vertical d-flex btn-group-lg ">
-						<button type="button" onclick="buildCourseOptionsModal2();"
-							class="btn btn-primary btn-border-bottom stats-btn"
-							data-toggle="modal" data-target="#courseOptionsModal2">
-							<i class="fas fa-golf-ball" aria-hidden="true"></i> Play
-							<!-- / Continue -->
-							A Round <i class="fas fa-golf-ball" aria-hidden="true"></i>
-						</button>
-						<button type="button"
-							class="btn btn-primary btn-border-bottom stats-btn"
-							onclick="testOpenStatsPage();">
-							Check My Stats <i class="fas fa-chart-line" aria-hidden="true"></i>
-							<br> <strong>((Under Construction))</strong>
-						</button>
-						<button type="button"
-							class="btn btn-primary btn-border-bottom stats-btn"
-							data-toggle="modal" data-target="#courseRulesModal">
-							Course Rules <i class="fa fa-gavel" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-primary stats-btn"
-							onclick="testOpenInfoPage();">
-							Park Info <i class="fas fa-info-circle" aria-hidden="true"></i>
-						</button>
-					</div>
+			<%@ include file="inserts/topMain.html"%>
+			<h2 id="greeting">Logged In As: ${ account.email }</h2>
+			<div class="container">
+				<div class="btn-group-vertical d-flex btn-group-lg ">
+					<button type="button" onclick="buildCourseOptionsModal2();"
+						class="btn btn-primary btn-border-bottom stats-btn"
+						data-toggle="modal" data-target="#courseOptionsModal2">
+						<i class="fas fa-golf-ball" aria-hidden="true"></i> Play
+						<!-- / Continue -->
+						A Round <i class="fas fa-golf-ball" aria-hidden="true"></i>
+					</button>
+					<button type="submit"
+						class="btn btn-primary btn-border-bottom stats-btn" form="myStats">
+						Check My Stats <i class="fas fa-chart-line" aria-hidden="true"></i>
+						<br> <strong>((Under Construction))</strong>
+					</button>
+					<button type="button"
+						class="btn btn-primary btn-border-bottom stats-btn"
+						data-toggle="modal" data-target="#courseRulesModal">
+						Course Rules <i class="fa fa-gavel" aria-hidden="true"></i>
+					</button>
+					<button type="submit" class="btn btn-primary stats-btn"
+						form="parkInfo">
+						Park Info <i class="fas fa-info-circle" aria-hidden="true"></i>
+					</button>
 				</div>
 			</div>
-			<%@ include file="../html/bottomMain.html"%>
+			<form id="myStats" action="stats" method="post"></form>
+			<form id="parkInfo" action="info" method="post"></form>
+
+			<%@ include file="inserts/bottomMain.html"%>
 		</main>
-		<footer>
-			<%@ include file="../html/topFooter.html"%>
+		<%-- <footer>
+			<%@ include file="html/topFooter.html"%>
 			<button type="button" hidden="true" style="">&nbsp;</button>
-			<button type="button" class="btn btn-danger"
-				onclick="testOpenIndexPage();">
+			<button type="submit" class="btn btn-danger" form="logout">
 				Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
 			</button>
-			<%@ include file="../html/bottomFooter.html"%>
-		</footer>
+			<%@ include file="html/bottomFooter.html"%>
+		</footer> --%>
 		<!-- Course Options Modal -->
 		<div id="courseOptionsModalSpace2"></div>
 		<!-- Course Rules Modal -->

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="/html/head.html"%>
+<%@ include file="inserts/head.html"%>
 </head>
 <style>
 .pt-5, .py-5 {
@@ -14,10 +14,19 @@
 <body onload="openCourseStats(event, 'courseA');">
 	<article>
 		<header class="header">
-			<%@ include file="/html/header.html"%>
+			<%@ include file="inserts/topHeader.html"%>
+			<form id="logout" action="logout" method="post"></form>
+			<button type="submit" class="btn btn-danger" form="logout">
+				Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+			</button>
+			<form id="backToHome" action="home" method="post"></form>
+			<button type="submit" form="backToHome" class="btn btn-primary">
+			Go Back <i class="fas fa-arrow-left"></i>
+				</button>
+			<%@ include file="inserts/bottomHeader.html"%>
 		</header>
 		<main>
-			<%@ include file="/html/topMain.html"%>
+			<%@ include file="inserts/topMain.html"%>
 			<h2>My Stats</h2>
 			<p>
 				<strong>!!!! Page Under Construction !!!!</strong>
@@ -104,16 +113,16 @@
 			</div>
 			<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 			<br>
-			<%@ include file="/html/bottomMain.html"%>
+			<%@ include file="inserts/bottomMain.html"%>
 		</main>
-		<footer>
-			<%@ include file="/html/topFooter.html"%>
-			<button type="button" onclick="testOpenAccountHomePage();"
+		<%-- <footer>
+			<%@ include file="inserts/topFooter.html"%>
+			<button type="submit" form="backToHome"
 				class="btn btn-primary">Back to Account Home</button>
-			<%@ include file="/html/bottomFooter.html"%>
-		</footer>
+			<%@ include file="inserts/bottomFooter.html"%>
+		</footer> --%>
 	</article>
-	<%@ include file="/html/scripts.html"%>
+	<%@ include file="inserts/scripts.html"%>
 	<!-- <script type="text/javascript" src="../js/generalScripts.js"></script>
 		<script type="text/javascript" src="../js/statsScripts.js"></script>
 		<script type="text/javascript" src="../boot-js/bootstrap.min.js"></script>

@@ -3,13 +3,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="../html/head.html"%>
+<%@ include file="inserts/head.html"%>
 </head>
 <body>
 	<article>
-		<%@ include file="../html/header.html"%>
+		<%@ include file="inserts/topHeader.html"%>
+		<button type="button" class="btn btn-danger" data-toggle="modal"
+			data-target="#loginModal">
+			Logout <i class="fas fa-sign-in-alt"></i>
+		</button>
+		<form id="backToHome" action="home" method="post"></form>
+		<button type="submit" class="btn btn-primary" form="backToHome">
+		Go Back <i class="fas fa-arrow-left"></i></button>
+		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
-			<%@ include file="../html/topMain.html"%>
+			<%@ include file="inserts/topMain.html"%>
 			<!-- About Midway Section -->
 			<h2>Park Info</h2>
 			<div class="container" style="text-align: center">
@@ -45,17 +53,17 @@
 						Park Info</a> <i class="fas fa-external-link-alt"></i>
 				</p>
 			</div>
-			<%@ include file="../html/bottomMain.html"%>
+			<%@ include file="inserts/bottomMain.html"%>
 		</main>
-		<footer>
-			<%@ include file="../html/topFooter.html"%>
+		<%-- <footer>
+			<%@ include file="inserts/topFooter.html"%>
 			<button type="button" hidden="true" style="">&nbsp;</button>
-			<button type="button" class="btn btn-primary"
-				onclick="testOpenAccountHomePage();">Back to My Account</button>
-			<%@ include files="../html/bottomFooter.html"%>
-		</footer>
+			<button type="submit" class="btn btn-primary"
+				form="backToHome">Back to My Account</button>
+			<%@ include file="inserts/bottomFooter.html"%>
+		</footer> --%>
 	</article>
-	<%@ include file="../html/scripts.html"%>
+	<%@ include file="inserts/scripts.html"%>
 	<!-- Scripts -->
 	<!-- <script type="text/javascript" src="../js/generalScripts.js"></script>
 	<script type="text/javascript" src="../js/courseToGame.js"></script>

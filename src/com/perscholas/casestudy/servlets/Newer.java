@@ -8,41 +8,32 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.perscholas.casestudy.entities.Accounts;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class Newer
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/login" })
-public class LoginServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/Newer" })
+public class Newer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	/**
-	 * 
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public Newer() {
 		super();
 	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/doLogin");
-        rd.include(request, response);
-		
-        if ((boolean) request.getAttribute("loggedIn")) {
-        	HttpSession session = request.getSession(true);
-        	session.setAttribute("account", request.getAttribute("account"));
-        	
-        	rd = getServletContext().getRequestDispatcher("/home");
-			rd.forward(request, response);
-		} else {
-			rd = getServletContext().getRequestDispatcher("/index");
-			rd.forward(request, response);
-		}
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		/*
+		 * RequestDispatcher rd = getServletContext().getRequestDispatcher("/doLogin");
+		 * rd.forward(request, response);
+		 */
 	}
 
 	/**

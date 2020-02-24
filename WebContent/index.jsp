@@ -1,48 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="/html/head.html"%>
+<%@ include file="inserts/head.html"%>
 </head>
 <body>
 	<article>
-		<%@ include file="/html/header.html"%>
+		<%@ include file="inserts/topHeader.html"%>
+		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
-			<%@ include file="/html/topMain.html"%>
-			<%@ include file="/html/carousel.html"%>
+			<%@ include file="inserts/topMain.html"%>
+			<%@ include file="inserts/carousel.html"%>
 			<br>
 			<div class="form-container">
 				<div class="form-group">
-			<form id="guest-game" action="/GuestGame" method="post">
+					<form id="guest-game" action="guest" method="post">
+						<p>
+							Not worried about saving your scores? <br>
+							<button type="button" class="btn btn-primary"
+								onclick="buildCourseOptionsModal2();" data-toggle="modal"
+								data-toggle="modal" data-target="#courseOptionsModal2">
+								Continue as a Guest <i class="fas fa-user"></i>
+							</button>
+						</p>
+					</form>
+					<form id="create-account" action="CreateAccount" method="post">
+						<p>
+							Keep your stats and save your past scores by signing up for free!
+							<br>
+							<button type="submit" class="btn btn-secondary">
+								Click here to sign up <i class="fas fa-user-plus"></i>
+							</button>
+						</p>
+					</form>
 					<p>
-						Not worried about saving your scores? <br>
-						<button type="submit" class="btn btn-primary"
-							onclick="buildCourseOptionsModal2();" data-toggle="modal"
-							data-toggle="modal" data-target="#courseOptionsModal2">
-							Continue as a Guest <i class="fas fa-user"></i>
+						Login with your account here <br>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#loginModal">
+							Login <i class="fas fa-sign-in-alt"></i>
 						</button>
 					</p>
-					</form>
-					<form id="create-account" action="/CreateAccount" method="post">
-					<p>
-						Keep your stats and save your past scores by signing up for free!
-						<br>
-						<button type="submit" class="btn btn-secondary"> Click here to sign up <i class="fas fa-user-plus"></i></button>
-					</p>
-					</form>
 				</div>
 			</div>
-			<%@ include file="/html/bottomMain.html"%>
+			<%@ include file="inserts/bottomMain.html"%>
 		</main>
-		<footer>
-			<%@ include file="/html/topFooter.html"%>
+		<%-- <footer>
+			<%@ include file="inserts/topFooter.html"%>
 			<button type="button" class="btn btn-danger" data-toggle="modal"
 				data-target="#loginModal">
 				Login <i class="fas fa-sign-in-alt"></i>
 			</button>
-			<%@ include file="/html/bottomFooter.html"%>
-		</footer>
+			<%@ include file="inserts/bottomFooter.html"%>
+		</footer> --%>
 		<!-- Code for Modals -->
 		<!-- Login Modal -->
 		<div id="loginModalSpace">
@@ -59,7 +71,7 @@
 						</div>
 						<div class="modal-body">
 							<div class="container">
-								<form id="login" class="form-container" action="/login"
+								<form id="login" class="form-container" action="login"
 									method="post">
 									<h3>Enter Your Account Information</h3>
 									<div class="form-group">
@@ -77,6 +89,7 @@
 									</div>
 									<div id="errorMessageSpace"></div>
 								</form>
+
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
@@ -95,6 +108,6 @@
 		<!-- End Course Options Modal -->
 
 	</article>
-	<%@ include file="/html/scripts.html"%>
+	<%@ include file="inserts/scripts.html"%>
 </body>
 </html>

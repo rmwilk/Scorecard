@@ -15,49 +15,61 @@ import com.perscholas.casestudy.entities.Accounts;
 /**
  * Servlet implementation class Create
  */
-@WebServlet("/create")
+@WebServlet(asyncSupported = true, urlPatterns = { "/create" })
 public class CreateModel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreateModel() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CreateModel() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		AccountsService as = new AccountsService();
 		String name = request.getParameter("nameTB");
 		String email = request.getParameter("emailTB");
 		String password = request.getParameter("passwordTB");
+		boolean isValid = false;
 		
-		Accounts newUser = new Accounts(name,email,password);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/index.jsp");; 
-		if(isValidAccount(newUser)) {
+		Accounts newUser = new Accounts(email, password, name);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		isValid = isValidAccount(newUser);
+				
+		if (isValid) {
+			try {
 			as.addAccount(newUser);
-		}
-		else {
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else {
 			// error page
-			rd = getServletContext().getRequestDispatcher("/jsp/signup.jsp");
+			rd = getServletContext().getRequestDispatcher("/signup.jsp");
+			request.setAttribute("isValid", isValid);
 		}
+		
 		as.close();
-		rd.forward(request, response);	
+		rd.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
 	private boolean isValidAccount(Accounts acc) {
-		
+
 		// TODO validation code for new account
 		return true;
 	}

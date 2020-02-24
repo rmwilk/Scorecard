@@ -80,10 +80,11 @@ function register() {
 	
 
 	if (validEmail && validPass && validPassMatch) {
-		buildMessageModal("Login Sucess","Welcome " + address + "!");
-		element("signup-form").submit;
+		buildMessageModal("Sign-Up Sucess","Welcome " + address + "!");
+		var form = document.getElementsByName("signupform");
+		 form[0].submit();
 	} else {
-		buildMessageModal("Login Failed", message);
+		buildMessageModal("Sign-Up Failed", message);
 		element("email").value = "";
 		element("password").value = "";
 		element("passwordConfirm").value = "";

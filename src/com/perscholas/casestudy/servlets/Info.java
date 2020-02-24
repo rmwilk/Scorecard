@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Index
+ * Servlet implementation class Info
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/index" })
-public class Index extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/info" })
+public class Info extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public Info() {
         super();
     }
 
@@ -27,7 +27,7 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/info.jsp");
 		rd.forward(request, response);
 	}
 

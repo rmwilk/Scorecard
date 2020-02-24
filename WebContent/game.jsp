@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/html/head.html"%>
+<%@ include file="inserts/head.html"%>
 <style>
 .table td {
 	vertical-align: middle;
@@ -12,9 +12,22 @@
 </head>
 <body onload="receiveCourseOptions(); testPopulateWithModals();">
 	<article>
-		<%@ include file="/html/header.html"%>
+		<%@ include file="inserts/topHeader.html"%>
+		<!-- Page Specific Buttons Go Here -->
+		<button type="button" hidden="true" style="">&nbsp;</button>
+			<button type="submit" class="btn btn-danger"
+				form="backToHome">Trash Scorecard</button>
+			<button type="button" class="btn btn-secondary" data-toggle="modal"
+				data-target="#clearModal">Clear Entries</button>
+			<button type="button" class="btn btn-success"
+				onclick="calculateScores();" data-toggle="modal"
+				data-target="#leaderboardModal">End Game</button>
+		<button type="submit" class="btn btn-danger" form="logout">
+			Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+		</button>
+		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
-			<%@ include file="/html/topMain.html"%>
+			<%@ include file="inserts/topMain.html"%>
 			<h2 id="currentGame">My Current Game</h2>
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#courseRulesModal">Course Rules</button>
@@ -28,10 +41,12 @@
 					<!-- produced through javascript -->
 				</table>
 			</div>
-			<%@ include file="/html/bottomMain.html"%>
+			<form id="logout" action="logout" method="post"></form>
+			<form id="backToHome" action="home" method="post"></form>
+			<%@ include file="inserts/bottomMain.html"%>
 		</main>
-		<footer class="">
-			<%@ include file="/html/topFooter.html"%>
+		<%-- <footer class="">
+			<%@ include file="inserts/topFooter.html"%>
 			<button type="button" hidden="true" style="">&nbsp;</button>
 			<button type="button" class="btn btn-danger"
 				onclick="testOpenIndexPage();">Trash Scorecard</button>
@@ -41,7 +56,7 @@
 				onclick="calculateScores();" data-toggle="modal"
 				data-target="#leaderboardModal">End Game</button>
 			<%@ include file="/html/bottomFooter.html"%>
-		</footer>
+		</footer> --%>
 		<!-- Course Rules Modal -->
 		<div class="modal fade" id="courseRulesModal" tabindex="-1"
 			role="dialog" aria-labelledby="courseRulesModalTitle"

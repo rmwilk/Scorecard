@@ -20,7 +20,7 @@ public class Accounts implements Serializable {
 	 * 
 	 */
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String email;

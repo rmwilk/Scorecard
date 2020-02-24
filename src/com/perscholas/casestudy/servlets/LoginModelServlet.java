@@ -15,9 +15,16 @@ import com.perscholas.casestudy.entities.Accounts;
 /**
  * Servlet implementation class ModelServlet
  */
-@WebServlet("/doLogin")
+@WebServlet(asyncSupported = true, urlPatterns = { "/doLogin" })
 public class LoginModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	public LoginModelServlet() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

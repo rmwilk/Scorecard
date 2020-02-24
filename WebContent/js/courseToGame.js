@@ -44,7 +44,7 @@ function buildCourseOptionsModal2() {
 				<div class="modal-body">
 					<div class="container" style="text-align: center">
 						<h3>Select Course</h3>
-						<form>
+						<form id="gameOptions" action="game" method="post">
 							<label class="radio-inline"> 
 								<input type="radio" name="courses" value="A" checked>
 								Course A
@@ -56,7 +56,7 @@ function buildCourseOptionsModal2() {
 							</label>
 						</form>
 						<h3>How many players?</h3>
-						<select id="guestsOption" data-style="btn-primary" 
+						<select id="guestsOption" name="guests" data-style="btn-primary" 
 						class="mdb-select md-form form-control my-form-control">
 							<option value="1" selected>1</option>
 							<option value="2">2</option>
@@ -69,8 +69,9 @@ function buildCourseOptionsModal2() {
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary"
-							onclick="submitCourseOptions();">Start Game</button>
+						<button type="submit" class="btn btn-primary"
+							onclick="submitCourseOptions();" form="gameOptions">
+							Start Game</button>
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,10 @@ VALUES
 ("A"),
 ("B");
 
-INSERT INTO Holes (name, course_id, number, par, hint)
+INSERT INTO `accounts` (email, password, nickname)
+VALUES ("rwilk@umich.edu", "admin", "Ry");
+
+INSERT INTO `Holes` (name, course_id, number, par, hint)
 VALUES 
 ("1A", 1, 1, 2, "Don't hit this one too hard! Keep your ball to the left and it'll curve back to the hole."),
 ("2A", 1, 2, 2, "Get up the hill!! Hit it hard enough over the hill and aim straight for the hole."),
@@ -29,7 +32,7 @@ VALUES
 ("4B",2, 4, 2, "Give it good power and bank it off the tall wall in front of you."),
 ("5B",2, 5, 3, "Doesn't matter which side you choose, a hole in one is all about luck here."),
 ("6B",2, 6, 2, "Tee up to the right and aim through the small opening with medium speed."),
-("7B",, 7, 2, "With medium speed, bank off the cement towards the hole. Not too fast though!"),
+("7B",2, 7, 2, "With medium speed, bank off the cement towards the hole. Not too fast though!"),
 ("8B",2, 8, 2, "I think you already know what to do here. Good luck!"),
 ("9B",2, 9, 2, "Watch out for the sloping green!"),
 ("10B",2, 10, 2, "This is the practice hole for #18. Your ball might get stuck unfortunately. Don't move the rock, please."),
