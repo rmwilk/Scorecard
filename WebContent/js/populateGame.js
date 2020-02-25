@@ -7,6 +7,9 @@ function element(id) {
 	return document.getElementById(id);
 }
 
+function printToTable(html){
+	element("game-table").innerHTML = html;
+}
 function receiveCourseOptions() {
 	var query = decodeURIComponent(window.location.search);
 	query = query.substring(3);
@@ -209,7 +212,7 @@ function buildHoleHintModal(hole){
 					</div>
 					<div class="modal-body">
 						<div class="container" style="text-align: center">
-							<% hole = holesService.getHoleByCourseAndNumber(course, number); %>
+							Hint
 						</div>
 					</div>
 					<div class="modal-footer">

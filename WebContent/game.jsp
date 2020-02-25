@@ -2,19 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true"%>
-<%@ page import="com.perscholas.casestudy.data.HolesService" %>
-<%@ page import="com.perscholas.casestudy.entities.Holes" %>
-<%@ page import="com.perscholas.casestudy.data.AccountsService" %>
-<%@ page import="com.perscholas.casestudy.data.CoursesService" %>
-<%@ page import="com.perscholas.casestudy.data.GameScoresService" %>
-<%@ page import="com.perscholas.casestudy.data.GamesService" %>
-<%@ page import="com.perscholas.casestudy.data.HolesService" %>
-<%@ page import="com.perscholas.casestudy.entities.Accounts" %>
-<%@ page import="com.perscholas.casestudy.entities.Holes" %>
-<%@ page import="com.perscholas.casestudy.entities.Courses" %>
-<%@ page import="com.perscholas.casestudy.entities.Games" %>
-<%@ page import="com.perscholas.casestudy.entities.GameScores" %>
-<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,24 +14,12 @@
 </style>
 </head>
 <%
-	String guests = (String) session.getAttribute("guests");
-	String course = (String) session.getAttribute("course");
-	List<Holes> hole; // temp variable
 	boolean loggedIn = (boolean) session.getAttribute("loggedIn");
-	AccountsService accountsService;
-	HolesService holesService;
-	CoursesService coursesService;
-	GamesService gamesService;
-	GameScoresService gameScoresService;
-	
-		accountsService = new AccountsService();
-		holesService = new HolesService();
-		coursesService = new CoursesService();
-		gamesService = new GamesService();
-		gameScoresService = new GameScoresService();
-%>
+%> 
+<!--  testPopulateWithModals();-->
 <body
-	onload="receiveFromServlet('<%out.print(guests);%>', '<%out.print(course);%>'); testPopulateWithModals();">
+	onload="receiveFromServlet('<c:out value="${ guests }"/>', '<c:out value="${ course }"/>');
+	printToTable('<c:out value="${ table }"/>');">
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
 		<!-- Page Specific Buttons Go Here -->
@@ -78,11 +54,13 @@
 			<div style="height: 5px"></div>
 			<div class="table-responsive">
 				<form id="game" name="gameForm" action="score" method="post">
+				<!-- id="game-table" -->
 					<table id="game-table" class="table table-sm">
 						<!-- produced through javascript -->
-					</table>
+<%-- 						<c:out value="${ table }"/>
+ --%>					</table>
 				</form>
-				<!-- --------------------------------------------------------------------------------------------- -->
+			<!-- --------------------------------------------------------------------------------------------- -->
 			</div>
 			<form id="logout" action="logout" method="post"></form>
 			<form id="backToHome" action="home" method="post"></form>

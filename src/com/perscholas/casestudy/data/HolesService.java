@@ -46,10 +46,10 @@ public class HolesService extends AbstractService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Holes> getAllHolesByCourse(Integer id) {
+	public List<Holes> getAllHolesByCourseName(String name){
 		List<Holes> holes;
-		Query query = em.createNamedQuery("GetAllHoles");
-		query.setParameter("courseId", id);
+		Query query = em.createNamedQuery("GetAllHolesByCourseName");
+		query.setParameter("name", name);
 		holes = query.getResultList();
 		
 		return holes;

@@ -44,7 +44,7 @@ function buildCourseOptionsModal2() {
 				<div class="modal-body">
 					<div class="container" style="text-align: center">
 						<h3>Select Course</h3>
-						<form id="gameOptions" action="game" method="post">
+						<form id="gameOptions" action="createGame" method="post">
 							<label class="radio-inline"> 
 								<input type="radio" name="courses" value="A" checked>
 								Course A

@@ -4,7 +4,12 @@ VALUES
 ("B");
 
 INSERT INTO `accounts` (email, password, nickname)
-VALUES ("rwilk@umich.edu", "admin", "Ry");
+VALUES 
+("rwilk@umich.edu", "admin", "Ry"),
+("temp1@temp.temp", "temp", "P1"),
+("temp2@temp.temp", "temp", "P2"),
+("temp3@temp.temp", "temp", "P3"),
+("temp4@temp.temp", "temp", "P4");
 
 INSERT INTO `Holes` (name, course_id, number, par, hint)
 VALUES 
