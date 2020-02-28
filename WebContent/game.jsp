@@ -26,13 +26,13 @@
 		<%@ include file="inserts/topHeader.html"%>
 		<!-- Page Specific Buttons Go Here -->
 		<button type="button" hidden="true" style="">&nbsp;</button>
-		<button type="submit" class="btn btn-danger" form="backToHome">Trash
+		<button type="submit" class="btn btn-danger" form="TrashScorecard">Trash
 			Scorecard</button>
 		<button type="button" class="btn btn-secondary" data-toggle="modal"
 			data-target="#clearModal">Clear Entries</button>
 		<button type="button" class="btn btn-success"
 			onclick="calculateScores();" data-toggle="modal"
-			data-target="#leaderboardModal">End Game</button>
+			data-target="#leaderboardModal">Scoreboard</button>
 		<%
 			if (loggedIn) {
 		%>
@@ -63,6 +63,7 @@
 				</table>
 				<!-- --------------------------------------------------------------------------------------------- -->
 			</div>
+			<form id="TrashScorecard" action="TrashScorecard" method="post"></form>
 			<form id="logout" action="logout" method="post"></form>
 			<form id="backToHome" action="home" method="post"></form>
 			<%@ include file="inserts/bottomMain.html"%>

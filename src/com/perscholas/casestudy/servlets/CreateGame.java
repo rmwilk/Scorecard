@@ -114,6 +114,7 @@ public class CreateGame extends HttpServlet {
 			counter++;
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/game");
+		closeup();
 		rd.forward(request, response);
 	}
 
@@ -140,5 +141,12 @@ public class CreateGame extends HttpServlet {
 		gamesService = new GamesService();
 		gameScoresService = new GameScoresService();
 		session = request.getSession(true);
+	}
+	private void closeup() {
+		accountsService.close();
+		holesService.close();
+		coursesService.close();
+		gamesService.close();
+		gameScoresService.close();
 	}
 }
