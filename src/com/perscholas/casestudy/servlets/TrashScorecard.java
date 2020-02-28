@@ -40,13 +40,17 @@ public class TrashScorecard extends HttpServlet {
      */
     public TrashScorecard() {
         super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		init(request);
+		initialize();
+		session = request.getSession(true);
+		guests = Integer.parseInt((String) session.getAttribute("guests"));
 		RequestDispatcher rd;
 		boolean loggedIn = (boolean) session.getAttribute("loggedIn");
 		if(loggedIn) {
@@ -59,8 +63,8 @@ public class TrashScorecard extends HttpServlet {
 			session.invalidate();
 			rd = getServletContext().getRequestDispatcher("/index");
 		}
-		closeup();
 		rd.forward(request, response);
+		closeup();
 	}
 
 	/**
@@ -88,13 +92,12 @@ public class TrashScorecard extends HttpServlet {
 			counter++;
 		}
 	}
-	private void init(HttpServletRequest request) {
+	private void initialize() {
 		accountsService = new AccountsService();
 		holesService = new HolesService();
 		coursesService = new CoursesService();
 		gamesService = new GamesService();
 		gameScoresService = new GameScoresService();
-		session = request.getSession(true);
 	}
 	
 	private void closeup() {

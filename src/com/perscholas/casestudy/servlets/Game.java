@@ -29,6 +29,8 @@ import com.perscholas.casestudy.entities.GameScores;
 @WebServlet(asyncSupported = true, urlPatterns = { "/game" })
 public class Game extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	/* Copied to Every Servlet */
 	private HttpSession session;
 	private AccountsService accountsService;
 	private HolesService holesService;
@@ -45,6 +47,8 @@ public class Game extends HttpServlet {
 	 */
 	public Game() {
 		super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
 	}
 
 	/**
@@ -53,7 +57,9 @@ public class Game extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		init(request);
+		initialize();
+		session = request.getSession(true);
+		guests = Integer.parseInt((String) session.getAttribute("guests"));
 
 		String table = buildTable();
 		session.setAttribute("table", table);
@@ -61,6 +67,7 @@ public class Game extends HttpServlet {
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/game.jsp");
 		rd.forward(request, response);
+		closeup();
 	}
 
 	/**
@@ -192,14 +199,12 @@ public class Game extends HttpServlet {
 		}
 	}
 
-	private void init(HttpServletRequest request) {
+	private void initialize() {
 		accountsService = new AccountsService();
 		holesService = new HolesService();
 		coursesService = new CoursesService();
 		gamesService = new GamesService();
 		gameScoresService = new GameScoresService();
-		session = request.getSession(true);
-		guests = Integer.parseInt((String) session.getAttribute("guests"));
 	}
 	
 	private void closeup() {

@@ -21,6 +21,8 @@ public class Stats extends HttpServlet {
      */
     public Stats() {
         super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
     }
 
 	/**

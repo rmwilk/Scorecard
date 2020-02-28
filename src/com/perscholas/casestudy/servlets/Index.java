@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Index
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/index" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/index", "/" })
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,6 +21,8 @@ public class Index extends HttpServlet {
      */
     public Index() {
         super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
     }
 
 	/**

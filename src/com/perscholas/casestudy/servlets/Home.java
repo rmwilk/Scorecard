@@ -21,6 +21,8 @@ public class Home extends HttpServlet {
 	 */
 	public Home() {
 		super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
 	}
 
 	/**

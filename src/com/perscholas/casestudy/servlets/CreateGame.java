@@ -48,7 +48,9 @@ public class CreateGame extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public CreateGame() throws ServletException {
-		super();		
+		super();	
+		// TODO remove console log
+		System.out.println(getClass().getName());
 	}
 
 	/**
@@ -57,7 +59,7 @@ public class CreateGame extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		init(request);
+		initialize();
 		String guests = request.getParameter("guests");
 		String course = request.getParameter("courses");
 		String selectedCourse;
@@ -73,9 +75,9 @@ public class CreateGame extends HttpServlet {
 		session.setAttribute("guests", guests);
 		session.setAttribute("course", selectedCourse);
 		session.setAttribute("courseNumber", courseNumber);
-		if (request.getParameter("loggedIn") == null) { // guest
+		if (session.getAttribute("loggedIn") == null) { // guest
 			session.setAttribute("loggedIn", false);
-			ArrayList<Accounts> players = new ArrayList<>();
+			List<Accounts> players = new ArrayList<>();
 			accountsService = new AccountsService();
 			int tempGuests = (Integer.parseInt(guests));
 			if (tempGuests > 0) {
@@ -90,7 +92,7 @@ public class CreateGame extends HttpServlet {
 			if (tempGuests > 3) {
 				players.add(getAccountHere("temp4@temp.temp"));
 			}
-			session.setAttribute("players", (List<Accounts>)players);
+			session.setAttribute("players", players);
 		}
 		// else (( account is logged in ))
 		
@@ -113,9 +115,10 @@ public class CreateGame extends HttpServlet {
 			tempString.delete(0, tempString.length());
 			counter++;
 		}
+		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/game");
-		closeup();
 		rd.forward(request, response);
+		closeup();
 	}
 
 	/**
@@ -134,13 +137,12 @@ public class CreateGame extends HttpServlet {
 	private List<Holes> getHoleInfo(int courseId) {
 		return holesService.joinHolesAndCoursesByCourseId(courseId);
 	}
-	private void init(HttpServletRequest request) {
+	private void initialize() {
 		accountsService = new AccountsService();
 		holesService = new HolesService();
 		coursesService = new CoursesService();
 		gamesService = new GamesService();
 		gameScoresService = new GameScoresService();
-		session = request.getSession(true);
 	}
 	private void closeup() {
 		accountsService.close();

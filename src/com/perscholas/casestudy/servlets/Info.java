@@ -21,6 +21,8 @@ public class Info extends HttpServlet {
      */
     public Info() {
         super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
     }
 
 	/**

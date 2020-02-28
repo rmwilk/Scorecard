@@ -24,6 +24,8 @@ public class HintModalBuilder extends HttpServlet {
 	 */
 	public HintModalBuilder() {
 		super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
 	}
 
 	/**

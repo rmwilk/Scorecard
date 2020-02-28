@@ -34,7 +34,7 @@
 							</button>
 						</p>
 					</form>
-					<form id="create-account" action="CreateAccount" method="post">
+					<form id="create-account" action="register " method="post">
 						<p>
 							Keep your stats and save your past scores by signing up for free!
 							<br>

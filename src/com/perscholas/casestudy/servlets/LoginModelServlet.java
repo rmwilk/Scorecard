@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.perscholas.casestudy.data.AccountsService;
+import com.perscholas.casestudy.data.CoursesService;
+import com.perscholas.casestudy.data.GameScoresService;
+import com.perscholas.casestudy.data.GamesService;
+import com.perscholas.casestudy.data.HolesService;
 import com.perscholas.casestudy.entities.Accounts;
 
 /**
@@ -20,11 +24,21 @@ import com.perscholas.casestudy.entities.Accounts;
 public class LoginModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/* Copied to Every Servlet */
+	private HttpSession session;
+	private AccountsService accountsService;
+	private HolesService holesService;
+	private CoursesService coursesService;
+	private GamesService gamesService;
+	private GameScoresService gameScoresService;
+
 	/**
 	 * 
 	 */
 	public LoginModelServlet() {
 		super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
 	}
 
 	/**
@@ -34,29 +48,28 @@ public class LoginModelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		/* Initialize all services */
+		initialize();
+		session = request.getSession(true);
+
 		String email = request.getParameter("emailTB");
 		String pass = request.getParameter("passwordTB");
-		
-		System.out.println(email);
-		
-		HttpSession session = request.getSession(true);
+
 		request.setAttribute("email", email);
-		session.setAttribute("loggedIn", false);
 
 		AccountsService as = new AccountsService();
-		List<Accounts> accounts = as.getAccountByEmail(email.toLowerCase());
-		Accounts goodAccount = null;
-		for (Accounts ac : accounts) {
-			System.out.println(ac);
-			if (ac.getPassword().equals(pass)) {
-				goodAccount = ac;
+		List<Accounts> account = as.getAccountByEmail(email.toLowerCase());
+
+		for (Accounts acc : account) {
+			System.out.println(acc); // TODO remove console log
+			if (acc.getPassword().equals(pass)) {
 				session.setAttribute("loggedIn", true);
+				session.setAttribute("account", acc);
 				break;
 			}
 		}
 
-		session.setAttribute("account", goodAccount);
-		as.close();
+		closeup();
 	}
 
 	/**
@@ -68,4 +81,19 @@ public class LoginModelServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private void initialize() {
+		accountsService = new AccountsService();
+		holesService = new HolesService();
+		coursesService = new CoursesService();
+		gamesService = new GamesService();
+		gameScoresService = new GameScoresService();
+	}
+
+	private void closeup() {
+		accountsService.close();
+		holesService.close();
+		coursesService.close();
+		gamesService.close();
+		gameScoresService.close();
+	}
 }

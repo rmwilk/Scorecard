@@ -22,6 +22,8 @@ public class Logout extends HttpServlet {
 	 */
 	public Logout() {
 		super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
 	}
 
 	/**
