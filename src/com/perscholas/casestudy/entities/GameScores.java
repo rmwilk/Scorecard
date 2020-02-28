@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class GameScores implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "game_id")
 	private int gameId;

@@ -25,10 +25,11 @@ public class GamesService extends AbstractService {
 	/**
 	 * @param hole
 	 */
-	public void addGames(Games hole) {
+	public int addGames(Games game) {
 		em.getTransaction().begin();
-		em.persist(hole);
+		em.persist(game);
 		em.getTransaction().commit();
+		return game.getId();
 	}
 	
 	/**

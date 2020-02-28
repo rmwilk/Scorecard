@@ -10,6 +10,10 @@ function element(id) {
 function printToTable(html){
 	element("game-table").innerHTML = html;
 }
+
+function printModalHint(html) {
+	element("holeHintModalSpace").innerHTML = html;
+}
 function receiveCourseOptions() {
 	var query = decodeURIComponent(window.location.search);
 	query = query.substring(3);
@@ -63,7 +67,6 @@ function clearTableData() {
 	element("game-table").innerHTML = "";
 	testPopulateWithModals();
 }
-
 function putSpace(num) {
 	if(num <10) {
 		return "&nbsp;&nbsp;";
@@ -194,8 +197,10 @@ function testPopulateWithModals() {
 	}
 }*/
 
-function buildHoleHintModal(hole){
-	element("holeHintModalSpace").innerHTML = 
+function buildHoleHintModal(html){
+	element("holeHintModalSpace").innerHTML = html;
+	//var data = ${ sessionScope.courseInfo.get(`+hole+`). }
+	/*element("holeHintModalSpace").innerHTML = 
 		`<div class="modal fade" id="hintModal" tabindex="-1"
 		role="dialog" aria-labelledby="#hintModalTitle"
 			aria-hidden="true">
@@ -212,7 +217,7 @@ function buildHoleHintModal(hole){
 					</div>
 					<div class="modal-body">
 						<div class="container" style="text-align: center">
-							Hint
+							//hint
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -222,7 +227,7 @@ function buildHoleHintModal(hole){
 					</div>
 				</div>
 			</div>
-		</div>`;
+		</div>`;*/
 }
 
 function buildHoleScoreModal(hole) {

@@ -46,15 +46,30 @@ public class HolesService extends AbstractService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Holes> getAllHolesByCourseName(String name){
+	public List<Holes> getAllHolesByCourseNumber(int number){
 		List<Holes> holes;
-		Query query = em.createNamedQuery("GetAllHolesByCourseName");
-		query.setParameter("name", name);
+		Query query = em.createNamedQuery("GetAllHolesByCourseNumber");
+		query.setParameter("number", number);
 		holes = query.getResultList();
 		
 		return holes;
 	}
-
+	/*
+	 * @NamedQuery(query = "SELECT c FROM Holes c WHERE c.courseId = :courseId",
+	 name = "JoinHolesAndCoursesByCourseId"),
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Holes> joinHolesAndCoursesByCourseId(int courseId){
+		List<Holes> holes;
+		Query query = em.createNamedQuery("JoinHolesAndCoursesByCourseId");
+		query.setParameter("courseId", courseId);
+		holes = query.getResultList();
+		
+		return holes;
+	}
+	
+	
+	
 	/**
 	 * @param id
 	 * @return

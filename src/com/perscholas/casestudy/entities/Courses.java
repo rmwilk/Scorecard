@@ -12,13 +12,15 @@ import javax.persistence.*;
  */
 @NamedQueries({
 	@NamedQuery(query = "SELECT c FROM Courses c", name= "GetAllCourses"),
-	@NamedQuery(query = "SELECT c FROM Courses c WHERE c.id = :courseId", name = "GetCourseByID")
+	@NamedQuery(query = "SELECT c FROM Courses c WHERE c.id = :courseId", name = "GetCourseByID"),
+	@NamedQuery(query = "SELECT c FROM Courses c WHERE c.name = :courseName", name = "GetCourseByName")
 })
 @Entity
 public class Courses implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String name;

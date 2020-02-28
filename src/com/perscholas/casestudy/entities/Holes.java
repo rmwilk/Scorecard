@@ -10,12 +10,21 @@ import javax.persistence.*;
  */
 @NamedQueries({ @NamedQuery(query = "SELECT h FROM Holes h", name = "GetAllHoles"),
 		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.id = :holeId", name = "GetHoleByID"),
-		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :courseId AND h.number = :holeNum", name = "GetHoleByCourseAndNumber"),
-		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.name = :name", name = "GetAllHolesByCourseName") })
+		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :courseId AND h.number = :holeNum", 
+			name = "GetHoleByCourseAndNumber"),
+		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :courseId", 
+		name = "GetHoleByNumber"),
+		@NamedQuery(query = "SELECT h FROM Holes h WHERE h.number = :number", 
+			name = "GetAllHolesByCourseNumber"),
+		@NamedQuery(query = "SELECT c FROM Holes c WHERE c.courseId = :courseId", 
+			name = "JoinHolesAndCoursesByCourseId"),
+		//@NamedQuery(query = "SELECT h FROM Holes h WHERE h.courseId = :id", name = "GetAllHolesByCourseNumber") 
+})
 @Entity
 public class Holes implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	@Column(name = "course_id")
@@ -36,8 +45,7 @@ public class Holes implements Serializable {
 	 * @param par
 	 * @param hint
 	 */
-	public Holes(int id, String name, int courseId, int number, int par, String hint) {
-		this.setId(id);
+	public Holes(String name, int courseId, int number, int par, String hint) {
 		this.setName(name);
 		this.setCourseId(courseId);
 		this.setNumber(number);

@@ -129,3 +129,59 @@ function buildMessageModal(title, message){
 	$('#messageModal').modal('show');
 }
 
+// http://www.devmanuals.com/tutorials/java/servlet/ajax/ajaxPostServlet.html
+function getXmlHttpRequestObject() {
+	var xmlHttp = false;
+	if (window.XMLHttpRequest) {
+		/* To support the browsers IE7+, Firefox,  Chrome, Opera, Safari */
+		return new XMLHttpRequest(); 
+	}
+	else if(window.ActiveXObject) {
+		/* For the browsers IE6, IE5*/
+		return new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	else {
+	alert("Error due to old verion of browser upgrade your browser");
+	}
+}
+
+var xmlhttp = new getXmlHttpRequestObject(); // xmlhttp holds the ajax object
+
+function servletPostScore(players) {
+	if(xmlhttp) { 
+		xmlhttp.open("POST","ServletPost",true);
+		xmlhttp.onreadystatechange = handleServletPost;
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		
+		var data = "";
+		
+		
+		xmlhttp.send(data); 
+	}
+}
+
+function servletPostHint(hole) {
+	if(xmlhttp) { 
+		xmlhttp.open("POST","HintModalBuilder",true);
+		xmlhttp.onreadystatechange = handleServletPost;
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xmlhttp.send(hole); 
+	}
+}
+
+function handleServletPost() {
+	if (xmlhttp.readyState == 4) {
+		if(xmlhttp.status == 200) {
+		// document.getElementById("message").innerHTML=xmlhttp.responseText; 
+		}
+		else {
+			alert("Ajax calling error");
+		}
+	}
+}
+
+/// end ajax calls
+
+function setHoleHintClicked(hole) {
+	element("holeHintClicked").value = hole;
+}

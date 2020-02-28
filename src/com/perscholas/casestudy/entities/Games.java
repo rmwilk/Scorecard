@@ -2,6 +2,7 @@ package com.perscholas.casestudy.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -18,12 +19,14 @@ public class Games implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column (name = "course_id")
 	private int courseId;
-	
-	private Date startDate;
-	private Date endDate;
+	@Column (name = "start_date")
+	private Timestamp startDate;
+	@Column (name = "end_date")
+	private Timestamp endDate;
 	private static final long serialVersionUID = 1L;
 
 	public Games() {
@@ -36,11 +39,10 @@ public class Games implements Serializable {
 	 * @param startDate
 	 * @param endDate
 	 */
-	public Games(int id, int courseId, Date startDate, Date endDate) {
-		this.setId(id);
+	public Games(int courseId, Timestamp startDate) {
 		this.setCourseId(courseId);
 		this.setStartDate(startDate);
-		this.setEndDate(endDate);
+		this.setEndDate(null);
 	}
 
 
@@ -74,27 +76,27 @@ public class Games implements Serializable {
 	/**
 	 * @return
 	 */
-	public Date getStartDate() {
+	public Timestamp getStartDate() {
 		return this.startDate;
 	}
 
 	/**
-	 * @param startDate
+	 * @param startDate2
 	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartDate(Timestamp startDate2) {
+		this.startDate = startDate2;
 	}   
 	/**
 	 * @return
 	 */
-	public Date getEndDate() {
+	public Timestamp getEndDate() {
 		return this.endDate;
 	}
 
 	/**
 	 * @param endDate
 	 */
-	public void setEndDate(Date endDate) {
+	public void setEndDate(Timestamp endDate) {
 		this.endDate = endDate;
 	}
 

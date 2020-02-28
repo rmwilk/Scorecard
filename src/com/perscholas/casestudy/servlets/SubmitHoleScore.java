@@ -1,8 +1,6 @@
 package com.perscholas.casestudy.servlets;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Newer
+ * Servlet implementation class SubmitHoleScore
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/Newer" })
-public class Newer extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/score" })
+public class SubmitHoleScore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Newer() {
+	public SubmitHoleScore() {
 		super();
 	}
 
@@ -29,11 +27,7 @@ public class Newer extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		/*
-		 * RequestDispatcher rd = getServletContext().getRequestDispatcher("/doLogin");
-		 * rd.forward(request, response);
-		 */
+
 	}
 
 	/**

@@ -36,10 +36,10 @@ CREATE TABLE `holes` (
 DROP TABLE IF EXISTS `games`;
 
 CREATE TABLE `games` (
-	`id` int NOT NULL PRIMARY KEY,
+	`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`course_id` int NOT NULL,
-	`start_date` DATE,
-	`end_date` DATE,
+	`start_date` TIMESTAMP,
+	`end_date` TIMESTAMP,
 	CONSTRAINT `g_courses_fk` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
 );
 

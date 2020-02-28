@@ -1,6 +1,7 @@
 package com.perscholas.casestudy.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -26,8 +27,8 @@ import com.perscholas.casestudy.entities.GameScores;
 /**
  * Servlet implementation class Game
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/game" })
-public class Game extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/backup" })
+public class Backup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession session;
 	private AccountsService accountsService;
@@ -43,7 +44,7 @@ public class Game extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Game() {
+	public Backup() {
 		super();
 	}
 
@@ -142,30 +143,22 @@ public class Game extends HttpServlet {
 			//holeHintModals button
 			// change button to submit and buildholehintmodal function to send to servlet
 			html.append("<td><button type=\"button\" class=\"btn btn-secondary btn-sm\"	data-toggle=\"modal\"");
-			html.append("data-target=\"#hintModal");
+			html.append("data-target=\"#hintModal\" onclick=\""
+					+ "setHoleHintClicked(");
 			html.append(i);
-			html.append("\"");
+			html.append("); ");
 			
-			html.append("onclick=\"setHoleHintClicked(");
-			html.append(i);
-			html.append(");");
+//			 html.append("buildHoleHintModal("); 
+//			 html.append(i); 
+//			 html.append("); ");
+			 
+			html.append("buildHoleHintModal('");
+			html.append("Hinthererererere");
+			html.append("'); ");
 			
-			html.append("servletPostHint(");
-			html.append(i);
-			html.append("\"");
-			
-//			html.append("buildHoleHintModal('");
-//			html.append("Hinthererererere");
-//			html.append("'); ");
-			
-//			html.append("buildHoleHintModal(");
-//			html.append(i);
-//			html.append("); ");
-			
-			html.append(">");
+			html.append("\">");
 			
 			// holeScoreModals
-			
 			html.append("<i class=\"fas fa-question-circle\"></i></button><button type=\"button\"");
 			html.append(" class=\"btn btn-primary btn-sm\" onclick=\"buildHoleScoreModal(");
 			html.append(i);

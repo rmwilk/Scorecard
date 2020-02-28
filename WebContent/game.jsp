@@ -15,11 +15,13 @@
 </head>
 <%
 	boolean loggedIn = (boolean) session.getAttribute("loggedIn");
-%> 
+%>
 <!--  testPopulateWithModals();-->
 <body
 	onload="receiveFromServlet('<c:out value="${ guests }"/>', '<c:out value="${ course }"/>');
 	printToTable('<c:out value="${ table }"/>');">
+	<input id="holeHintClicked" name="holeHintClicked"
+		style="display: none;" value="" />
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
 		<!-- Page Specific Buttons Go Here -->
@@ -54,13 +56,12 @@
 			<div style="height: 5px"></div>
 			<div class="table-responsive">
 				<form id="game" name="gameForm" action="score" method="post">
-				<!-- id="game-table" -->
-					<table id="game-table" class="table table-sm">
-						<!-- produced through javascript -->
-<%-- 						<c:out value="${ table }"/>
- --%>					</table>
 				</form>
-			<!-- --------------------------------------------------------------------------------------------- -->
+				<!-- id="game-table" -->
+				<table id="game-table" class="table table-sm">
+					<!-- produced through java / javascript -->
+				</table>
+				<!-- --------------------------------------------------------------------------------------------- -->
 			</div>
 			<form id="logout" action="logout" method="post"></form>
 			<form id="backToHome" action="home" method="post"></form>
@@ -275,7 +276,33 @@
 		</div>
 		<!-- End Clear Modal -->
 		<!-- Hole Hint -->
-		<div id="holeHintModalSpace"></div>
+		<%-- <div id="holeHintModalSpace">
+			<div class="modal fade" id="hintModal" tabindex="-1" role="dialog"
+				aria-labelledby="#hintModalTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="hintModalTitle">
+							Hole  <c:out value="${ sessionScope.thisHole }"/>Hint</h2>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="container" style="text-align: center">
+								<c:out value="${ sessionScope.thisHint }"/>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> --%>
+		<%@ include file="inserts/hintModals.jsp"%>
 		<!-- End Hole Hint -->
 		<!-- Hole Score Modal -->
 		<div id="holeScoreModalSpace"></div>
@@ -285,8 +312,9 @@
 		<!-- End Leaderboard Modal -->
 	</article>
 	<!-- Scripts -->
-	<script type="text/javascript" src="../js/generalScripts.js"></script>
-	<script type="text/javascript" src="../js/populateGame.js"></script>
+	<script type="text/javascript" src="js/populateGame.js"></script>
+	<%@ include file="inserts/scripts.html"%>
+	<!-- <script type="text/javascript" src="/js/generalScripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
 		integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4="
@@ -300,6 +328,6 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/mdb.min.js"></script>
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 </body>
 </html>
