@@ -36,12 +36,10 @@ public class HintModalBuilder extends HttpServlet {
 			throws ServletException, IOException {
 		session = request.getSession(true);
 
-		System.out.println(getClass().getName() + "@" + Integer.toHexString(hashCode()));
-		System.out.println("hole: " + request.getAttribute("hole"));
-		System.out.println("clicked: " + (int) request.getAttribute("holeHintClicked"));
+		//System.out.println("hole: " + request.getParameter("hole"));
 
-		String hintModalHtml = buildHintModal((int) request.getAttribute("holeHintClicked"));
-		session.setAttribute("thisHint", hintModalHtml);
+//		String hintModalHtml = buildHintModal((int) request.getAttribute("holeHintClicked"));
+//		session.setAttribute("thisHint", hintModalHtml);
 	}
 
 	/**

@@ -14,19 +14,6 @@ function printToTable(html){
 function printModalHint(html) {
 	element("holeHintModalSpace").innerHTML = html;
 }
-function receiveCourseOptions() {
-	var query = decodeURIComponent(window.location.search);
-	query = query.substring(3);
-	var queries = query.split("&");
-	coursePop = queries[0];
-	playersPop =queries[1].substring(2);
-	var s = "";
-	if(playersPop != 1){
-		s = "s"
-	}
-	
-	element("currentGame").innerHTML = playersPop + " Player" + s + " on Course " + coursePop;
-}
 
 function receiveFromServlet(guests, course){
 	playersPop = guests;
@@ -141,95 +128,6 @@ function testPopulateWithModals() {
 	element("game-table").innerHTML += printPlayersToTBody();
 }
 
-/*function testPopulate(){
-	element("game-table").innerHTML += `
-		<tr>
-			<th id="hole#">#</th>
-			<th id="par">Par</th>
-			<th id="player1">P1</th>
-			<th id="player2">P2</th>
-			<th id="player3">P3</th>
-			<th id="player4">P4</th>
-			<th>Hint</th>
-		</tr>`;
-	for(var i = 1; i <= 18; i++){
-	getID("game-table").innerHTML += `
-		<tr>
-			<td>` + i + `</td>
-			<td>2</td>
-			<td>
-				<select class="mdb-select md-form">
-					<option value="0" selected disabled hidden="true"></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-				</select>
-			</td>
-			<td>
-				<select class="mdb-select md-form">
-					<option value="0" selected disabled hidden="true"></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-				</select>
-			</td>
-			<td>
-				<select class="mdb-select md-form">
-					<option value="0" selected disabled hidden="true"></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-				</select>
-			</td>
-			<td>
-				<select class="mdb-select md-form">
-					<option value="0" selected disabled hidden="true"></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-				</select>
-			</td>
-		</tr>`;
-	}
-}*/
-
-function buildHoleHintModal(html){
-	element("holeHintModalSpace").innerHTML = html;
-	//var data = ${ sessionScope.courseInfo.get(`+hole+`). }
-	/*element("holeHintModalSpace").innerHTML = 
-		`<div class="modal fade" id="hintModal" tabindex="-1"
-		role="dialog" aria-labelledby="#hintModalTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 class="modal-title" id="hintModalTitle">
-							Hole `+ hole + ` Hint
-						</h2>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="container" style="text-align: center">
-							//hint
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">
-							Close
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>`;*/
-}
-
 function buildHoleScoreModal(hole) {
 	var string = `
 	<div class="modal fade" id="holeScoreModal" tabindex="-1"
@@ -249,6 +147,7 @@ function buildHoleScoreModal(hole) {
 				<div class="modal-body">
 					<div class="container" style="text-align: center">
 						<h3>Input Everyone's Scores for Hole ` + hole + `</h3>
+						<form>
 						<table class="table table-condensed">
 							<thead>
 								<tr>
@@ -269,7 +168,8 @@ function buildHoleScoreModal(hole) {
 							<tbody>
 								<tr>
 									<td>
-										<select  id="p1h`+hole+`" class="mdb-select md-form">
+										<select  id="p1h`+hole+`" name="p1score`+hole+`" data-style="btn-primary"
+										class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -282,7 +182,8 @@ function buildHoleScoreModal(hole) {
 	if(playersPop > 1){
 		string += `
 									<td>
-										<select  id="p2h`+hole+`" class="mdb-select md-form">
+										<select  id="p2h`+hole+`" name="p2score`+hole+`" data-style="btn-primary"
+										class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -296,7 +197,8 @@ function buildHoleScoreModal(hole) {
 	if(playersPop > 2){
 		string += `
 									<td>
-										<select  id="p3h`+hole+`" class="mdb-select md-form">
+										<select  id="p3h`+hole+`" name="p3score`+hole+`" data-style="btn-primary"
+										 class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -310,7 +212,8 @@ function buildHoleScoreModal(hole) {
 	if(playersPop > 3){
 		string += `
 									<td>
-										<select  id="p4h`+hole+`" class="mdb-select md-form">
+										<select  id="p4h`+hole+`" name="p4`+hole+`" 
+										class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -325,14 +228,15 @@ function buildHoleScoreModal(hole) {
 								</tr>
 							</tbody>
 						</table>
+						</form>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">
 						Close
 					</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" 
-					onclick="enterScores(`+hole+`);">
+					<button type="button" class="btn btn-success" data-dismiss="modal" 
+					onclick="ajaxScore(` + hole + ',' + playersPop+`)">
 						Enter
 					</button>
 				</div>
@@ -342,7 +246,7 @@ function buildHoleScoreModal(hole) {
 	`;
 	element("holeScoreModalSpace").innerHTML = string;
 }
-
+//enterScores(`+hole+`);
 function fillScores(hole) {
 	if(isNumber(element("p1hole"+hole).innerHTML)) {
 		element("p1h"+hole).selectedIndex = element("p1hole"+hole).innerHTML;

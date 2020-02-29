@@ -21,9 +21,9 @@
 			<h2 id="greeting">Logged In As: ${ sessionScope.account.email }</h2>
 			<div class="container">
 				<div class="btn-group-vertical d-flex btn-group-lg ">
-					<button type="button" onclick="buildCourseOptionsModal2();"
+					<button type="button" onclick="buildCourseOptionsModal();"
 						class="btn btn-primary btn-border-bottom stats-btn"
-						data-toggle="modal" data-target="#courseOptionsModal2">
+						data-toggle="modal" data-target="#courseOptionsModal">
 						<i class="fas fa-golf-ball" aria-hidden="true"></i> Play
 						<!-- / Continue -->
 						A Round <i class="fas fa-golf-ball" aria-hidden="true"></i>
@@ -182,9 +182,9 @@
 		</div>
 		<!-- End About Modal -->
 		<!-- Scripts -->
-		<script type="text/javascript" src="../js/generalScripts.js"></script>
-		<script type="text/javascript" src="../js/courseToGame.js"></script>
-		<script type="text/javascript" src="../boot-js/bootstrap.min.js" /></script>
+		<script type="text/javascript" src="js/generalScripts.js"></script>
+		<script type="text/javascript" src="js/courseToGame.js"></script>
+		<script type="text/javascript" src="boot-js/bootstrap.min.js" /></script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
 			integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4="

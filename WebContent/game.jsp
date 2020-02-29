@@ -20,8 +20,7 @@
 <body
 	onload="receiveFromServlet('<c:out value="${ guests }"/>', '<c:out value="${ course }"/>');
 	printToTable('<c:out value="${ table }"/>');">
-	<input id="holeHintClicked" name="holeHintClicked"
-		style="display: none;" value="" />
+	
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
 		<!-- Page Specific Buttons Go Here -->
@@ -313,8 +312,10 @@
 		<!-- End Leaderboard Modal -->
 	</article>
 	<!-- Scripts -->
-	<script type="text/javascript" src="js/populateGame.js"></script>
 	<%@ include file="inserts/scripts.html"%>
+	<script type="text/javascript" src="js/populateGame.js"></script>
+	<script type="text/javascript" src="js/ajaxHint.js"></script>
+	<script type="text/javascript" src="js/ajaxScore.js"></script>
 	<!-- <script type="text/javascript" src="/js/generalScripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"

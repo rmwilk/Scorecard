@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +25,6 @@ import com.perscholas.casestudy.entities.Courses;
 import com.perscholas.casestudy.entities.Games;
 import com.perscholas.casestudy.entities.Holes;
 
-
 /**
  * Servlet implementation class CreateGame
  */
@@ -37,18 +37,18 @@ public class CreateGame extends HttpServlet {
 	private HttpSession session;
 	private GamesService gamesService;
 	private GameScoresService gameScoresService;
-	
+
 	/* Session variables */
-	private int guests;
+	private String guests;
 	private List<Holes> holeInfo; // used for hint query
 	private List<Accounts> accountInfo; // current players on this game
 
 	/**
-	 * @throws ServletException 
+	 * @throws ServletException
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public CreateGame() throws ServletException {
-		super();	
+		super();
 		// TODO remove console log
 		System.out.println(getClass().getName());
 	}
@@ -59,9 +59,12 @@ public class CreateGame extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		initialize();
-		String guests = request.getParameter("guests");
-		String course = request.getParameter("courses");
+		initialize();		
+		session = request.getSession(true);
+
+		guests =  (String)request.getParameter("guests");
+		String course = request.getParameter("course");
+		
 		String selectedCourse;
 		int courseNumber;
 		if (course.equals("A")) {
@@ -75,24 +78,40 @@ public class CreateGame extends HttpServlet {
 		session.setAttribute("guests", guests);
 		session.setAttribute("course", selectedCourse);
 		session.setAttribute("courseNumber", courseNumber);
-		if (session.getAttribute("loggedIn") == null) { // guest
+		
+		if (session.getAttribute("loggedIn") == null) { 
+			// guest game
 			session.setAttribute("loggedIn", false);
 			List<Accounts> players = new ArrayList<>();
-			accountsService = new AccountsService();
+			List<HashMap<Integer, Integer>> allScores = new ArrayList<>();
+			// HashMaps for session scores <Hole, Score>
+			HashMap <Integer, Integer>p1Scores;
+			HashMap <Integer, Integer>p2Scores;
+			HashMap <Integer, Integer>p3Scores;
+			HashMap <Integer, Integer>p4Scores;
 			int tempGuests = (Integer.parseInt(guests));
 			if (tempGuests > 0) {
 				players.add(getAccountHere("temp1@temp.temp"));
+				p1Scores = new HashMap<>();
+				allScores.add(p1Scores);
 			}
 			if (tempGuests > 1) {
 				players.add(getAccountHere("temp2@temp.temp"));
+				p2Scores = new HashMap<>();
+				allScores.add(p2Scores);
 			}
 			if (tempGuests > 2) {
 				players.add(getAccountHere("temp3@temp.temp"));
+				p3Scores = new HashMap<>();
+				allScores.add(p3Scores);
 			}
 			if (tempGuests > 3) {
 				players.add(getAccountHere("temp4@temp.temp"));
+				p4Scores = new HashMap<>();
+				allScores.add(p4Scores);
 			}
 			session.setAttribute("players", players);
+			session.setAttribute("allScores", allScores);
 		}
 		// else (( account is logged in ))
 		
@@ -100,6 +119,8 @@ public class CreateGame extends HttpServlet {
 		//Courses tempCourse = coursesService.getCourseByName(selectedCourse).get(0).getId();
 		holeInfo = getHoleInfo(courseNumber);
 		session.setAttribute("courseInfo", holeInfo); 
+		
+		//session.setAttribute("sessionScores", value);
 		
 		/* Create the game in games table */
 		Date date = new Date();
@@ -129,14 +150,16 @@ public class CreateGame extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 	private Accounts getAccountHere(String email) {
 		List<Accounts> results = accountsService.getAccountByEmail(email);
 		return results.get(0);
 	}
+
 	private List<Holes> getHoleInfo(int courseId) {
 		return holesService.joinHolesAndCoursesByCourseId(courseId);
 	}
+
 	private void initialize() {
 		accountsService = new AccountsService();
 		holesService = new HolesService();
@@ -144,6 +167,7 @@ public class CreateGame extends HttpServlet {
 		gamesService = new GamesService();
 		gameScoresService = new GameScoresService();
 	}
+
 	private void closeup() {
 		accountsService.close();
 		holesService.close();

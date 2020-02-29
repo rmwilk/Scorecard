@@ -28,8 +28,8 @@
 						<p>
 							Not worried about saving your scores? <br>
 							<button type="button" class="btn btn-primary"
-								onclick="buildCourseOptionsModal2();" data-toggle="modal"
-								data-toggle="modal" data-target="#courseOptionsModal2">
+								onclick="buildCourseOptionsModal();" data-toggle="modal"
+								data-toggle="modal" data-target="#courseOptionsModal">
 								Continue as a Guest <i class="fas fa-user"></i>
 							</button>
 						</p>
@@ -104,7 +104,7 @@
 		</div>
 		<!-- End Login Modal -->
 		<!-- Course Options Modal -->
-		<div id="courseOptionsModalSpace2"></div>
+		<div id="courseOptionsModalSpace"></div>
 		<!-- End Course Options Modal -->
 
 	</article>

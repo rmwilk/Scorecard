@@ -103,17 +103,18 @@ public class Game extends HttpServlet {
 		// Table Body
 		
 		for (int i = 1; i <= 18; i++) {
-			String space = putSpace(i);
-			html.append("<tr><td style=\"padding-left:2px; padding-right: 2px;\">Hole");
-			html.append(space);
-			html.append(i);
+			List<Holes> thisHole = (List<Holes>) session.getAttribute("courseInfo");
+			
+			html.append("<tr><td style=\"padding-left:2px; padding-right: 2px;\">");
+			
+			html.append(thisHole.get(i - 1).getName());
+			
 			html.append("</td><td id=\"hole");
 			html.append(i);
 			html.append("par\" name=\"hole");
 			html.append(i);
 			html.append("par\" class=\"bold\">");
 			
-			List<Holes> thisHole = (List<Holes>) session.getAttribute("courseInfo");
 			html.append(thisHole.get(i - 1).getPar());
 			
 			// html.append("par");
@@ -147,23 +148,20 @@ public class Game extends HttpServlet {
 			}
 			
 			//holeHintModals button
-			// change button to submit and buildholehintmodal function to send to servlet
 			html.append("<td><button type=\"button\" class=\"btn btn-secondary btn-sm\"	data-toggle=\"modal\"");
 			html.append("data-target=\"#hintModal");
 			html.append(i);
 			html.append("\"");
+			html.append("onclick=\"");
 			
-			html.append("onclick=\"setHoleHintClicked(");
+			
+			html.append("ajaxHint(");
 			html.append(i);
-			html.append(");");
+			html.append("); ");
 			
 			html.append("servletPostHint(");
 			html.append(i);
-			html.append("\"");
-			
-//			html.append("buildHoleHintModal('");
-//			html.append("Hinthererererere");
-//			html.append("'); ");
+			html.append(")\"");
 			
 //			html.append("buildHoleHintModal(");
 //			html.append(i);
@@ -174,11 +172,17 @@ public class Game extends HttpServlet {
 			// holeScoreModals
 			
 			html.append("<i class=\"fas fa-question-circle\"></i></button><button type=\"button\"");
-			html.append(" class=\"btn btn-primary btn-sm\" onclick=\"buildHoleScoreModal(");
+			html.append(" class=\"btn btn-primary btn-sm\"");
+			html.append("onclick=\"");
+			
+			html.append("buildHoleScoreModal(");
 			html.append(i);
 			html.append("); fillScores(");
 			html.append(i);
-			html.append(");\" data-toggle=\"modal\" data-target=\"#holeScoreModal\" style=\"max-width:100%\">");
+			html.append(");");
+			html.append("\" ");
+			
+			html.append("data-toggle=\"modal\" data-target=\"#holeScoreModal\" style=\"max-width:100%\">");
 			html.append("<i class=\"fas fa-edit\"></i></button></td></tr>");
 		}
 		return html.toString();
@@ -199,6 +203,9 @@ public class Game extends HttpServlet {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	private void initialize() {
 		accountsService = new AccountsService();
 		holesService = new HolesService();
@@ -207,6 +214,9 @@ public class Game extends HttpServlet {
 		gameScoresService = new GameScoresService();
 	}
 	
+	/**
+	 * 
+	 */
 	private void closeup() {
 		accountsService.close();
 		holesService.close();
