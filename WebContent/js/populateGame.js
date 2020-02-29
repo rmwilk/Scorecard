@@ -7,9 +7,7 @@ function element(id) {
 	return document.getElementById(id);
 }
 
-function printToTable(html){
-	element("game-table").innerHTML = html;
-}
+
 
 function printModalHint(html) {
 	element("holeHintModalSpace").innerHTML = html;

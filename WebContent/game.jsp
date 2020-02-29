@@ -19,7 +19,7 @@
 <!--  testPopulateWithModals();-->
 <body
 	onload="receiveFromServlet('<c:out value="${ guests }"/>', '<c:out value="${ course }"/>');
-	printToTable('<c:out value="${ table }"/>');">
+	printToTable('<c:out value="${ sessionScope.table }"/>');">
 	
 	<article>
 		<%@ include file="inserts/topHeader.html"%>

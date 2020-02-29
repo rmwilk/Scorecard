@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,7 @@ public class SubmitHoleScore extends HttpServlet {
 	/* Session variables */
 	private int guests;
 	private List<Accounts> accountInfo; // current players on this game
-	List<HashMap<Integer, Integer>> allScores;
+	List<HashMap<Integer, String>> allScores;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -60,7 +61,7 @@ public class SubmitHoleScore extends HttpServlet {
 		guests = Integer.parseInt((String) session.getAttribute("guests"));
 		int currentHole = Integer.parseInt(request.getParameter("hole"));
 
-		allScores = (List<HashMap<Integer, Integer>>) session.getAttribute("allScores");
+		allScores = (List<HashMap<Integer, String>>) session.getAttribute("allScores");
 		String score;
 		StringBuilder name;
 		for (int i = 0; i < guests; i++) {
@@ -70,14 +71,21 @@ public class SubmitHoleScore extends HttpServlet {
 				System.out.println("Name: " + name);
 				score = request.getParameter(name.toString());
 				System.out.println(score);
-				allScores.get(i).put(currentHole,  Integer.parseInt(score));
+				allScores.get(i).put(currentHole, score);
+
 				// update table
-				name = new StringBuilder("p" + (i + 1) + "hole" + currentHole);
-				session.setAttribute(name.toString(),  Integer.parseInt(score));
+//				name = new StringBuilder("p" + (i + 1) + "hole" + currentHole);
+//				session.setAttribute(name.toString(), score);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		RequestDispatcher rd;
+//		rd = getServletContext().getRequestDispatcher("/SubmittingScore.jsp");
+//		rd.include(request, response);
+		rd = getServletContext().getRequestDispatcher("/game");
+		rd.forward(request, response);
+		closeup();
 	}
 
 	/**

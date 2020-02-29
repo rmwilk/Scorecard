@@ -42,6 +42,7 @@ public class CreateGame extends HttpServlet {
 	private String guests;
 	private List<Holes> holeInfo; // used for hint query
 	private List<Accounts> accountInfo; // current players on this game
+	ArrayList<HashMap<Integer, String>> allScores;
 
 	/**
 	 * @throws ServletException
@@ -59,12 +60,12 @@ public class CreateGame extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		initialize();		
+		initialize();
 		session = request.getSession(true);
 
-		guests =  (String)request.getParameter("guests");
+		guests = (String) request.getParameter("guests");
 		String course = request.getParameter("course");
-		
+
 		String selectedCourse;
 		int courseNumber;
 		if (course.equals("A")) {
@@ -76,67 +77,89 @@ public class CreateGame extends HttpServlet {
 		}
 
 		session.setAttribute("guests", guests);
+		
+		System.out.println("Guests:" + guests);
+		
 		session.setAttribute("course", selectedCourse);
 		session.setAttribute("courseNumber", courseNumber);
-		
-		if (session.getAttribute("loggedIn") == null) { 
+
+		if (session.getAttribute("loggedIn") == null) {
 			// guest game
 			session.setAttribute("loggedIn", false);
-			List<Accounts> players = new ArrayList<>();
-			List<HashMap<Integer, Integer>> allScores = new ArrayList<>();
+
+			ArrayList<Accounts> players = new ArrayList<>();
+			allScores = new ArrayList<>();
+
 			// HashMaps for session scores <Hole, Score>
-			HashMap <Integer, Integer>p1Scores;
-			HashMap <Integer, Integer>p2Scores;
-			HashMap <Integer, Integer>p3Scores;
-			HashMap <Integer, Integer>p4Scores;
+			HashMap<Integer, String> p1Scores = new HashMap<>(18);
+			HashMap<Integer, String> p2Scores = new HashMap<>(18);
+			HashMap<Integer, String> p3Scores = new HashMap<>(18);
+			HashMap<Integer, String> p4Scores = new HashMap<>(18);
 			int tempGuests = (Integer.parseInt(guests));
 			if (tempGuests > 0) {
 				players.add(getAccountHere("temp1@temp.temp"));
 				p1Scores = new HashMap<>();
+				for (Integer i = 1; i <= 18; i++) {
+					p1Scores.put(i, "-");
+				}
 				allScores.add(p1Scores);
 			}
 			if (tempGuests > 1) {
 				players.add(getAccountHere("temp2@temp.temp"));
 				p2Scores = new HashMap<>();
+				for (Integer i = 1; i <= 18; i++) {
+					p2Scores.put(i, "-");
+				}
 				allScores.add(p2Scores);
 			}
 			if (tempGuests > 2) {
 				players.add(getAccountHere("temp3@temp.temp"));
 				p3Scores = new HashMap<>();
+				for (Integer i = 1; i <= 18; i++) {
+					p3Scores.put(i, "-");
+				}
 				allScores.add(p3Scores);
 			}
 			if (tempGuests > 3) {
 				players.add(getAccountHere("temp4@temp.temp"));
 				p4Scores = new HashMap<>();
+				for (Integer i = 1; i <= 18; i++) {
+					p4Scores.put(i, "-");
+				}
 				allScores.add(p4Scores);
 			}
+			allScores.trimToSize();
+			System.out.println("Size:" + allScores.size());
+			
 			session.setAttribute("players", players);
 			session.setAttribute("allScores", allScores);
 		}
 		// else (( account is logged in ))
-		
+
 		// session course / hole info for hints
-		//Courses tempCourse = coursesService.getCourseByName(selectedCourse).get(0).getId();
+		// Courses tempCourse =
+		// coursesService.getCourseByName(selectedCourse).get(0).getId();
 		holeInfo = getHoleInfo(courseNumber);
-		session.setAttribute("courseInfo", holeInfo); 
-		
-		//session.setAttribute("sessionScores", value);
-		
+		session.setAttribute("courseInfo", holeInfo);
+
+		// session.setAttribute("sessionScores", value);
+
 		/* Create the game in games table */
 		Date date = new Date();
-		List <Holes> currentCourse = holesService.getAllHolesByCourseNumber(courseNumber);
+		List<Holes> currentCourse = holesService.getAllHolesByCourseNumber(courseNumber);
 		Games currentGame = new Games(currentCourse.get(0).getId(), new Timestamp(date.getTime()));
 		int gameId = gamesService.addGames(currentGame); // add to game to games table
 		session.setAttribute("gameId", gameId);
 		StringBuilder tempString = new StringBuilder("");
 		int counter = 1;
-		for(Holes hole : holeInfo) {
+		for (Holes hole : holeInfo) {
 			tempString.append("hint" + counter);
 			session.setAttribute(tempString.toString(), hole.getHint());
 			tempString.delete(0, tempString.length());
 			counter++;
 		}
 		
+
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/game");
 		rd.forward(request, response);
 		closeup();
