@@ -61,7 +61,6 @@ public class LoginModelServlet extends HttpServlet {
 		List<Accounts> account = as.getAccountByEmail(email.toLowerCase());
 
 		for (Accounts acc : account) {
-			System.out.println(acc); // TODO remove console log
 			if (acc.getPassword().equals(pass)) {
 				session.setAttribute("loggedIn", true);
 				session.setAttribute("account", acc);

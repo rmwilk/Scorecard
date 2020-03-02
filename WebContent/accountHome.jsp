@@ -32,7 +32,6 @@
 					<button type="submit"
 						class="btn btn-primary btn-border-bottom stats-btn" form="myStats">
 						Check My Stats <i class="fas fa-chart-line" aria-hidden="true"></i>
-						<br> <strong>((Under Construction))</strong>
 					</button>
 					<button type="button"
 						class="btn btn-primary btn-border-bottom stats-btn"

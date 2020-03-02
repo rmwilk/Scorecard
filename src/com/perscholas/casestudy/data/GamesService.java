@@ -3,6 +3,7 @@
  */
 package com.perscholas.casestudy.data;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -32,6 +33,12 @@ public class GamesService extends AbstractService {
 		return game.getId();
 	}
 	
+	public void addEndDate(Games game, Timestamp endDate) {
+		em.getTransaction().begin();
+		game.setEndDate(endDate);
+		em.getTransaction().commit();
+	}
+	
 	/**
 	 * @return
 	 */
@@ -52,7 +59,7 @@ public class GamesService extends AbstractService {
 	public List<Games> getGamesByID(Integer id) {
 		List <Games> games;
 		Query query = em.createNamedQuery("GetGameByID");
-		query.setParameter("holeID", id);
+		query.setParameter("gameId", id);
 		games = query.getResultList();
 		
 		return games;

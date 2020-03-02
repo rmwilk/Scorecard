@@ -7,6 +7,7 @@ import javax.persistence.*;
  * Entity implementation class for Entity: GameScores
  *
  */
+@Table(name = "game_scores")
 @NamedQueries({ @NamedQuery(query = "SELECT gs FROM GameScores gs", name = "GetAllGameScores"),
 		@NamedQuery(query = "SELECT gs FROM GameScores gs WHERE gs.id = :gameScoreId", name = "GetGameScoreByID") })
 //@IdClass(GameScoresPK.class) // for the composite key
@@ -20,9 +21,8 @@ public class GameScores implements Serializable {
 	private int gameId;
 	@Column(name = "account_id")
 	private int accountId;
-	@Column(name = "course_id")
-	private int courseId;
-
+	@Column(name = "hole_id")
+	private int holeId;
 	private int score;
 	private static final long serialVersionUID = 1L;
 
@@ -34,16 +34,44 @@ public class GameScores implements Serializable {
 	}
 
 	/**
-	 * @param id
+	 * @param gameId
 	 * @param accountId
-	 * @param courseId
+	 * @param holeId
 	 * @param score
 	 */
-	public GameScores(int id, int accountId, int courseId, int score) {
-		this.setId(id);
+	public GameScores(int gameId, int accountId, int holeId, int score) {
+		this.setGameId(gameId);
 		this.setAccountId(accountId);
-		this.setCourseId(courseId);
+		this.setHoleId(holeId);
 		this.setScore(score);
+	}
+
+	/**
+	 * @return the gameId
+	 */
+	public int getGameId() {
+		return gameId;
+	}
+
+	/**
+	 * @param gameId the gameId to set
+	 */
+	public void setGameId(int gameId) {
+		this.gameId = gameId;
+	}
+
+	/**
+	 * @return the holeId
+	 */
+	public int getHoleId() {
+		return holeId;
+	}
+
+	/**
+	 * @param holeId the holeId to set
+	 */
+	public void setHoleId(int holeId) {
+		this.holeId = holeId;
 	}
 
 	/**
@@ -77,20 +105,6 @@ public class GameScores implements Serializable {
 	/**
 	 * @return
 	 */
-	public int getCourseId() {
-		return this.courseId;
-	}
-
-	/**
-	 * @param courseId
-	 */
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
-	}
-
-	/**
-	 * @return
-	 */
 	public int getScore() {
 		return this.score;
 	}
@@ -107,7 +121,8 @@ public class GameScores implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + accountId;
-		result = prime * result + courseId;
+		result = prime * result + gameId;
+		result = prime * result + holeId;
 		result = prime * result + id;
 		result = prime * result + score;
 		return result;
@@ -124,7 +139,9 @@ public class GameScores implements Serializable {
 		GameScores other = (GameScores) obj;
 		if (accountId != other.accountId)
 			return false;
-		if (courseId != other.courseId)
+		if (gameId != other.gameId)
+			return false;
+		if (holeId != other.holeId)
 			return false;
 		if (id != other.id)
 			return false;
@@ -135,8 +152,9 @@ public class GameScores implements Serializable {
 
 	@Override
 	public String toString() {
-		return "GameScores [id=" + id + ", accountId=" + accountId + ", courseId=" + courseId + ", score=" + score
-				+ "]";
+		return "GameScores [id=" + id + ", gameId=" + gameId + ", accountId=" + accountId + ", holeId=" + holeId
+				+ ", score=" + score + "]";
 	}
 
+	
 }

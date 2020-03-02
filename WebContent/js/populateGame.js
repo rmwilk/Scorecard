@@ -23,31 +23,6 @@ function receiveFromServlet(guests, course){
 	element("currentGame").innerHTML = playersPop + " Player" + s + " on Course " + coursePop;
 }
 
-/*
- * function buildCourseOptionsModal() {
- * element("courseOptionsModelSpace").innerHTML = ` <div class="modal fade"
- * id="courseOptionModal" tabindex="-1" role="dialog"
- * aria-labelledby="courseOptionModalTitle" aria-hidden="true"> <div
- * class="modal-dialog modal-dialog-centered" role="document"> <div
- * class="modal-content"> <div class="modal-header">
- * <h2 class="modal-title" id="courseOptionModalTitle"> Course Options</h2>
- * <button type="button" class="close" data-dismiss="modal" aria-label="Close">
- * <span aria-hidden="true">&times;</span> </button> </div> <div
- * class="modal-body"> <div class="container" style="text-align: center"> <h3>Select
- * Course</h3> <form> <label class="radio-inline"> <input type="radio"
- * name="courses" value="A" checked> Course A </label> &nbsp; <label
- * class="radio-inline"> <input type="radio" name="courses" value="B"> Course B
- * </label> </form> <h3>Any Guests?</h3> <select id="guestsOption"
- * class="mdb-select md-form"> <option value="0" selected>0</option> <option
- * value="1">1</option> <option value="2">2</option> <option value="3">3</option>
- * </select> <br>
- * 
- * </div> <div class="modal-footer"> <button type="button" class="btn
- * btn-secondary" data-dismiss="modal">Close</button> <button type="button"
- * class="btn btn-primary" onclick="submitCourseOptions();">Start Game</button>
- * </div> </div> </div> </div> </div> `; }
- */
-
 function clearTableData() {
 	element("game-table").innerHTML = "";
 	testPopulateWithModals();
@@ -145,7 +120,8 @@ function buildHoleScoreModal(hole) {
 				<div class="modal-body">
 					<div class="container" style="text-align: center">
 						<h3>Input Everyone's Scores for Hole ` + hole + `</h3>
-						<form>
+						<form id="scoreModalForm" action="score" method="post">
+						<input type="hidden" name="hole" value="` + hole + `"/>
 						<table class="table table-condensed">
 							<thead>
 								<tr>
@@ -170,7 +146,7 @@ function buildHoleScoreModal(hole) {
 										class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
-											<option value="3">3</option>
+											<option value="3" selected>3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
 											<option value="6">6</option>
@@ -184,7 +160,7 @@ function buildHoleScoreModal(hole) {
 										class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
-											<option value="3">3</option>
+											<option value="3" selected>3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
 											<option value="6">6</option>
@@ -199,7 +175,7 @@ function buildHoleScoreModal(hole) {
 										 class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
-											<option value="3">3</option>
+											<option value="3" selected>3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
 											<option value="6">6</option>
@@ -210,11 +186,11 @@ function buildHoleScoreModal(hole) {
 	if(playersPop > 3){
 		string += `
 									<td>
-										<select  id="p4h`+hole+`" name="p4`+hole+`" 
+										<select  id="p4h`+hole+`" name="p4score`+hole+`" data-style="btn-primary"
 										class="mdb-select md-form form-control my-form-control">
 											<option value="1">1</option>
 											<option value="2">2</option>
-											<option value="3">3</option>
+											<option value="3" selected>3</option>
 											<option value="4">4</option>
 											<option value="5">5</option>
 											<option value="6">6</option>
@@ -233,8 +209,7 @@ function buildHoleScoreModal(hole) {
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">
 						Close
 					</button>
-					<button type="button" class="btn btn-success" data-dismiss="modal" 
-					onclick="ajaxScore(` + hole + ',' + playersPop+`)">
+					<button type="submit" class="btn btn-success" form="scoreModalForm" >
 						Enter
 					</button>
 				</div>
@@ -243,6 +218,7 @@ function buildHoleScoreModal(hole) {
 	</div>
 	`;
 	element("holeScoreModalSpace").innerHTML = string;
+	// onclick="ajaxScore(` + hole + ',' + playersPop+`)" //data-dismiss="modal"
 }
 //enterScores(`+hole+`);
 function fillScores(hole) {
@@ -397,8 +373,7 @@ function calculateScores() {
 						data-dismiss="modal">
 							Back to Scorecard
 						</button>
-						<button type="submit" form="submit-scorecard" class="btn btn-success" 
-						data-dismiss="modal">
+						<button type="submit" form="submitscorecard" class="btn btn-success">
 							Submit Scorecard
 						</button>
 					</div>

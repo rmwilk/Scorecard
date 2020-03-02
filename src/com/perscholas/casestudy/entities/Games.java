@@ -11,7 +11,7 @@ import javax.persistence.*;
  *
  */@NamedQueries({
 		@NamedQuery(query = "SELECT g FROM Games g", name= "GetAllGames"),
-		@NamedQuery(query = "SELECT g FROM Games g WHERE g.id = :gamesId", name = "GetGameByID")
+		@NamedQuery(query = "SELECT g FROM Games g WHERE g.id = :gameId", name = "GetGameByID")
 })
 
 @Entity

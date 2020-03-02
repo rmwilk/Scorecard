@@ -1,7 +1,8 @@
 "use strict";
 
 function forceSubmit() {
-	alert("forceSubmit()");
+	//alert("forceSubmit()");
+	
 	$.ajax({
 		type : 'POST',
 		url : 'game',

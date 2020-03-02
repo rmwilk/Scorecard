@@ -77,9 +77,6 @@ public class CreateGame extends HttpServlet {
 		}
 
 		session.setAttribute("guests", guests);
-
-		System.out.println("Guests:" + guests);
-
 		session.setAttribute("course", selectedCourse);
 		session.setAttribute("courseNumber", courseNumber);
 
@@ -93,10 +90,17 @@ public class CreateGame extends HttpServlet {
 
 		int tempGuests = (Integer.parseInt(guests));
 		final String loggedIn = "loggedIn";
-		
-		if (session.getAttribute(loggedIn) == null) {
-			// guest game
+		boolean isLoggedIn; 
+		// to catch null attribute
+		try {
+			isLoggedIn = (boolean)session.getAttribute("loggedIn");
+		}
+		catch(Exception e) {
 			session.setAttribute(loggedIn, false);
+		}
+		
+		if ((boolean)session.getAttribute(loggedIn) == false) {
+			// guest game
 
 			players.add(getAccountHere("temp1@temp.temp"));
 			p1Scores = new HashMap<>();
@@ -107,7 +111,7 @@ public class CreateGame extends HttpServlet {
 
 		} else {
 			// (( account is logged in ))
-			session.setAttribute(loggedIn, false);
+			session.setAttribute(loggedIn, true);
 
 			Accounts player1 = (Accounts) session.getAttribute("account");
 			players.add(getAccountHere(player1.getEmail()));
@@ -116,8 +120,8 @@ public class CreateGame extends HttpServlet {
 				p1Scores.put(i, "-");
 			}
 			allScores.add(p1Scores);
-
 		}
+
 		if (tempGuests > 1) {
 			players.add(getAccountHere("temp2@temp.temp"));
 			p2Scores = new HashMap<>();
@@ -143,8 +147,6 @@ public class CreateGame extends HttpServlet {
 			allScores.add(p4Scores);
 		}
 		allScores.trimToSize();
-		
-		System.out.println("Size:" + allScores.size());
 
 		session.setAttribute("players", players);
 		session.setAttribute("allScores", allScores);

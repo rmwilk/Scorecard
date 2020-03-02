@@ -62,7 +62,7 @@ public class Game extends HttpServlet {
 		initialize();
 		session = request.getSession(true);
 		RequestDispatcher rd;
-		
+				
 		rd = getServletContext().getRequestDispatcher("/draw");
 		rd.include(request, response);
 

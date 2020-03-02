@@ -18,41 +18,38 @@
 	<article>
 		<header class="header">
 			<%@ include file="inserts/topHeader.html"%>
-			<form id="logout" action="logout" method="post"></form>
+			<button type="submit" form="backToHome" class="btn btn-primary">
+			Go Back <i class="fas fa-arrow-left"></i>
+				</button>
 			<button type="submit" class="btn btn-danger" form="logout">
 				Log Out <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
 			</button>
 			<form id="backToHome" action="home" method="post"></form>
-			<button type="submit" form="backToHome" class="btn btn-primary">
-			Go Back <i class="fas fa-arrow-left"></i>
-				</button>
+			<form id="logout" action="logout" method="post"></form>
 			<%@ include file="inserts/bottomHeader.html"%>
 		</header>
 		<main>
 			<%@ include file="inserts/topMain.html"%>
 			<h2>My Stats</h2>
-			<p>
-				<strong>!!!! Page Under Construction !!!!</strong>
-				<!-- TODO -->
 			<h3 class="red">General Stats</h3>
 			<table id="generalStats" class="table stats-table table-sm">
 				<tbody>
 					<tr>
 						<td>Total Games:</td>
-						<td id="totalGames">&nbsp;</td>
+						<td id="totalGames"><c:out value="${ totalGames }"/></td>
 					</tr>
 					<tr>
 						<td>Total Holes In One:</td>
-						<td id="totalHolesInOne">&nbsp;</td>
+						<td id="totalHolesInOne"><c:out value="${ totalAces }"/></td>
 					</tr>
-					<tr>
+					<%-- <tr>
 						<td>First Game Played:</td>
-						<td id="firstGameDate">&nbsp;</td>
+						<td id="firstGameDate"><c:out value="${ firstGame }"/></td>
 					</tr>
 					<tr>
 						<td>Last Game Played:</td>
-						<td id="lastGameDate">&nbsp;</td>
-					</tr>
+						<td id="lastGameDate"><c:out value="${ lastGame }"/></td>
+					</tr> --%>
 				</tbody>
 			</table>
 
@@ -74,19 +71,19 @@
 					<table id="courseATable" class="table stats-table">
 						<tr>
 							<td>Total Games:</td>
-							<td id="totalA">&nbsp;</td>
+							<td id="totalA"><c:out value="${ totalA }"/></td>
 						</tr>
 						<tr>
 							<td>Best Score:</td>
-							<td id="bestA">&nbsp;</td>
+							<td id="bestA"><c:out value="${ bestA }"/></td>
 						</tr>
 						<tr>
 							<td>Worst Score:</td>
-							<td id="worstA">&nbsp;</td>
+							<td id="worstA"><c:out value="${ worstA }"/></td>
 						</tr>
 						<tr>
 							<td>Average Score:</td>
-							<td id="avgA">&nbsp;</td>
+							<td id="avgA"><c:out value="${ averageA }"/></td>
 						</tr>
 					</table>
 				</div>
@@ -96,19 +93,19 @@
 						<tbody>
 							<tr>
 								<td>Total Games:</td>
-								<td id="totalB">&nbsp;</td>
+								<td id="totalB"><c:out value="${ totalB }"/></td>
 							</tr>
 							<tr>
 								<td>Best Score:</td>
-								<td id="bestB">&nbsp;</td>
+								<td id="bestB"><c:out value="${ bestB }"/></td>
 							</tr>
 							<tr>
 								<td>Worst Score:</td>
-								<td id="worstB">&nbsp;</td>
+								<td id="worstB"><c:out value="${ worstB }"/></td>
 							</tr>
 							<tr>
 								<td>Average Score:</td>
-								<td id="avgB">&nbsp;</td>
+								<td id="avgB"><c:out value="${ averageB }"/></td>
 							</tr>
 						</tbody>
 					</table>

@@ -29,7 +29,7 @@
 }
 </style>
 </head>
-<body onload="forceSubmit();">
+<body onload="document.forcesubmit.submit();">
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
 		<%@ include file="inserts/bottomHeader.html"%>
@@ -37,8 +37,8 @@
 			<%@ include file="inserts/topMain.html"%>
 			<!-- -------------------------------------------------------------------------- -->
 			<h2>Submitting Score...</h2>
-			<div class="loader"></div>
-			<form id="force-submit" action="game" method="post"></form>
+			<div class="loader" style="margin: auto;"></div>
+			<form id="forcesubmit" name="forcesubmit" action="game" method="post"></form>
 			<!-- -------------------------------------------------------------------------- -->
 			<%@ include file="inserts/bottomMain.html"%>
 		</main>

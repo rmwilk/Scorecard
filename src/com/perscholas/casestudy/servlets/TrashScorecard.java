@@ -82,6 +82,7 @@ public class TrashScorecard extends HttpServlet {
 		session.removeAttribute("courseInfo");
 		session.removeAttribute("gameId");
 		session.removeAttribute("table");
+		session.removeAttribute("allScores");
 		
 		StringBuilder tempString = new StringBuilder("");
 		int counter = 1;

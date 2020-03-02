@@ -67,13 +67,11 @@ public class SubmitHoleScore extends HttpServlet {
 		for (int i = 0; i < guests; i++) {
 			try {
 				// retrieve score
-				name = new StringBuilder("p" + (i + 1));
+				name = new StringBuilder("p" + (i + 1) + "score" + currentHole);
 				score = request.getParameter(name.toString());
+								
+				// put score
 				allScores.get(i).put(currentHole, score);
-
-				// update table
-//				name = new StringBuilder("p" + (i + 1) + "hole" + currentHole);
-//				session.setAttribute(name.toString(), score);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

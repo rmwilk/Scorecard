@@ -77,7 +77,8 @@ public class DrawTable extends HttpServlet {
 	private String drawTable() {
 		/* StringBuilder holds html for output */
 		StringBuilder html = new StringBuilder("");
-		if ((boolean) session.getAttribute("loggedIn")) {
+		boolean loggedIn = (boolean) session.getAttribute("loggedIn");
+		if (loggedIn) {
 			accountInfo = getAccountInfo();
 		} else {
 			accountInfo = (List<Accounts>) session.getAttribute("players");

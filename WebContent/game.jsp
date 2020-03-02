@@ -60,26 +60,14 @@
 				<table id="game-table" class="table table-sm">
 					<!-- produced through java / javascript -->
 				</table>
-				<!-- --------------------------------------------------------------------------------------------- -->
 			</div>
 			<form id="TrashScorecard" action="TrashScorecard" method="post"></form>
 			<form id="logout" action="logout" method="post"></form>
 			<form id="backToHome" action="home" method="post"></form>
-			<form id="submit-scorecard" action="submitScorecard" method="post"></form>
+			<form id="submitscorecard" name="submitscorecard"action="submitScorecard" method="post"></form>
 			<%@ include file="inserts/bottomMain.html"%>
+			<!-- --------------------------------------------------------------------------------------------- -->
 		</main>
-		<%-- <footer class="">
-			<%@ include file="inserts/topFooter.html"%>
-			<button type="button" hidden="true" style="">&nbsp;</button>
-			<button type="button" class="btn btn-danger"
-				onclick="testOpenIndexPage();">Trash Scorecard</button>
-			<button type="button" class="btn btn-secondary" data-toggle="modal"
-				data-target="#clearModal">Clear Entries</button>
-			<button type="button" class="btn btn-success"
-				onclick="calculateScores();" data-toggle="modal"
-				data-target="#leaderboardModal">End Game</button>
-			<%@ include file="/html/bottomFooter.html"%>
-		</footer> --%>
 		<!-- Course Rules Modal -->
 		<div class="modal fade" id="courseRulesModal" tabindex="-1"
 			role="dialog" aria-labelledby="courseRulesModalTitle"
@@ -276,33 +264,6 @@
 			</div>
 		</div>
 		<!-- End Clear Modal -->
-		<!-- Hole Hint -->
-		<%-- <div id="holeHintModalSpace">
-			<div class="modal fade" id="hintModal" tabindex="-1" role="dialog"
-				aria-labelledby="#hintModalTitle" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h2 class="modal-title" id="hintModalTitle">
-							Hole  <c:out value="${ sessionScope.thisHole }"/>Hint</h2>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="container" style="text-align: center">
-								<c:out value="${ sessionScope.thisHint }"/>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> --%>
 		<%@ include file="inserts/hintModals.jsp"%>
 		<!-- End Hole Hint -->
 		<!-- Hole Score Modal -->
