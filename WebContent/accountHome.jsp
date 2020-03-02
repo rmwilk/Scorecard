@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
 
 <!DOCTYPE html>
 <html>
@@ -58,7 +59,7 @@
 			<%@ include file="html/bottomFooter.html"%>
 		</footer> --%>
 		<!-- Course Options Modal -->
-		<div id="courseOptionsModalSpace2"></div>
+		<div id="courseOptionsModalSpace"></div>
 		<!-- Course Rules Modal -->
 		<div class="modal fade" id="courseRulesModal" tabindex="-1"
 			role="dialog" aria-labelledby="courseRulesModalTitle"
@@ -182,7 +183,12 @@
 		</div>
 		<!-- End About Modal -->
 		<!-- Scripts -->
-		<script type="text/javascript" src="js/generalScripts.js"></script>
+		<%@ include file="inserts/scripts.html"%>
+	<script type="text/javascript" src="js/populateGame.js"></script>
+	<script type="text/javascript" src="js/ajaxHint.js"></script>
+	<script type="text/javascript" src="js/ajaxScore.js"></script>
+	<script type="text/javascript" src="js/forceSubmit.js"></script>
+		<!-- <script type="text/javascript" src="js/generalScripts.js"></script>
 		<script type="text/javascript" src="js/courseToGame.js"></script>
 		<script type="text/javascript" src="boot-js/bootstrap.min.js" /></script>
 		<script
@@ -198,7 +204,7 @@
 			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/mdb.min.js"></script>
 		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 	</article>
 </body>
 </html>

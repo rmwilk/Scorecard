@@ -29,15 +29,16 @@
 }
 </style>
 </head>
-<body>
+<body onload="forceSubmit();">
 	<article>
-		<%@ include file="inserts/topHeader.html"%><%@ include
-			file="inserts/bottomHeader.html"%>
+		<%@ include file="inserts/topHeader.html"%>
+		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
 			<%@ include file="inserts/topMain.html"%>
 			<!-- -------------------------------------------------------------------------- -->
 			<h2>Submitting Score...</h2>
 			<div class="loader"></div>
+			<form id="force-submit" action="game" method="post"></form>
 			<!-- -------------------------------------------------------------------------- -->
 			<%@ include file="inserts/bottomMain.html"%>
 		</main>
@@ -47,5 +48,6 @@
 	<script type="text/javascript" src="js/populateGame.js"></script>
 	<script type="text/javascript" src="js/ajaxHint.js"></script>
 	<script type="text/javascript" src="js/ajaxScore.js"></script>
+	<script type="text/javascript" src="js/forceSubmit.js"></script>
 </body>
 </html>

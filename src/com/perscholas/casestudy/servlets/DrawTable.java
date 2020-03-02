@@ -83,7 +83,12 @@ public class DrawTable extends HttpServlet {
 			accountInfo = (List<Accounts>) session.getAttribute("players");
 		}
 		// Table Head
-		html.append("<tr><th id=\"hole#\">#</th><th id=\"par\">Par</th><th id=\"p1name\" name=\"p1name\">P1</th>");
+		html.append("<tr><th id=\"hole#\">#</th><th id=\"par\">Par</th>");
+		html.append("<th id=\"p1name\" name=\"p1name\">");
+		
+		html.append(accountInfo.get(0).getNickname());
+		
+		html.append("</th>");
 		if (guests > 1) {
 			html.append("<th id=\"p2name\" name=\"p2name\">P2</th>");
 		}
@@ -192,7 +197,7 @@ public class DrawTable extends HttpServlet {
 			html.append(i);
 			html.append("); fillScores(");
 			html.append(i);
-			html.append(");");
+			html.append("); forceSubmit()");
 //			html.append()
 			html.append("\" ");
 

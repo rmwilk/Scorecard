@@ -68,9 +68,7 @@ public class SubmitHoleScore extends HttpServlet {
 			try {
 				// retrieve score
 				name = new StringBuilder("p" + (i + 1));
-				System.out.println("Name: " + name);
 				score = request.getParameter(name.toString());
-				System.out.println(score);
 				allScores.get(i).put(currentHole, score);
 
 				// update table
@@ -81,9 +79,7 @@ public class SubmitHoleScore extends HttpServlet {
 			}
 		}
 		RequestDispatcher rd;
-//		rd = getServletContext().getRequestDispatcher("/SubmittingScore.jsp");
-//		rd.include(request, response);
-		rd = getServletContext().getRequestDispatcher("/game");
+		rd = getServletContext().getRequestDispatcher("/SubmittingScore.jsp");
 		rd.forward(request, response);
 		closeup();
 	}

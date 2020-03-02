@@ -56,7 +56,6 @@ public class LoginServlet extends HttpServlet {
 		rd.include(request, response);
 
 		if ((boolean) session.getAttribute("loggedIn")) {
-			session.setAttribute("account", request.getAttribute("account"));
 
 			rd = getServletContext().getRequestDispatcher("/home");
 			rd.forward(request, response);

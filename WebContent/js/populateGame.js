@@ -397,8 +397,8 @@ function calculateScores() {
 						data-dismiss="modal">
 							Back to Scorecard
 						</button>
-						<button type="button" class="btn btn-success" 
-						data-dismiss="modal" onclick="testOpenIndexPage();">
+						<button type="submit" form="submit-scorecard" class="btn btn-success" 
+						data-dismiss="modal">
 							Submit Scorecard
 						</button>
 					</div>

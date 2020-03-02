@@ -20,15 +20,15 @@
 <body
 	onload="receiveFromServlet('<c:out value="${ guests }"/>', '<c:out value="${ course }"/>');
 	printToTable('<c:out value="${ sessionScope.table }"/>');">
-	
+
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
 		<!-- Page Specific Buttons Go Here -->
 		<button type="button" hidden="true" style="">&nbsp;</button>
 		<button type="submit" class="btn btn-danger" form="TrashScorecard">Trash
 			Scorecard</button>
-		<button type="button" class="btn btn-secondary" data-toggle="modal"
-			data-target="#clearModal">Clear Entries</button>
+		<!-- <button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#clearModal">Clear Entries</button> -->
 		<button type="button" class="btn btn-success"
 			onclick="calculateScores();" data-toggle="modal"
 			data-target="#leaderboardModal">Scoreboard</button>
@@ -65,6 +65,7 @@
 			<form id="TrashScorecard" action="TrashScorecard" method="post"></form>
 			<form id="logout" action="logout" method="post"></form>
 			<form id="backToHome" action="home" method="post"></form>
+			<form id="submit-scorecard" action="submitScorecard" method="post"></form>
 			<%@ include file="inserts/bottomMain.html"%>
 		</main>
 		<%-- <footer class="">
@@ -316,6 +317,8 @@
 	<script type="text/javascript" src="js/populateGame.js"></script>
 	<script type="text/javascript" src="js/ajaxHint.js"></script>
 	<script type="text/javascript" src="js/ajaxScore.js"></script>
+	<script type="text/javascript" src="js/forceSubmit.js"></script>
+
 	<!-- <script type="text/javascript" src="/js/generalScripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
