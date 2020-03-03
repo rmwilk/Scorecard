@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
 <%@ include file="inserts/head.html"%>
+<link rel="stylesheet" type="css/text" href="css/statsStyles.css" />
 </head>
 <style>
 .pt-5, .py-5 {
@@ -41,6 +42,10 @@
 					<tr>
 						<td>Total Holes In One:</td>
 						<td id="totalHolesInOne"><c:out value="${ totalAces }"/></td>
+					</tr>
+					<tr>
+						<td>Total Shots:</td>
+						<td id="totalShots"><c:out value="${ totalShots }"/></td>
 					</tr>
 					<%-- <tr>
 						<td>First Game Played:</td>
@@ -115,25 +120,7 @@
 			<br>
 			<%@ include file="inserts/bottomMain.html"%>
 		</main>
-		<%-- <footer>
-			<%@ include file="inserts/topFooter.html"%>
-			<button type="submit" form="backToHome"
-				class="btn btn-primary">Back to Account Home</button>
-			<%@ include file="inserts/bottomFooter.html"%>
-		</footer> --%>
 	</article>
 	<%@ include file="inserts/scripts.html"%>
-	<!-- <script type="text/javascript" src="../js/generalScripts.js"></script>
-		<script type="text/javascript" src="../js/statsScripts.js"></script>
-		<script type="text/javascript" src="../boot-js/bootstrap.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/mdb.min.js"></script>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 </body>
 </html>

@@ -20,7 +20,7 @@
 				<div class="form-group">
 					<p>
 						Login with your account here <br>
-						<button type="button" class="btn btn-danger" data-toggle="modal"
+						<button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target="#loginModal">
 							Login <i class="fas fa-sign-in-alt"></i>
 						</button>
@@ -28,7 +28,7 @@
 					<form id="guest-game" action="guest" method="post">
 						<p>
 							Not worried about saving your scores? <br>
-							<button type="button" class="btn btn-primary"
+							<button type="button" class="btn btn-danger"
 								onclick="buildCourseOptionsModal();" data-toggle="modal"
 								data-toggle="modal" data-target="#courseOptionsModal">
 								Continue as a Guest <i class="fas fa-user"></i>

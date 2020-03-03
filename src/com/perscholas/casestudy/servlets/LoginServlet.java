@@ -53,17 +53,22 @@ public class LoginServlet extends HttpServlet {
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/doLogin");
 		rd.include(request, response);
-
-		if ((boolean) session.getAttribute("loggedIn")) {
-			rd = getServletContext().getRequestDispatcher("/home");
-			rd.forward(request, response);
-		} else {
-			rd = getServletContext().getRequestDispatcher("/index");
+		try {
+			if ((boolean) session.getAttribute("loggedIn")) {
+				rd = getServletContext().getRequestDispatcher("/home");
+				rd.forward(request, response);
+			} else {
+				rd = getServletContext().getRequestDispatcher("/index");
+				rd.forward(request, response);
+			}
+		} catch (Exception e) {
+			rd = getServletContext().getRequestDispatcher("/logout");
 			rd.forward(request, response);
 		}
-
-		/* Close all services */
-		closeup();
+		finally {
+			/* Close all services */
+			closeup();			
+		}
 	}
 
 	/**

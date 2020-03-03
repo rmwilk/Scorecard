@@ -11,13 +11,13 @@
 <body>
 	<article>
 		<%@ include file="inserts/topHeader.html"%>
+		<form id="backToHome" action="home" method="post"></form>
+		<button type="submit" class="btn btn-primary" form="backToHome">
+		Go Back <i class="fas fa-arrow-left"></i></button>
 		<button type="button" class="btn btn-danger" data-toggle="modal"
 			data-target="#loginModal">
 			Logout <i class="fas fa-sign-in-alt"></i>
 		</button>
-		<form id="backToHome" action="home" method="post"></form>
-		<button type="submit" class="btn btn-primary" form="backToHome">
-		Go Back <i class="fas fa-arrow-left"></i></button>
 		<%@ include file="inserts/bottomHeader.html"%>
 		<main>
 			<%@ include file="inserts/topMain.html"%>

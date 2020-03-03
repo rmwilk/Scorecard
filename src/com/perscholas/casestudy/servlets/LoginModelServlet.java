@@ -3,6 +3,7 @@ package com.perscholas.casestudy.servlets;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,15 +52,16 @@ public class LoginModelServlet extends HttpServlet {
 		/* Initialize all services */
 		initialize();
 		session = request.getSession(true);
-
-		String email = request.getParameter("emailTB");
-		String pass = request.getParameter("passwordTB");
-
+		String email = "";
+		String pass = "";
+		try {
+		email = request.getParameter("emailTB");
+		pass = request.getParameter("passwordTB");
 		request.setAttribute("email", email);
-
+		
 		AccountsService as = new AccountsService();
 		List<Accounts> account = as.getAccountByEmail(email.toLowerCase());
-
+		
 		for (Accounts acc : account) {
 			if (acc.getPassword().equals(pass)) {
 				session.setAttribute("loggedIn", true);
@@ -67,8 +69,13 @@ public class LoginModelServlet extends HttpServlet {
 				break;
 			}
 		}
-
-		closeup();
+		} catch(Exception e) {
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/logout");
+			rd.forward(request,response);
+		}
+		finally {
+			closeup();
+		}
 	}
 
 	/**

@@ -2,9 +2,12 @@ package com.perscholas.casestudy.servlets;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +24,7 @@ import com.perscholas.casestudy.data.GamesService;
 import com.perscholas.casestudy.data.HolesService;
 import com.perscholas.casestudy.entities.Accounts;
 import com.perscholas.casestudy.entities.GameScores;
+import static com.perscholas.casestudy.data.Finals.*;
 
 /**
  * Servlet implementation class Stats
@@ -38,71 +42,178 @@ public class Stats extends HttpServlet {
 
 	/* Some Session variables */
 	private List<Accounts> accountInfo; // current players on this game
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Stats() {
-        super();
-		// TODO remove console log
-		System.out.println(getClass().getName());
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public Stats() {
+		super();
+		// TODO remove console log
+		System.out.println(getClass().getName());
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		initialize();
 		session = request.getSession(true);
 		RequestDispatcher rd;
-		
+
 		developStats(request);
-		
+
 		rd = getServletContext().getRequestDispatcher("/stats.jsp");
 		rd.forward(request, response);
 		closeup();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 	private void developStats(HttpServletRequest request) {
 		int totalGames;
 		int totalAces;
-		Timestamp firstGame;
-		Timestamp lastGame;
-		
-		Accounts thisAccount = (Accounts)session.getAttribute("account");
-		List <GameScores> allGames = gameScoresService.getAllGameScoress();
-		
-		int gameCounter = 0;
-		int acesCounter = 0;
-		//Date earliest =  Date.newinstance(1700, 1, 1);
-		for(GameScores gs : allGames) {
-			if(gs.getAccountId() == thisAccount.getId()) {
-				gameCounter++;
-				if(gs.getScore() == 1) {
-					acesCounter++;
+//		Timestamp firstGame;
+//		Timestamp lastGame;
+		int bestA = WORST_SCORE;
+		int worstA = BEST_SCORE;
+		int averageA;
+		int bestB = WORST_SCORE;
+		int worstB = BEST_SCORE;
+		int averageB;
+
+		Accounts thisAccount = (Accounts) session.getAttribute("account");
+		List<GameScores> allGames = gameScoresService.getAllGameScoress();
+
+		int gamesACounter = 0;
+		int gamesBCounter = 0;
+		int acesACounter = 0;
+		int acesBCounter = 0;
+		int allStrokes = 0;
+		String commaAllStrokes;
+		HashMap<Integer, Integer> scoresA = new HashMap<>();
+		HashMap<Integer, Integer> scoresB = new HashMap<>();
+
+		// Date earliest = Date.newinstance(1700, 1, 1);
+		for (GameScores gs : allGames) {
+			if (gs.getAccountId() == thisAccount.getId()) {
+				if (gamesService.getGamesByID(gs.getGameId()).get(0).getCourseId() == 1) {
+					gamesACounter++; // this gets divided into single games later
+					allStrokes += gs.getScore();
+
+					if (scoresA.containsKey(gs.getGameId()) == true) {
+						int score = scoresA.get(gs.getGameId());
+						score += gs.getScore();
+						scoresA.put(gs.getGameId(), score);
+					} else {
+						scoresA.put(gs.getGameId(), gs.getScore());
+						allStrokes += gs.getScore();
+					}
+					if (gs.getScore() == 1) {
+						acesACounter++;
+					}
+				} else {
+					gamesBCounter++; // this gets divided into single games later
+					if (scoresB.containsKey(gs.getGameId()) == true) {
+						int score = scoresB.get(gs.getGameId());
+						score += gs.getScore();
+						scoresB.put(gs.getGameId(), score);
+						allStrokes++;
+					} else {
+						scoresB.put(gs.getGameId(), gs.getScore());
+					}
+					if (gs.getScore() == 1) {
+						acesBCounter++;
+					}
 				}
 			}
 		}
 		
-		gameCounter = gameCounter / 18;
-		totalGames = gameCounter;
+		gamesACounter /= HOLES;
+		gamesBCounter /= HOLES;
+		totalGames = gamesACounter + gamesBCounter;
+		totalAces = acesACounter + acesBCounter;
+
+		// get best and worst scores for each course
+		int allAScores = 0;
+		for (Map.Entry<Integer, Integer> entry : scoresA.entrySet()) {
+			int value = entry.getValue();
+			allAScores += value;
+			if (value > worstA) {
+				worstA = value;
+			}
+			if (value < bestA) {
+				bestA = value;
+			}
+		}
+		int allBScores = 0;
+		for (Map.Entry<Integer, Integer> entry : scoresB.entrySet()) {
+			int value = entry.getValue();
+			allBScores += value;
+			if (value > worstB) {
+				worstB = value;
+			}
+			if (value < bestB) {
+				bestB = value;
+			}
+		}
+
+		// if no games are played
+		if (bestA == WORST_SCORE) {
+			bestA = 0;
+		}
+		if (worstA == BEST_SCORE) {
+			worstA = 0;
+		}
+		if (bestB == WORST_SCORE) {
+			bestB = 0;
+		}
+		if (worstB == BEST_SCORE) {
+			worstB = 0;
+		}
 		
-		totalAces = acesCounter;
+		// get average scores for each course
+		// catches divide by zero if no games were played
+		try {
+			averageA = allAScores / gamesACounter;
+		} catch (ArithmeticException ae) {
+			averageA = 0;
+		}
+		try {
+			averageB = allBScores / gamesBCounter;
+		} catch (ArithmeticException ae) {
+			averageB = 0;
+		}
 		
+		// insert commas for numbers over 1,000, etc.
+		commaAllStrokes = NumberFormat.getNumberInstance(Locale.US).format(allStrokes);
 		
 		request.setAttribute("totalGames", totalGames);
 		request.setAttribute("totalAces", totalAces);
+		request.setAttribute("totalShots", commaAllStrokes);
+		
 //		request.setAttribute("firstGame", firstGame);
 //		request.setAttribute("lastGame", lastGame);
+		
+		request.setAttribute("totalA", gamesACounter);
+		request.setAttribute("bestA", bestA);
+		request.setAttribute("worstA", worstA);
+		request.setAttribute("averageA", averageA);
+		
+		request.setAttribute("totalB", gamesBCounter);
+		request.setAttribute("bestB", bestB);
+		request.setAttribute("worstB", worstB);
+		request.setAttribute("averageB", averageB);
 	}
-	
+
 	/**
 	 * 
 	 */
