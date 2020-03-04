@@ -55,7 +55,6 @@ public class ScorecardDriver {
 			System.out.println(hole.getHint());
 		}
 		*/
-		
 		// prints a hint
 		int course = 1;
 		int number = 5;

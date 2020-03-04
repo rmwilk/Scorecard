@@ -91,7 +91,7 @@ public class Stats extends HttpServlet {
 		int averageB;
 
 		Accounts thisAccount = (Accounts) session.getAttribute("account");
-		List<GameScores> allGames = gameScoresService.getAllGameScoress();
+		List<GameScores> allGames = gameScoresService.getAllGameScores();
 
 		int gamesACounter = 0;
 		int gamesBCounter = 0;
@@ -165,7 +165,6 @@ public class Stats extends HttpServlet {
 				bestB = value;
 			}
 		}
-
 		// if no games are played
 		if (bestA == WORST_SCORE) {
 			bestA = 0;
@@ -204,11 +203,13 @@ public class Stats extends HttpServlet {
 //		request.setAttribute("lastGame", lastGame);
 		
 		request.setAttribute("totalA", gamesACounter);
+		request.setAttribute("acesA", acesACounter);
 		request.setAttribute("bestA", bestA);
 		request.setAttribute("worstA", worstA);
 		request.setAttribute("averageA", averageA);
 		
-		request.setAttribute("totalB", gamesBCounter);
+		request.setAttribute("totalB", gamesBCounter);		
+		request.setAttribute("acesB", acesBCounter);
 		request.setAttribute("bestB", bestB);
 		request.setAttribute("worstB", worstB);
 		request.setAttribute("averageB", averageB);

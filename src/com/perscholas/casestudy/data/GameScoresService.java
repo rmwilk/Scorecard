@@ -32,10 +32,19 @@ public class GameScoresService extends AbstractService {
 	}
 	
 	/**
+	 * @param hole
+	 */
+	public void deleteGameScores(GameScores hole) {
+		em.getTransaction().begin();
+		em.remove(hole);
+		em.getTransaction().commit();
+	}
+	
+	/**
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<GameScores> getAllGameScoress() {
+	public List<GameScores> getAllGameScores() {
 		
 		Query query = em.createNamedQuery("GetAllGameScores");
 		List<GameScores> gameScores = query.getResultList();

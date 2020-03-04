@@ -20,3 +20,4 @@ function openCourseStats(event, course) {
 	  element(course).style.display = "block";
 	  event.currentTarget.className += " active";
 }
+

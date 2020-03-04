@@ -17,29 +17,29 @@ import com.perscholas.casestudy.data.GameScoresService;
 import com.perscholas.casestudy.data.GamesService;
 import com.perscholas.casestudy.data.HolesService;
 import com.perscholas.casestudy.entities.Accounts;
-import com.perscholas.casestudy.entities.Holes;
+import com.perscholas.casestudy.entities.GameScores;
+
+import static com.perscholas.casestudy.data.Finals.*;
+
 
 /**
- * Servlet implementation class TrashScorecard
+ * Servlet implementation class DeleteStats
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/TrashScorecard" })
-public class TrashScorecard extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/deleteStats" })
+public class DeleteStats extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/* Copied to Every Servlet */
 	private HttpSession session;
 	private AccountsService accountsService;
 	private HolesService holesService;
 	private CoursesService coursesService;
 	private GamesService gamesService;
 	private GameScoresService gameScoresService;
-	/* Session variables */
-	private String guests;
-	private List<Holes> holeInfo; // used for hint query
-	private List<Accounts> accountInfo; // current players on this game
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TrashScorecard() {
+	public DeleteStats() {
 		super();
 		// TODO remove console log
 		System.out.println(getClass().getName());
@@ -53,18 +53,11 @@ public class TrashScorecard extends HttpServlet {
 			throws ServletException, IOException {
 		initialize();
 		session = request.getSession(true);
-		guests = (String) session.getAttribute("guests");
 		RequestDispatcher rd;
-		boolean loggedIn = (boolean) session.getAttribute("loggedIn");
-		if (loggedIn) {
 
-			rd = getServletContext().getRequestDispatcher("/home");
-			removeAllAttributes();
+		deleteUserStats();
 
-		} else {
-			session.invalidate();
-			rd = getServletContext().getRequestDispatcher("/index");
-		}
+		rd = getServletContext().getRequestDispatcher("/stats");
 		rd.forward(request, response);
 		closeup();
 	}
@@ -78,30 +71,20 @@ public class TrashScorecard extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private void removeAllAttributes() {
-		session.removeAttribute("guests");
-		session.removeAttribute("course");
-		session.removeAttribute("courseNumber");
-		session.removeAttribute("players");
-		session.removeAttribute("courseInfo");
-		session.removeAttribute("gameId");
-		session.removeAttribute("table");
-		session.removeAttribute("allScores");
-
-		StringBuilder tempString = new StringBuilder("");
-		int counter = 1;
-		try {
-			for (Holes hole : holeInfo) {
-				tempString.append("hint" + counter);
-				session.removeAttribute(tempString.toString());
-				tempString.delete(0, tempString.length());
-				counter++;
+	private void deleteUserStats() {
+		Accounts thisAccount = (Accounts)session.getAttribute(ACCOUNT);
+		List<GameScores> allGames = gameScoresService.getAllGameScores();
+		
+		for(GameScores game : allGames) {
+			if(game.getAccountId() == thisAccount.getId()) {
+				gameScoresService.deleteGameScores(game);
 			}
-		} catch (Exception e) {
-			// continue
 		}
 	}
 
+	/**
+	 * 
+	 */
 	private void initialize() {
 		accountsService = new AccountsService();
 		holesService = new HolesService();
@@ -110,6 +93,9 @@ public class TrashScorecard extends HttpServlet {
 		gameScoresService = new GameScoresService();
 	}
 
+	/**
+	 * 
+	 */
 	private void closeup() {
 		accountsService.close();
 		holesService.close();
