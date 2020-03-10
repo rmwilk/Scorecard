@@ -49,7 +49,3 @@ VALUES
 ("16B",2, 16, 2, "There is a small chance of your ball getting stuck if you go under."),
 ("17B",2, 17, 2, "Jump it!! Lucky bounces are your bestfriend here."),
 ("18B",2, 18, 2, "Not too hard, not too soft. Good luck!");
-
---INSERT INTO `Games_scores` 
---VALUES
---()

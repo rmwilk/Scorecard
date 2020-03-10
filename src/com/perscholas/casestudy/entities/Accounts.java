@@ -38,13 +38,24 @@ public class Accounts implements Serializable {
 	
 	
 	/**
-	 * @param id
 	 * @param email
 	 * @param password
 	 * @param nickname
 	 */
 	public Accounts( String email, String password, String nickname) {
 		//this.setId(id);
+		this.setEmail(email);
+		this.setPassword(password);
+		this.setNickname(nickname);
+	}
+	/**
+	 * @param id
+	 * @param email
+	 * @param password
+	 * @param nickname
+	 */
+	public Accounts(int id,  String email, String password, String nickname) {
+		this.setId(id);
 		this.setEmail(email);
 		this.setPassword(password);
 		this.setNickname(nickname);
