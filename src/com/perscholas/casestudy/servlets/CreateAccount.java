@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.perscholas.casestudy.data.AccountsService;
+import com.perscholas.casestudy.data.UserInputException;
 import com.perscholas.casestudy.entities.Accounts;
 
 /**
@@ -35,20 +36,20 @@ public class CreateAccount extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		AccountsService as = new AccountsService();
+		// obtain user input
 		String name = request.getParameter("nameTB");
 		String email = request.getParameter("emailTB");
 		String password = request.getParameter("passwordTB");
 		boolean isValid = false;
-		
+
 		Accounts newUser = new Accounts(email, password, name);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 		isValid = isValidAccount(newUser);
-				
+
 		if (isValid) {
 			try {
-			as.addAccount(newUser);
-			}
-			catch(Exception e) {
+				as.addAccount(newUser);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
@@ -56,7 +57,7 @@ public class CreateAccount extends HttpServlet {
 			rd = getServletContext().getRequestDispatcher("/signup.jsp");
 			request.setAttribute("isValid", isValid);
 		}
-		
+
 		rd.forward(request, response);
 		as.close();
 	}
@@ -71,8 +72,14 @@ public class CreateAccount extends HttpServlet {
 	}
 
 	private boolean isValidAccount(Accounts acc) {
-
-		// TODO validation code for new account
+		// very basic validation method
+		try {
+			if (acc == null) {
+				throw new UserInputException();
+			}
+		} catch (UserInputException e) {
+			return false;
+		}
 		return true;
 	}
 }
